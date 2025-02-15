@@ -57,11 +57,15 @@ input::placeholder {
 
     border-bottom: 1px solid #000000;
 }
+.header-title{
+    text-align: center;
+    margin: 0px 120px 0px 120px;
+}
 .nav-back{
     display: flex;
-
+    
     padding: 0px 24px 0px 8px;
-    margin: 0px 120px 0px 0px;
+    /* margin: 0px 120px 0px 0px; */
     /* border: 1px solid rebeccapurple; */
 }
 .nav-back img {
@@ -69,17 +73,13 @@ input::placeholder {
     width: 10px;
     align-items: center;
     justify-content: center;
-
+    
     cursor: pointer;
 }
 .empty-holder{
     width: 42px;
-
+    
     padding: 0px 24px 0px 8px;
-    margin: 0px 120px 0px 0px;
-}
-.header-title{
-    text-align: center;
 }
 
 .main{
