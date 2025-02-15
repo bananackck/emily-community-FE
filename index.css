@@ -1,0 +1,212 @@
+@font-face {
+    font-family: 'Cafe24SsurroundAir';
+    src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 100 400 700;
+    font-style: normal;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    background-color: #F4F5F7;
+    
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+input {
+    width: 355px;
+    height: 33px;
+    border: 0;
+    padding-left: 10px;
+    outline: none;
+    background-color: transparent;
+}
+input::placeholder {
+    font-weight: 400;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    letter-spacing: 0%;
+    color: #000000;
+}
+
+.header{
+    width: 100%;
+    height: 10vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-family: 'Cafe24SsurroundAir';
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 2;
+    letter-spacing: 0%;
+
+    border-bottom: 1px solid #000000;
+}
+.nav-back{
+    display: flex;
+
+    padding: 0px 24px 0px 8px;
+    margin: 0px 120px 0px 0px;
+    /* border: 1px solid rebeccapurple; */
+}
+.nav-back img {
+    /* width: 100%; */
+    width: 10px;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+.empty-holder{
+    width: 42px;
+
+    padding: 0px 24px 0px 8px;
+    margin: 0px 120px 0px 0px;
+}
+.header-title{
+    text-align: center;
+}
+
+.main{
+    height: 88vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* position: relative; */
+    /* top:154px; */
+    /* border: 5px solid red; */
+}
+
+.contents{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Pretendard-Regular';
+    
+    background-color: transparent;
+}
+.title{
+    display: flex;
+    
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.info-wrap{
+    padding: 10px;
+}
+.info-title{
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    letter-spacing: 0%;
+    
+    margin: 0px 0px 8px 0px;
+}
+.info-box{
+    display: flex;
+    align-items: center;
+    
+    /* 폰트 적용이 안되나? */
+    font-size: 0.8rem;
+    line-height: 1.5;
+    letter-spacing: 0%;
+    
+    width: 355px;
+    height: 33px;
+    border-width: 1px;
+    border-radius: 4px;
+    border: 1px solid #000000;
+    margin: 0px 0px 4px 0px;
+}
+.helper-text{
+    font-weight: 100;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 0%;
+    color: #FF0000;
+    
+    margin: 0px 0px 4px 0px;
+}
+
+/* 프로필 사진 */
+.profile-upload {
+    position: relative;
+    /* width: 100px; */
+    height: 149px;
+    margin-bottom: 16px;
+    
+    /* border: 5px, solid, red; */
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+}
+.profile-upload img {
+    /* width: 100%; */
+    height: 100%;
+    border-radius: 50%;
+    justify-content: center;
+
+    cursor: pointer;
+}
+.profile-upload input {
+    display: none;
+}
+
+/* 보라색 큰 버튼 */
+.main-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 355px;
+    height: 33px;
+    border-radius: 4px;
+    background-color: #ACA0EB;
+    
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16.71px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #FFFFFF;
+    
+    border: none;
+    cursor: pointer;
+}
+
+/* 작은 버튼 */
+.sub-btn{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.71px;
+    letter-spacing: 0%;
+    
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    
+    margin: 16px 0px 8px 0px;
+} 

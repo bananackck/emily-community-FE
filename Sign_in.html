@@ -4,27 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="Sign_in.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
     <script src = "Sign_in.js"></script>
     <title>Community clone-emily</title>
 </head>
 <body>
-    <div class="wrap"> 
         <article class="header">
-            <div class="title">아무 말 대잔치</div>
+            <div class="nav-back">
+                <a href="./Log_in.html">
+                    <img id="nav-back-img" src="./navigate_back.png" alt="뒤로가기">
+                </a>
+            </div>
+            <div class="header-title">아무 말 대잔치</div>
+            <div class="empty-holder"> </div>
         </article>
 
 
         <div class="main">
-        <div class="signin-wrap">
-            <div class="signin-title">회원가입</div>
+        <div class="contents">
+            <div class="title">회원가입</div>
 
             <article class="info-wrap">
+                <!-- 프로필 사진 업로드 -->
                 <div class="info-title">프로필 사진</div>
                 <div class="helper-text">* helper text</div>
                 <div class="profile-upload">
                     <label for="profile-image">
-                        <img id="preview" src="../placeholder.png" alt="프로필 사진 미리보기">
+                        <img id="preview" src="./profile_placeholder.png" alt="프로필 사진 미리보기">
                     </label>
                     <input type="file" id="profile-image" accept="image/*">
                 </div>
@@ -36,33 +42,33 @@
                 </div>
                 <div class="helper-text">* helper text</div>
 
+                <!-- 비밀번호 입력 -->
                 <div class="info-title">비밀번호*</div>
                 <div class="info-box">
                     <input placeholder="비밀번호를 입력하세요"></input>
                 </div>
                 <div class="helper-text">* helper text</div>
 
+                <!-- 비밀번호 재입력 -->
                 <div class="info-title">비밀번호 확인*</div>
                 <div class="info-box">
                     <input placeholder="비밀번호를 한번 더 입력하세요"></input>
                 </div>
                 <div class="helper-text">* helper text</div>
 
+                <!-- 닉네임 입력 -->
                 <div class="info-title">닉네임*</div>
                 <div class="info-box">
                     <input placeholder="닉네임을 입력하세요"></input>
                 </div>
                 <div class="helper-text">* helper text</div>
             </article>
-            <btn class="login-btn">
-                <div class="login-text">회원가입</div>
-            </btn>
-            <button onclick="goSignup()" 
-                    class="signin-btn" type="button">로그인하러 가기</button>
+            <button class="main-btn">회원가입</button>
+            <button onclick="location.href='./Log_in.html'" 
+                    class="sub-btn" type="button">로그인하러 가기</button>
 
         </div>
         </div>
         
-	</div>
 </body>
 </html>
