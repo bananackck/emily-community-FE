@@ -18,36 +18,47 @@
         <div class="main">
         <div class="signin-wrap">
             <div class="signin-title">회원가입</div>
+
             <article class="info-wrap">
-                <div class="info-title">이메일</div>
+                <div class="info-title">프로필 사진</div>
+                <div class="helper-text">* helper text</div>
+                <div class="profile-upload">
+                    <label for="profile-image">
+                        <img id="preview" src="../placeholder.png" alt="프로필 사진 미리보기">
+                    </label>
+                    <input type="file" id="profile-image" accept="image/*">
+                </div>
+
+                <!-- 이메일 입력 -->
+                <div class="info-title">이메일*</div>
                 <div class="info-box">
                     <input placeholder="이메일을 입력하세요"></input>
                 </div>
                 <div class="helper-text">* helper text</div>
 
-                <div class="info-title">비밀번호</div>
+                <div class="info-title">비밀번호*</div>
                 <div class="info-box">
                     <input placeholder="비밀번호를 입력하세요"></input>
                 </div>
                 <div class="helper-text">* helper text</div>
 
-                <div class="info-title">비밀번호</div>
+                <div class="info-title">비밀번호 확인*</div>
                 <div class="info-box">
-                    <input placeholder="비밀번호를 입력하세요"></input>
+                    <input placeholder="비밀번호를 한번 더 입력하세요"></input>
                 </div>
                 <div class="helper-text">* helper text</div>
 
-                <div class="info-title">비밀번호</div>
+                <div class="info-title">닉네임*</div>
                 <div class="info-box">
-                    <input placeholder="비밀번호를 입력하세요"></input>
+                    <input placeholder="닉네임을 입력하세요"></input>
                 </div>
                 <div class="helper-text">* helper text</div>
             </article>
             <btn class="login-btn">
-                <div class="login-text">로그인</div>
+                <div class="login-text">회원가입</div>
             </btn>
             <button onclick="goSignup()" 
-                    class="signin-btn" type="button">회원가입</button>
+                    class="signin-btn" type="button">로그인하러 가기</button>
 
         </div>
         </div>
