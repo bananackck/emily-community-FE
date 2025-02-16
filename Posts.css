@@ -132,6 +132,8 @@ a{
 
 /* 보라색 버튼 */
 .btn-wrap{
+    font-family: 'Pretendard-Regular';
+    
     display: flex;
     width: 600px;
     /* align-items: center; */
