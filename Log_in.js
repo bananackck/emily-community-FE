@@ -1,6 +1,8 @@
 // 이메일 정보
 var elInputEmail = document.getElementById('email')
 var elInputPw = document.getElementById('pw')
+var emailPass = false
+var pwPass = false
 var elLoginBtn = document.getElementById('login-btn')
 // const emailel=document.querySelector("#info-wrap email")
 // helper text
@@ -32,6 +34,7 @@ function validInfo(){
         elHelperText.innerHTML='*이메일 또는 비밀번호를 확인해주세요'
     }
     else{
+        window.location.href="./Posts.html"
         elHelperText.innerHTML=''
     }
 }
@@ -45,6 +48,7 @@ elInputEmail.onkeyup=function(){
         }
         else{
             elHelperText.innerHTML=''
+            emailPass=true
         }
     }
     else{
@@ -62,9 +66,17 @@ elInputPw.onkeyup=function(){
         }
         else{
             elHelperText.innerHTML=''
+            pwPass=true
         }
     }
     else{
         elHelperText.innerHTML='*비밀번호를 입력해주세요'
+    }
+}
+const info=document.getElementById('info-wrap')
+
+info.onkeydown=function(){
+    if(emailPass && pwPass){
+        elLoginBtn.style.backgroundColor="#7F6AEE"
     }
 }

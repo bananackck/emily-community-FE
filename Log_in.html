@@ -27,7 +27,7 @@
     <div class="main">
         <div class="contents">
             <div class="title">로그인</div>
-            <article class="info-wrap">
+            <article class="info-wrap" id="info-wrap">
                 <!-- 이메일 입력 -->
                 <div class="info-title">이메일</div>
                 <div class="info-box">
@@ -40,14 +40,9 @@
                     <input type="password" id="pw"placeholder="비밀번호를 입력하세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력하세요'"></input>
                 </div>
                 <div class="helper-text" id="helper-text"></div>
-                <!-- <div class="helper-text hidden" id="invalid-email-msg">*올바른 이메일 주소 형식을 입력해주세요. (예: example@example.com)</div>
-                <div class="helper-text hidden" id="no-email-msg">*이메일을 입력해주세요</div>
-                <div class="helper-text hidden" id="invalid-pw-msg">*비밀번호는 8자 이상, 20자 이하이며, 대문자, 소문자, 숫자, 특수문자를 각각 최소 1개 포함해야 합니다.</div>
-                <div class="helper-text hidden" id="no-pw-msg">*비밀번호를 입력해주세요</div>
-                <div class="helper-text hidden" id="check-info-msg">*이메일 또는 비밀번호를 확인해주세요</div> -->
             </article>
             <button class="main-btn" id="login-btn" onclick="validInfo()">
-                <div class="login-text">로그인</div>
+                로그인
             </button>
             <button onclick="location.href='./Sign_in.html'"
             class="sub-btn" type="button">회원가입</button>
