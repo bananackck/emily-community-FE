@@ -43,9 +43,8 @@ input::placeholder {
 a{
     text-decoration: none;
 }
-
 /* 헤더 */
-header{
+.header{
     width: 100%;
     height: 10vh;
 
@@ -67,14 +66,14 @@ header{
     justify-content: center;
     display: flex;
 }
-.project-name{
+.header-title{
     text-align: center;
 }
 .nav-btn{
     height: 40px;
 }
 .nav-brn img {
-    height: 40px; 
+    height: 40px;
     
     cursor: pointer;
 }
@@ -84,21 +83,28 @@ header{
 .right{
     margin-left: auto;
 }
+.top{
+    margin-bottom: auto;
+}
+.bottom{
+    margin-top: auto;
+}
 .hidden{
     visibility: hidden;
 }
 
-/* 메인 */
 .main{
     height: 88vh;
 
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border: 2px solid red; */
+
+    /* position: relative; */
+    /* top:154px; */
+    /* border: 5px solid red; */
 }
 
-/* 콘텐츠 */
 .contents{
     display: flex;
     flex-direction: column;
@@ -110,82 +116,34 @@ header{
     background-color: transparent;
 }
 .title{
-    display: flex;
-    
-    font-weight: 700;
-    font-size: 1.8rem;
-    /* line-height: 1.5; */
-    /* letter-spacing: 0%; */
-    text-align: center;
-}
+    /* display: flex; */
+    /* flex-direction: column; */
 
-.info-wrap{
-    padding: 10px;
-}
-.info-title{
-    font-weight: 700;
-    font-size: 0.9rem;
-    /* line-height: 1.5; */
-    /* letter-spacing: 0%; */
-    
-    margin: 0px 0px 8px 0px;
-}
-.info-box{
-    display: flex;
-    align-items: center;
-    
-    width: 355px;
-    height: 33px;
-    border-width: 1px;
-    border-radius: 4px;
-    border: 1px solid #000000;
-    margin: 0px 0px 4px 0px;
-}
-.helper-text{
-    font-weight: 100;
-    font-size: 0.8rem;
-    line-height: 1.2;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.5;
     letter-spacing: 0%;
-    color: #FF0000;
-    
-    margin: 0px 0px 4px 0px;
+    text-align: center;
+    /* margin-bottom: auto; */
+}
+.bold{
+    font-weight: 700;
 }
 
-/* 프로필 사진 */
-.profile-upload {
-    position: relative;
-    /* width: 100px; */
-    height: 149px;
-    margin-bottom: 16px;
-    
-    /* border: 5px, solid, red; */
+/* 보라색 버튼 */
+.btn-wrap{
     display: flex;
-    
-    justify-content: center;
-    align-items: center;
+    width: 600px;
+    /* align-items: center; */
+    justify-content: flex-end;
 }
-.profile-upload img {
-    /* width: 100%; */
-    height: 100%;
-    border-radius: 50%;
-    justify-content: center;
-
-    cursor: pointer;
-}
-.profile-upload input {
-    display: none;
-}
-
-/* 보라색 큰 버튼 */
-.main-btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 355px;
-    height: 33px;
-    border-radius: 4px;
+.post-btn{
+    width: 138px;
+    height: 39px;
+    border-radius: 16px;
     background-color: #ACA0EB;
     
+
     font-weight: 700;
     font-size: 14px;
     line-height: 16.71px;
@@ -195,18 +153,70 @@ header{
     
     border: none;
     cursor: pointer;
+    margin: 24px 0px 8px auto;
 }
 
-/* 작은 버튼 */
-.sub-btn{
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16.71px;
-    letter-spacing: 0%;
-    
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-    
-    margin: 16px 0px 8px 0px;
-} 
+/* 게시글 목록 */
+.posts{
+    display: flex;
+    flex-direction: column;
+}
+/* 게시글 */
+.post{
+    width: 592px;
+    height: 169px;
+    border-radius: 16px;
+
+    background-color: #FFFFFF;
+
+    margin-top: 12px;
+}
+.post-info{
+    display: flex;
+    margin: 24px 24px 16px 24px;
+}
+.post-block{
+
+}
+.post-title{
+    font-weight: 700;
+    font-size: 1.5rem;
+
+    margin-bottom: 12px;
+}
+.info-wrap{
+    display: flex;
+    flex-direction: row;
+}
+.info{
+    font-size: 0.8rem;
+    margin-right: 8px;
+}
+
+/* 작성자 */
+.post-writer{
+    display: flex;
+
+    padding: 16px 24px 24px 24px;
+
+    border-top: 1px solid #00000029;
+}
+.profile{
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+}
+.writer{
+    display: block;
+    font-weight: 700;
+    margin-left: 8px;
+
+    align-items: center;
+    justify-content: center;
+}
+.text-area{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
