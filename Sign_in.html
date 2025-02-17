@@ -5,76 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="index.css">
-    <script src = "Sign_in.js"></script>
     <title>Community clone-emily</title>
 </head>
 <body>
-        <header>
-            <div class="header-contents">    
-                <div class="nav-btn left">
-                    <a href="./Log_in.html">
-                        <img id="nav-back-img" src="./navigate_back.png" alt="뒤로가기">
-                    </a>
-                </div>
-                <div class="project-name">아무 말 대잔치</div>
-                <div class="nav-btn right hidden">
-                    <a href="./Posts.html">
-                        <img id="profile-img" src="./profile.png" alt="프로필 가기" style="border-radius: 20px;">
-                    </a>
-                </div>
+    <header>
+        <div class="header-contents">    
+            <div class="nav-btn left">
+                <a href="./Log_in.html">
+                    <img id="nav-back-img" src="./navigate_back.png" alt="뒤로가기">
+                </a>
             </div>
-        </header>
-
-
-        <div class="main">
+            <div class="project-name">아무 말 대잔치</div>
+            <div class="nav-btn right hidden">
+                <a href="./Posts.html">
+                    <img id="profile-img" src="./profile.png" alt="프로필 가기" style="border-radius: 20px;">
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    
+    <div class="main">
         <div class="contents">
             <div class="title">회원가입</div>
-
-            <article class="info-wrap">
+            
+            <article class="info-wrap" id="info-wrap">
                 <!-- 프로필 사진 업로드 -->
                 <div class="info-title">프로필 사진</div>
-                <div class="helper-text">* helper text</div>
+                <div class="helper-text" id="profile-helper"></div>
                 <div class="profile-upload">
                     <label for="profile-image">
-                        <img id="profile-img" src="./profile_placeholder.png" alt="프로필 사진 미리보기">
+                        <img id="img" src="./profile_placeholder.png" alt="프로필 사진 미리보기">
+                        <input type="file" id="profile-image" accept="image/*">
                     </label>
-                    <input type="file" id="profile-image" accept="image/*">
                 </div>
-
+                
                 <!-- 이메일 입력 -->
                 <div class="info-title">이메일*</div>
                 <div class="info-box">
-                    <input placeholder="이메일을 입력하세요"></input>
+                    <input id="email" placeholder="이메일을 입력하세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력하세요'"></input>
                 </div>
-                <div class="helper-text">* helper text</div>
-
+                <div class="helper-text" id="email-helper"></div>
+                
                 <!-- 비밀번호 입력 -->
                 <div class="info-title">비밀번호*</div>
                 <div class="info-box">
-                    <input placeholder="비밀번호를 입력하세요"></input>
+                    <input id="pw" placeholder="비밀번호를 입력하세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력하세요'"></input>
                 </div>
-                <div class="helper-text">* helper text</div>
-
+                <div class="helper-text" id="pw-helper"></div>
+                
                 <!-- 비밀번호 재입력 -->
                 <div class="info-title">비밀번호 확인*</div>
                 <div class="info-box">
-                    <input placeholder="비밀번호를 한번 더 입력하세요"></input>
+                    <input id="pw2" placeholder="비밀번호를 한 번 더 입력하세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 한 번 더 입력하세요'"></input>
                 </div>
-                <div class="helper-text">* helper text</div>
-
+                <div class="helper-text" id="pw2-helper"></div>
+                
                 <!-- 닉네임 입력 -->
                 <div class="info-title">닉네임*</div>
                 <div class="info-box">
-                    <input placeholder="닉네임을 입력하세요"></input>
+                    <input id="nickname" placeholder="닉네임을 입력하세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '닉네임을 입력하세요'"></input>
                 </div>
-                <div class="helper-text">* helper text</div>
+                <div class="helper-text" id="nickname-helper"></div>
             </article>
-            <button class="main-btn">회원가입</button>
-            <button onclick="location.href='./Log_in.html'" 
-                    class="sub-btn" type="button">로그인하러 가기</button>
-
+            <button class="main-btn" id="signin-btn">회원가입</button>
+            <button onclick=" location.href='./Log_in.html'" 
+            class="sub-btn" type="button">로그인하러 가기</button>
+            
         </div>
-        </div>
-        
+    </div>
+    
+    <script src = "Sign_in.js"></script>
 </body>
 </html>

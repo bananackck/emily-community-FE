@@ -1,11 +1,14 @@
 // 이메일 정보
 var elInputEmail = document.getElementById('email')
+// 비밀번호 정보
 var elInputPw = document.getElementById('pw')
+
 var emailPass = false
 var pwPass = false
+const info=document.getElementById('info-wrap')
+// 로그인 버튼
 var elLoginBtn = document.getElementById('login-btn')
-// const emailel=document.querySelector("#info-wrap email")
-// helper text
+// 경고메세지
 var elHelperText = document.getElementById('helper-text')
 
 const emailPattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
@@ -26,25 +29,13 @@ function validLength(password){
     else{return false}
 }
 
-function validInfo(){
-    const email=elInputEmail.value
-    const password=elInputPw.value
-
-    if(email=='' || password==''){
-        elHelperText.innerHTML='*이메일 또는 비밀번호를 확인해주세요'
-    }
-    else{
-        window.location.href="./Posts.html"
-        elHelperText.innerHTML=''
-    }
-}
-
 elInputEmail.onkeyup=function(){
     const email=elInputEmail.value
+    emailPass=false
 
     if(email){
         if(validEmail(email)==false){
-            elHelperText.innerHTML='*올바른 이메일 주소 형식을 입력해주세요. (예: example@example.com)'
+            elHelperText.innerHTML='*올바른 이메일 주소 형식을 입력해주세요.</br> (예: example@example.com)'
         }
         else{
             elHelperText.innerHTML=''
@@ -52,11 +43,15 @@ elInputEmail.onkeyup=function(){
         }
     }
     else{
-        elHelperText.innerHTML='*이메일을 입력해주세요'
+        elHelperText.innerHTML='*이메일을 입력해주세요.'
     }
+    btnActivate()
+ 
 }
 elInputPw.onkeyup=function(){
     const pw=elInputPw.value
+    pwPass=false
+
     if(pw){
         if(validLength(pw)==false){
             elHelperText.innerHTML='*비밀번호는 8자 이상, 20자 이하이어야 합니다.'
@@ -72,11 +67,17 @@ elInputPw.onkeyup=function(){
     else{
         elHelperText.innerHTML='*비밀번호를 입력해주세요'
     }
+    btnActivate()
 }
-const info=document.getElementById('info-wrap')
 
-info.onkeydown=function(){
+function btnActivate(){
     if(emailPass && pwPass){
         elLoginBtn.style.backgroundColor="#7F6AEE"
+        elLoginBtn.onclick=function(){
+            window.location.href="./Posts.html"
+        }
+    }
+    else{
+        elLoginBtn.style.backgroundColor="#ACA0EB"
     }
 }
