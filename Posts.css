@@ -48,6 +48,8 @@ a{
     width: 100%;
     height: 10vh;
 
+    top: 0;
+    position: sticky;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,24 +98,27 @@ a{
 .main{
     height: 88vh;
 
-    display: flex;
     align-items: center;
     justify-content: center;
 
-    /* position: relative; */
+    overflow: auto;
+    position: relative;
     /* top:154px; */
     /* border: 5px solid red; */
 }
 
 .contents{
+    /* top: 1000px; */
+    /* position: fixed; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     font-family: 'Pretendard-Regular';
     
     background-color: transparent;
+    /* border: 5px solid blue; */
+    padding-top:40px;
 }
 .title{
     /* display: flex; */
@@ -156,6 +161,9 @@ a{
     border: none;
     cursor: pointer;
     margin: 24px 0px 8px auto;
+}
+.post-btn:hover{
+    background-color: #7F6AEE;
 }
 
 /* 게시글 목록 */
