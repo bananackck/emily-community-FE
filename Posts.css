@@ -98,13 +98,10 @@ a{
 .main{
     height: 88vh;
 
-    align-items: center;
     justify-content: center;
-
     overflow: auto;
-    position: relative;
-    /* top:154px; */
-    /* border: 5px solid red; */
+
+    margin-top: 8px;
 }
 
 .contents{

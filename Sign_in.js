@@ -37,7 +37,7 @@ function validLength(password){
     else{return false}
 }
 
-elInputProfile.onchange = function profileValidation(){
+elInputProfile.onchange = function(){
     profilePass=false
     const selected=this.files[0];
 
