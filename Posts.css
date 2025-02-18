@@ -201,7 +201,7 @@ a{
 }
 
 /* 작성자 */
-.post-writer{
+.writer-wrap{
     display: flex;
 
     padding: 16px 24px 24px 24px;

@@ -1,0 +1,42 @@
+/* 보라색 버튼 */
+.btn-wrap{
+    font-family: 'Pretendard-Regular';
+    
+    display: flex;
+    width: 600px;
+    /* align-items: center; */
+    justify-content: flex-end;
+}
+.post-btn{
+    width: 138px;
+    height: 39px;
+    border-radius: 16px;
+    background-color: #ACA0EB;
+    
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16.71px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #FFFFFF;
+    
+    border: none;
+    cursor: pointer;
+    /* margin: 24px 0px 8px auto; */
+}
+.post-btn:hover{
+    background-color: #7F6AEE;
+}
+
+/* 수정, 삭제 버튼 */
+.small-btn{
+    width: 48px;
+    height: 24px;
+    top: 175px;
+    left: 1182px;
+    border-radius: 8px;
+
+    font-family: 'Pretendard-Regular';
+    font-size: 0.8rem;
+    border: 1px solid #ACA0EB;
+}
