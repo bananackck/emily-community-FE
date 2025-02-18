@@ -1,0 +1,184 @@
+@font-face {
+    font-family: 'Interop';
+    src: url('https://raw.githubusercontent.com/payw-org/Interop/main/web/fonts/Interop-Regular.woff2')
+        format('woff2'),
+      url('https://raw.githubusercontent.com/payw-org/Interop/main/web/fonts/Interop-Regular.woff')
+        format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.dropdown{
+    position : relative;
+    display : inline-block;
+
+    width: 40px;
+    height: 40px;
+    /* border: 2px solid red; */
+}
+
+.dropdown-content{
+    display : none;
+    position : fixed;
+    float: right;
+    top: 72px;
+    left: 60vw;
+    /* padding-right:40px; */
+    z-index : 1; 
+    /* border: 2px solid red; */
+
+}
+  
+.dropdown-content a{
+    width: 115px;
+    height: 35px;
+    gap: 8px;
+
+    padding-top: 4px;
+    text-align: center;
+    font-family: 'Interop';
+    font-weight: 400;
+    font-size: 0.8rem;
+
+    background-color: #D9D9D9;
+    display : block;
+
+    color: #000000
+}
+.dropdown-content a:hover{
+    background-color: #E9E9E9;
+}
+#nav-img:hover{
+    /* border: 2px solid saddlebrown; */
+    cursor: pointer;
+}
+.dropbtn{
+    display: none;
+}
+/*  */
+.profile-hover{
+    display: block;
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    z-index: 1;
+    background-color: black;
+    margin-top: -4px;
+}
+#img:hover + .profile-hover{
+    display: block;
+    border: 2px solid rebeccapurple;
+}
+/* .profile-hover:hover{
+    display: block;
+    cursor: pointer;
+    opacity: 20%;
+} */
+
+/* 토스트 메시지 수정완료 */
+.toast-msg{
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 102px;
+    height: 46px;
+    border-radius: 30px;
+    background-color: #ACA0EB;
+    
+    font-family: 'Pretendard-Regular';
+
+    font-weight: 400;
+    font-size: 1rem;
+    text-align: center;
+    color: #FFFFFF;
+    
+    border: none;
+    /* cursor: pointer; */
+
+    margin-top: 64px;
+
+    /* 이동 */
+    transition: all 0.3s;
+    /* transform: translate(-50%,0); */
+}
+.active{
+    opacity: 100%;
+}
+
+
+/*모달 팝업 영역 스타일링*/
+.modal {
+    /*팝업 배경*/
+    display: none; /*평소에는 보이지 않도록*/
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: rgba(0,0,0,0.5);
+    z-index: 20;
+}
+.modal .modal-popup {
+    width: 320px;
+    height: 184px;
+    border-radius: 12px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    font-family: 'Pretendard-Regular';
+    text-align: center;
+    background: #ffffff;
+}
+
+.popup-title{
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.popup-msg{
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 16px 0 16px 0;
+}
+.modal .modal-popup .btn-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.modal .modal-popup .btn-wrap .modal-btn {
+    width: 96px;
+    height: 36px;
+    display: block;
+
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    font-family: 'Pretendard-Regular';
+    font-weight: 100;
+    font-size: 1rem;
+}
+.no{
+    background-color: #242424;
+    color: #ffffff;
+    margin-right: 4px;
+}
+.yes{
+    background-color: #C4A5FA;
+    color: #000000;
+    margin-left: 4px;
+}
+
+.modal.on {
+    display: block;
+}

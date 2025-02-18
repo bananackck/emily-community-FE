@@ -217,26 +217,3 @@ header{
     
     margin: 16px 0px 8px 0px;
 } 
-
-/* 보라색 작은 버튼 */
-.sub2-btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 102px;
-    height: 46px;
-    border-radius: 30px;
-    background-color: #ACA0EB;
-    
-    font-family: 'Pretendard-Regular';
-
-    font-weight: 400;
-    font-size: 1rem;
-    text-align: center;
-    color: #FFFFFF;
-    
-    border: none;
-    cursor: pointer;
-
-    margin-top: 64px;
-}
