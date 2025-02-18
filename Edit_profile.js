@@ -73,7 +73,6 @@ function btnActivate(){
 
 let elToastMsg = document.getElementsByClassName('toast-msg')[0]
 
-//2. 토스트 메시지 노출-사라짐 함수 작성
 function toastOn(){
     elToastMsg.classList.add('active');
     console.log('클래스 연결 됨?');
