@@ -18,52 +18,6 @@ a{
     text-decoration: none;
 }
 
-/* 헤더 */
-header{
-    width: 100%;
-    height: 10vh;
-
-    top: 0;
-    position: sticky;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    font-family: var(--point-font);
-    font-weight: 400;
-    font-size: 2rem;
-    line-height: 2;
-    letter-spacing: 0%;
-
-    border-bottom: 1px solid #000000;
-}
-.header-contents{
-    width: 570px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-}
-.project-name{
-    text-align: center;
-}
-.nav-btn{
-    height: 40px;
-}
-.nav-brn img {
-    height: 40px; 
-    
-    cursor: pointer;
-}
-.left{
-    margin-right: auto;
-}
-.right{
-    margin-left: auto;
-}
-.hidden{
-    visibility: hidden;
-}
-
 /* 메인 */
 .main{
     height: 88vh;

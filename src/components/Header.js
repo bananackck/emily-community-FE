@@ -1,6 +1,6 @@
 const template = document.createElement('template');
 template.innerHTML = `
-  <link rel="stylesheet" type="text/css" href="../assets/style/index.css">
+  <link rel="stylesheet" type="text/css" href="../assets/style/Header.css">
   <header>
     <div class="header-contents">    
         <div class="nav-btn left hidden">
