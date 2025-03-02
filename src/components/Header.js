@@ -27,11 +27,12 @@ class MyHeader extends HTMLElement {
   }
 
   connectedCallback() {
-    // 만약 "visible-nav" 속성이 있으면 네비 버튼에서 hidden 클래스를 제거
+    // "left-hidden" 속성이 있으면 네비 버튼에서 hidden 클래스를 추가
     if (this.hasAttribute('left-hidden')) {
       const navBtns = this.shadowRoot.querySelectorAll('.nav-btn.left');
       navBtns.forEach(btn => btn.classList.add('hidden'));
     }
+    // "right-hidden" 속성이 있으면 네비 버튼에서 hidden 클래스를 추가
     if (this.hasAttribute('right-hidden')) {
       const navBtns = this.shadowRoot.querySelectorAll('.nav-btn.right');
       navBtns.forEach(btn => btn.classList.add('hidden'));
