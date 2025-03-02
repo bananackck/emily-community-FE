@@ -10,7 +10,7 @@
 <body>
     <my-header></my-header>
     
-    <div class="main">
+    <main>
         <div class="contents">
             <div class="title">로그인</div>
             <article class="info-wrap" id="info-wrap">
@@ -28,13 +28,12 @@
                 <div class="helper-text" id="helper-text"></div>
             </article>
             <button class="main-btn" id="login-btn" >
-                로그인
-            </button>
-            <button onclick="location.href='./Sign_in.html'"
-            class="sub-btn" type="button">회원가입</button>
+                로그인</button>
+            <a onclick="location.href='./Sign_in.html'" class="basic-a-link">
+            회원가입</a>
             
         </div>
-    </div>
+    </main>
     <script src="../components/Header.js"></script>
     <script src = "Log_in.js"></script>
 </body>

@@ -1,4 +1,6 @@
 @import url("Style.css");
+@import url("Button.css");
+
 input {
     width: 355px;
     height: 33px;
@@ -14,12 +16,10 @@ input::placeholder {
     font-size: 0.9rem;
     color: #000000;
 }
-a{
-    text-decoration: none;
-}
+
 
 /* 메인 */
-.main{
+main{
     height: 88vh;
 
     display: flex;
@@ -110,38 +110,3 @@ a{
 .profile-upload input {
     display: none;
 }
-
-/* 보라색 큰 버튼 */
-.main-btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 355px;
-    height: 33px;
-    border-radius: 4px;
-    background-color: var(--point-color);
-    
-    font-family: 'Pretendard-Regular';
-
-    font-weight: 600;
-    font-size: 0.8rem;
-    text-align: center;
-    color: var(--font-color-white);
-    
-    border: none;
-    cursor: pointer;
-}
-
-/* 작은 버튼 */
-.sub-btn{
-    font-family: 'Pretendard-Regular';
-
-    font-weight: 400;
-    font-size: 0.8rem;
-    
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-    
-    margin: 16px 0px 8px 0px;
-} 

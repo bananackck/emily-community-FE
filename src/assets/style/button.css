@@ -1,3 +1,25 @@
+/* <button> */
+/* ------------------------ */
+/* 보라색 큰 버튼 */
+.main-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 355px;
+    height: 33px;
+    border-radius: 4px;
+    background-color: var(--point-color);
+    
+    font-family: 'Pretendard-Regular';
+
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-align: center;
+    color: var(--font-color-white);
+    
+    border: none;
+    cursor: pointer;
+}
 /* 보라색 버튼 */
 .btn-wrap{
     font-family: 'Pretendard-Regular';
@@ -40,3 +62,20 @@
     font-size: 0.8rem;
     border: 1px solid #ACA0EB;
 }
+
+/* <a> */
+/* ------------------------ */
+/* 기본 a링크 태그 */
+.basic-a-link{
+    font-family: 'Pretendard-Regular';
+
+    font-weight: 400;
+    font-size: 0.8rem;
+    
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    
+    margin: 16px 0px 8px 0px;
+    text-decoration: none;
+} 

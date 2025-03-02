@@ -25,12 +25,13 @@
     --font-color-white: #ffffff;
 }
 
-/* 화면 채움 및 스크롤 없앰 */
+/* css reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;   
 }
+/* 화면 채우기, 배경화면색 설정 */
 body{
     width: 100%;
     height: 100%;
@@ -41,3 +42,7 @@ body{
     flex-direction: column;
 }
 
+/* a태그 초기화 */
+a{
+    text-decoration: none;
+}
