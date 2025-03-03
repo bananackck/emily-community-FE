@@ -1,38 +1,18 @@
-@import url("style.css");
-@import url("button.css");
+@import url("common.css");
 
 main{
-    height: 88vh;
-
-    justify-content: center;
     overflow: auto;
-
     margin-top: 8px;
 }
 
 .contents{
-    /* top: 1000px; */
-    /* position: fixed; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    font-family: 'Pretendard-Regular';
-    
-    background-color: transparent;
-    /* border: 5px solid blue; */
     padding-top:40px;
 }
 .title{
-    /* display: flex; */
-    /* flex-direction: column; */
+    display: block;
 
     font-weight: 400;
     font-size: 1.5rem;
-    line-height: 1.5;
-    letter-spacing: 0%;
-    text-align: center;
-    /* margin-bottom: auto; */
 }
 .bold{
     font-weight: 700;
@@ -45,22 +25,29 @@ main{
     display: flex;
     flex-direction: column;
 }
+
 /* 게시글 */
 .post{
-    width: 592px;
-    height: 169px;
+    display: flex;
+    flex-direction: column;
+
+    width: 53vw;
+    height: 21vh;
     border-radius: 16px;
 
     background-color: #FFFFFF;
 
     margin-top: 12px;
 }
-.post-info{
-    display: flex;
-    margin: 24px 24px 16px 24px;
-}
-.post-block{
 
+/* 게시글 헤더(정보 부분) */
+.post-header{
+    flex: 2;
+    display: flex;
+    margin: 24px;
+}
+.post-info{
+    flex:2;
 }
 .post-title{
     font-weight: 700;
@@ -68,39 +55,48 @@ main{
 
     margin-bottom: 12px;
 }
-.info-wrap{
+.post-info-wrap{
     display: flex;
     flex-direction: row;
+    font-size: 0.8rem;
 }
 .info{
-    font-size: 0.8rem;
     margin-right: 8px;
+}
+.post-time{
+    flex:1;
+    margin-top: auto;
+    margin-left: auto;
+
+    display: flex;
+    justify-content: flex-end; 
+    align-items: flex-end;
+
+    font-size: 0.8rem;
 }
 
 /* 작성자 */
 .writer-wrap{
+    flex: 1;
+
     display: flex;
 
-    padding: 16px 24px 24px 24px;
+    padding: 24px;
 
     border-top: 1px solid #00000029;
 }
 .profile{
+    flex: 1;
     justify-content: center;
     align-items: center;
     width: 40px;
 }
 .writer{
-    display: block;
+    flex: 12;
+
+    display: flex;
+    align-items: center;
+
     font-weight: 700;
     margin-left: 8px;
-
-    align-items: center;
-    justify-content: center;
-}
-.text-area{
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }

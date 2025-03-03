@@ -21,12 +21,12 @@ input::placeholder {
 /* 메인 */
 main{
     height: 88vh;
-
-    display: flex;
-    align-items: center;
     justify-content: center;
-    /* border: 2px solid red; */
     font-family: var(--main-font);
+
+    /* 정중앙에 고정되있는 페이지일 시 추가 */
+    /* display: flex; */
+    /* align-items: center; */
 }
 
 /* 콘텐츠 */
@@ -44,8 +44,8 @@ main{
     
     font-weight: 700;
     font-size: 1.8rem;
-    /* line-height: 1.5; */
-    /* letter-spacing: 0%; */
+    line-height: 1.5;
+    letter-spacing: 0%;
     text-align: center;
 }
 
