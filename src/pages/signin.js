@@ -18,25 +18,11 @@ var elPwHelper = document.getElementById('pw-helper')
 var elPw2Helper = document.getElementById('pw2-helper')
 var elNicknameHelper = document.getElementById('nickname-helper')
 
-const info=document.getElementById('info-wrap')
 var elSigninBtn = document.getElementById('signin-btn')
 
 
-
 elInputProfile.onchange = function(){
-    profilePass=false
-    const selected=this.files[0];
-
-    const reader = new FileReader();
-    
-    reader.onload=function(){
-        const img=document.getElementById('img')
-        img.src=reader.result
-
-        img.style.width='149px'
-        profilePass=true
-    }
-    reader.readAsDataURL(selected)
+    profilePass=validator.uploadProfile(elInputProfile);
 }
 
 elInputEmail.onkeyup = function() {

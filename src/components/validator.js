@@ -20,6 +20,8 @@ export const pwValidator = (el, helper) => {
   return true;
 };
 
+
+// 이메일 유효성 검사
 export const handleEmailInput = (email, elEmailHelper) => {
   if (email) {
     if (!validEmail(email)) {
@@ -40,6 +42,7 @@ export const handleEmailInput = (email, elEmailHelper) => {
   }
 };
 
+// 비밀번호 유효성 검사
 export const handlePwInput = (pw, elPwHelper) => {
   if (pw) {
     if (pwValidator(pw, elPwHelper)) {
@@ -53,10 +56,10 @@ export const handlePwInput = (pw, elPwHelper) => {
   }
 };
 
+// 비밀번호 확인 유효성 검사
 export const handlePw2Input = (pw, pw2, elPw2Helper) => {
   if (pw2) {
     if (pwValidator(pw2, elPw2Helper)) {
-      // 주의: 아래 pw 변수는 함수 내부에 정의되지 않은 전역변수일 수 있으므로, 필요에 따라 수정해야 합니다.
       if (pw != pw2) {
         elPw2Helper.innerHTML = '*비밀번호가 다릅니다.';
         return false;
@@ -72,6 +75,7 @@ export const handlePw2Input = (pw, pw2, elPw2Helper) => {
   }
 };
 
+// 닉네임 유효성 검사
 export const handleNicknameInput = (nickname, elNicknameHelper) => {
   if (nickname) {
     if (nickname.includes(' ')) {
@@ -89,3 +93,22 @@ export const handleNicknameInput = (nickname, elNicknameHelper) => {
     return false;
   }
 };
+
+
+//------------------------------------
+// 프로필 업로드
+export const uploadProfile = (profile) =>{
+    const selected=profile.files[0];
+
+    const reader = new FileReader();
+    
+    reader.onload=function(){
+        const img=document.getElementById('img')
+        img.src=reader.result
+
+        img.style.width='149px'
+        return true;
+    }
+    reader.readAsDataURL(selected)
+    return false;
+}
