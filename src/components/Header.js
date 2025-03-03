@@ -9,7 +9,20 @@ template.innerHTML = `
             </a>
         </div>
         <div class="project-name">아무 말 대잔치</div>
-        <div class="nav-btn right">
+        <div class="nav-btn right none" id="dropdown">
+            <div class="dropdown">
+                <label for="dropbtn">
+                    <img id="profile-img" src="../assets/img/profile.png" alt="프로필 가기" style="border-radius: 20px;">
+                </label>
+                <button class="dropbtn" id="dropbtn"></button>
+                <div class="dropdown-content" id="content">
+                    <a href="./Edit_profile.html">회원정보수정</a>
+                    <a href="#">비밀번호수정</a>
+                    <a href="#">로그아웃</a> 
+                </div>
+            </div>
+        </div>
+        <div class="nav-btn right" id="nonDropdown">
             <a href="./edit-profile.html">
                 <img id="profile-img" src="../assets/img/profile.png" alt="프로필 가기" style="border-radius: 20px;">
             </a>
@@ -34,10 +47,35 @@ class MyHeader extends HTMLElement {
     }
     // "right-hidden" 속성이 있으면 네비 버튼에서 hidden 클래스를 추가
     if (this.hasAttribute('right-hidden')) {
-      const navBtns = this.shadowRoot.querySelectorAll('.nav-btn.right');
+      const navBtns = this.shadowRoot.querySelectorAll('#nonDropdown');
       navBtns.forEach(btn => btn.classList.add('hidden'));
+    }
+    // "dropdown" 속성이 있으면 dropdown 보이기
+    if (this.hasAttribute('dropdown')) {
+      const showDropdown = this.shadowRoot.querySelectorAll('#dropdown');
+      showDropdown.forEach(btn => btn.classList.remove('none'));
+      const hideDropdown = this.shadowRoot.querySelectorAll('#nonDropdown');
+      hideDropdown.forEach(btn => btn.classList.add('none'));
+    }
+
+    // 드롭다운 처리
+    var elDropBtn = this.shadowRoot.querySelector('#dropbtn');
+    var elDropcontent = this.shadowRoot.querySelector('#content')
+
+    var isShown = false
+
+    elDropBtn.onclick=function(){
+        if(!isShown){
+            elDropcontent.style.display="block"
+        }
+        else{
+            elDropcontent.style.display="none"
+        }
+        isShown=isShown ^ true
     }
   }
 }
 
 customElements.define('my-header', MyHeader);
+
+

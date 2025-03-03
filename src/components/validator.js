@@ -84,7 +84,11 @@ export const handleNicknameInput = (nickname, elNicknameHelper) => {
     } else if (nickname.length >= 11) {
       elNicknameHelper.innerHTML = '*닉네임은 최대 10자까지 작성 가능합니다.';
       return false;
-    } else {
+    } 
+    // else if(overlappingNickname()){
+    //     elNicknameHelper.innerHTML='*중복된 닉네임입니다.'
+    // }
+    else {
       elNicknameHelper.innerHTML = '';
       return true;
     }

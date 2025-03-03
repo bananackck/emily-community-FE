@@ -1,62 +1,11 @@
-@font-face {
-    font-family: 'Interop';
-    src: url('https://raw.githubusercontent.com/payw-org/Interop/main/web/fonts/Interop-Regular.woff2')
-        format('woff2'),
-      url('https://raw.githubusercontent.com/payw-org/Interop/main/web/fonts/Interop-Regular.woff')
-        format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
+@import url("common.css");
+
+main{
+    display: flex;
+    align-items: center;
 }
 
-.dropdown{
-    position : relative;
-    display : inline-block;
-
-    width: 40px;
-    height: 40px;
-    /* border: 2px solid red; */
-}
-
-.dropdown-content{
-    display : none;
-    position : fixed;
-    float: right;
-    top: 72px;
-    left: 60vw;
-    /* padding-right:40px; */
-    z-index : 1; 
-    /* border: 2px solid red; */
-
-}
-  
-.dropdown-content a{
-    width: 115px;
-    height: 35px;
-    gap: 8px;
-
-    padding-top: 4px;
-    text-align: center;
-    font-family: 'Interop';
-    font-weight: 400;
-    font-size: 0.8rem;
-
-    background-color: #D9D9D9;
-    display : block;
-
-    color: #000000
-}
-.dropdown-content a:hover{
-    background-color: #E9E9E9;
-}
-#nav-img:hover{
-    /* border: 2px solid saddlebrown; */
-    cursor: pointer;
-}
-.dropbtn{
-    display: none;
-}
-/*  */
+/* 프로필 이미지 호버 시 수정하기 이미지 나오게.... */
 .profile-hover{
     display: block;
     position: absolute;
@@ -71,11 +20,7 @@
     display: block;
     border: 2px solid rebeccapurple;
 }
-/* .profile-hover:hover{
-    display: block;
-    cursor: pointer;
-    opacity: 20%;
-} */
+
 
 /* 토스트 메시지 수정완료 */
 .toast-msg{
@@ -86,23 +31,19 @@
     width: 102px;
     height: 46px;
     border-radius: 30px;
-    background-color: #ACA0EB;
+    background-color: var(--point-color);
     
-    font-family: 'Pretendard-Regular';
-
     font-weight: 400;
     font-size: 1rem;
     text-align: center;
-    color: #FFFFFF;
+    color: var(--font-color-white);
     
     border: none;
-    /* cursor: pointer; */
 
     margin-top: 64px;
 
     /* 이동 */
     transition: all 0.3s;
-    /* transform: translate(-50%,0); */
 }
 .active{
     opacity: 100%;
@@ -135,7 +76,7 @@
     justify-content: center;
     flex-direction: column;
 
-    font-family: 'Pretendard-Regular';
+    font-family: var(--main-font);
     text-align: center;
     background: #ffffff;
 }
