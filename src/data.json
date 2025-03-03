@@ -1,0 +1,15 @@
+[
+    {
+      "email": "emily@example.com",
+      "password": "Emily1234!",
+      "nickname": "emily",
+      "profilePicture": "assets/img/emily-profile.png"
+    },
+    {
+      "email": "bananackck2@example.com",
+      "password": "bananackck1234!",
+      "nickname": "bananackck",
+      "profilePicture": "assets/img/bananackck-profile.png"
+    }
+]
+  

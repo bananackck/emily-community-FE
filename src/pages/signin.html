@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../assets/style/common.css">
+    <style>
+        main{
+            display: flex;
+            align-items: center;
+        }
+    </style>
+    <title>Community clone-emily</title>
+</head>
+<body>
+    <my-header right-hidden></my-header>
+    
+    <main>
+        <form class="contents">
+            <div class="title">회원가입</div>
+            <article class="info-wrap" id="info-wrap">
+                <!-- 프로필 사진 업로드 -->
+                <div class="info-title">프로필 사진</div>
+                <div class="helper-text" id="profile-helper"></div>
+                <div class="profile-upload">
+                    <label for="profile-image">
+                        <img id="img" src="../assets/img/profile-placeholder.png" alt="프로필 사진 미리보기">
+                        <input type="file" id="profile-image" accept="image/*">
+                    </label>
+                </div>
+                
+                <!-- 이메일 입력 -->
+                <div class="info-title">이메일*</div>
+                <div class="info-box">
+                    <input type="email" id="email" placeholder="이메일을 입력하세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력하세요'"></input>
+                </div>
+                <div class="helper-text" id="email-helper"></div>
+                
+                <!-- 비밀번호 입력 -->
+                <div class="info-title">비밀번호*</div>
+                <div class="info-box">
+                    <input type="password" id="pw" placeholder="비밀번호를 입력하세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력하세요'"></input>
+                </div>
+                <div class="helper-text" id="pw-helper"></div>
+                
+                <!-- 비밀번호 재입력 -->
+                <div class="info-title">비밀번호 확인*</div>
+                <div class="info-box">
+                    <input type="password" id="pw2" placeholder="비밀번호를 한 번 더 입력하세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 한 번 더 입력하세요'"></input>
+                </div>
+                <div class="helper-text" id="pw2-helper"></div>
+                
+                <!-- 닉네임 입력 -->
+                <div class="info-title">닉네임*</div>
+                <div class="info-box">
+                    <input type="text" id="nickname" placeholder="닉네임을 입력하세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '닉네임을 입력하세요'"></input>
+                </div>
+                <div class="helper-text" id="nickname-helper"></div>
+            </article>
+            <button class="main-btn" id="signin-btn" type="button">
+                회원가입</button>
+            <a onclick="location.href='./login.html'" class="basic-a-link">
+                로그인하러 가기</a>
+            
+        </form>
+    </main>
+    <script src="../components/header.js"></script>
+    <script type="module" src = "signin.js"></script>
+</body>
+</html>

@@ -4,63 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="Posts.css">
+    <link rel="stylesheet" type="text/css" href="../assets/style/posts.css">
+
     <title>Community clone-emily</title>
 </head>
 <body>
-    <article class="header">
-        <div class="header-contents">    
-            <div class="nav-btn left hidden">
-                <a href="./Log_in.html">
-                    <img id="nav-back-img" src="./navigate_back.png" alt="뒤로가기">
-                </a>
-            </div>
-            <div class="header-title">아무 말 대잔치</div>
-            <div class="nav-btn right">
-                <a href="./Posts.html">
-                    <img id="profile-img" src="./profile.png" alt="프로필 가기" style="border-radius: 20px;">
-                </a>
-            </div>
-        </div>
-    </article>
-    
-    
-    <div class="main">
+    <my-header left-hidden></my-header>
+
+    <main>
         <div class="contents">
             <div class="title">
                 <p>안녕하세요,</p>
                 <p> 아무 말 대잔치 <span class="bold">게시판</span> 입니다.</p>
             </div>
             <div class="btn-wrap">
-                <button class="post-btn" onclick="location.href='./Make_post.html'">게시글 작성</button>
+                <button class="main-btn" onclick="location.href='./make-post.html'">게시글 작성</button>
             </div>
             
             <article class="posts">
                 <div class="post">
-                    <div class="post-info">
-                        <div class="post-block left">
+                    <div class="post-header">
+                        <div class="post-info">
                             <div class="post-title">제목 1</div>
-                            <div class="info-wrap">
+                            <div class="post-info-wrap">
                                 <div class="info">좋아요 0</div>
                                 <div class="info">댓글 0</div>
                                 <div class="info">조회수 0</div>
                             </div>
                         </div>
-                        <div class="info right bottom">2021-01-01 00:00:00</div>
+                        <div class="post-time">2021-01-01 00:00:00</div>
                     </div>
                     <div class="writer-wrap">
                         <div class="profile">
-                            <img id="profile-img" src="./profile.png" alt="프로필 가기" style="border-radius: 20px;">
+                            <img id="profile-img" src="../assets/img/profile.png" alt="프로필 가기" style="border-radius: 20px;">
                         </div>
                         <div class="writer">
-                            <div class="text-area">더미 작성자 1</div>
+                            더미 작성자 1
                         </div>
                     </div>
                 </div>
             </article>
         </div>
-    </div>
-    
-    <script src = "Posts.js"></script>
+    </main>
+    <script src="../components/header.js"></script>
+    <script src = "posts.js"></script>
 </body>
 </html>

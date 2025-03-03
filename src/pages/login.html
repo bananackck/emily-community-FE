@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="../assets/style/common.css">
+    <style>
+        main{
+            display: flex;
+            align-items: center;
+        }
+    </style>
     <title>Community clone-emily</title>
 </head>
 <body>
-    <my-header></my-header>
+    <my-header left-hidden right-hidden></my-header>
     
     <main>
         <form class="contents">
@@ -27,14 +33,14 @@
                 </div>
                 <div class="helper-text" id="helper-text"></div>
             </article>
-            <button class="main-btn" id="login-btn" >
+            <button class="main-btn" id="login-btn" type="button">
                 로그인</button>
-            <a onclick="location.href='./Sign_in.html'" class="basic-a-link">
-            회원가입</a>
+            <a onclick="location.href='./signin.html'" class="basic-a-link">
+                회원가입</a>
             
         </form>
     </main>
-    <script src="../components/Header.js"></script>
-    <script src = "Log_in.js"></script>
+    <script src="../components/header.js"></script>
+    <script type="module" src = "login.js"></script>
 </body>
 </html>

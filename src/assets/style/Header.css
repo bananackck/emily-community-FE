@@ -29,7 +29,7 @@ header{
 .nav-btn{
     height: 40px;
 }
-.nav-brn img {
+.nav-btn img {
     height: 40px; 
     
     cursor: pointer;
@@ -42,4 +42,57 @@ header{
 }
 .hidden{
     visibility: hidden;
+}
+.none{
+    display: none;
+}
+
+
+/* 드롭다운 속성 */
+.dropdown{
+    position : relative;
+    display : inline-block;
+
+    width: 40px;
+    height: 40px;
+    /* border: 2px solid red; */
+}
+
+.dropdown-content{
+    display : none;
+    position : fixed;
+    float: right;
+    top: 72px;
+    left: 60vw;
+    /* padding-right:40px; */
+    z-index : 1; 
+    /* border: 2px solid red; */
+
+}
+  
+.dropdown-content a{
+    width: 115px;
+    height: 35px;
+    gap: 8px;
+
+    padding-top: 4px;
+    text-align: center;
+    font-family: 'Interop';
+    font-weight: 400;
+    font-size: 0.8rem;
+
+    background-color: #D9D9D9;
+    display : block;
+
+    color: #000000
+}
+.dropdown-content a:hover{
+    background-color: #E9E9E9;
+}
+#nav-img:hover{
+    /* border: 2px solid saddlebrown; */
+    cursor: pointer;
+}
+.dropbtn{
+    display: none;
 }

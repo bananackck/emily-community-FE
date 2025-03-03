@@ -1,189 +1,67 @@
-@font-face {
-    font-family: 'Cafe24SsurroundAir';
-    src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 100 400 700;
-    font-style: normal;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;   
-}
+@import url("common.css");
 
-body{
-    width: 100%;
-    height: 100%;
-    background-color: #F4F5F7;
-    
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-input {
-    width: 355px;
-    height: 33px;
-    border: 0;
-    padding-left: 10px;
-    outline: none;
-    background-color: transparent;
-}
-input::placeholder {
-    font-weight: 400;
-    font-size: 0.8rem;
-    line-height: 1.5;
-    letter-spacing: 0%;
-    color: #000000;
-}
-a{
-    text-decoration: none;
-}
-/* 헤더 */
-.header{
-    width: 100%;
-    height: 10vh;
-
-    top: 0;
-    position: sticky;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    font-family: 'Cafe24SsurroundAir';
-    font-weight: 400;
-    font-size: 2rem;
-    line-height: 2;
-    letter-spacing: 0%;
-
-    border-bottom: 1px solid #000000;
-}
-.header-contents{
-    width: 570px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-}
-.header-title{
-    text-align: center;
-}
-.nav-btn{
-    height: 40px;
-}
-.nav-brn img {
-    height: 40px;
-    
-    cursor: pointer;
-}
-.left{
-    margin-right: auto;
-}
-.right{
-    margin-left: auto;
-}
-.top{
-    margin-bottom: auto;
-}
-.bottom{
-    margin-top: auto;
-}
-.hidden{
-    visibility: hidden;
-}
-
-.main{
-    height: 88vh;
-
-    justify-content: center;
+main{
     overflow: auto;
-
     margin-top: 8px;
 }
 
 .contents{
-    /* top: 1000px; */
-    /* position: fixed; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    font-family: 'Pretendard-Regular';
-    
-    background-color: transparent;
-    /* border: 5px solid blue; */
     padding-top:40px;
 }
 .title{
-    /* display: flex; */
-    /* flex-direction: column; */
+    display: block;
 
     font-weight: 400;
     font-size: 1.5rem;
-    line-height: 1.5;
-    letter-spacing: 0%;
-    text-align: center;
-    /* margin-bottom: auto; */
 }
 .bold{
     font-weight: 700;
 }
+
 
 /* 보라색 버튼 */
 .btn-wrap{
     font-family: 'Pretendard-Regular';
     
     display: flex;
-    width: 600px;
+    width: var(--post-width);
     /* align-items: center; */
     justify-content: flex-end;
+    margin-top: 24px;
 }
-.post-btn{
+.main-btn{
     width: 138px;
     height: 39px;
     border-radius: 16px;
-    background-color: #ACA0EB;
-    
-
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 16.71px;
-    letter-spacing: 0%;
-    text-align: center;
-    color: #FFFFFF;
-    
-    border: none;
-    cursor: pointer;
-    margin: 24px 0px 8px auto;
 }
-.post-btn:hover{
-    background-color: #7F6AEE;
-}
-
 /* 게시글 목록 */
 .posts{
     display: flex;
     flex-direction: column;
 }
+
 /* 게시글 */
 .post{
-    width: 592px;
-    height: 169px;
+    display: flex;
+    flex-direction: column;
+
+    width: var(--post-width);
+    /* height: 21vh; */
     border-radius: 16px;
 
     background-color: #FFFFFF;
 
     margin-top: 12px;
 }
-.post-info{
-    display: flex;
-    margin: 24px 24px 16px 24px;
-}
-.post-block{
 
+/* 게시글 헤더(정보 부분) */
+.post-header{
+    flex: 2;
+    display: flex;
+    margin: 24px;
+}
+.post-info{
+    flex:2;
 }
 .post-title{
     font-weight: 700;
@@ -191,39 +69,48 @@ a{
 
     margin-bottom: 12px;
 }
-.info-wrap{
+.post-info-wrap{
     display: flex;
     flex-direction: row;
+    font-size: 0.8rem;
 }
 .info{
-    font-size: 0.8rem;
     margin-right: 8px;
+}
+.post-time{
+    flex:1;
+    margin-top: auto;
+    margin-left: auto;
+
+    display: flex;
+    justify-content: flex-end; 
+    align-items: flex-end;
+
+    font-size: 0.8rem;
 }
 
 /* 작성자 */
 .writer-wrap{
+    flex: 1;
+
     display: flex;
 
-    padding: 16px 24px 24px 24px;
+    padding: 16px 24px;
 
     border-top: 1px solid #00000029;
 }
 .profile{
+    flex: 1;
     justify-content: center;
     align-items: center;
     width: 40px;
 }
 .writer{
-    display: block;
+    flex: 12;
+
+    display: flex;
+    align-items: center;
+
     font-weight: 700;
     margin-left: 8px;
-
-    align-items: center;
-    justify-content: center;
-}
-.text-area{
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
