@@ -31,6 +31,7 @@
     padding: 0;
     box-sizing: border-box;   
 }
+
 /* 화면 채우기, 배경화면색 설정 */
 body{
     width: 100%;
