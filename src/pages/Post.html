@@ -4,44 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="Post.css">
-    <link rel="stylesheet" type="text/css" href="button.css">
+    <link rel="stylesheet" type="text/css" href="../assets/style/post.css">
     <title>Community clone-emily</title>
 </head>
 <body>
-    <article class="header">
-        <div class="header-contents">    
-            <div class="nav-btn left">
-                <a href="./Posts.html">
-                    <img id="nav-back-img" src="./navigate_back.png" alt="뒤로가기">
-                </a>
-            </div>
-            <div class="header-title">아무 말 대잔치</div>
-            <div class="nav-btn right">
-                <a href="./Posts.html">
-                    <img id="profile-img" src="./profile.png" alt="프로필 가기" style="border-radius: 20px;">
-                </a>
-            </div>
-        </div>
-    </article>
+    <my-header></my-header>
     
     
-    <div class="main">
-        <!-- <div class="contents"> -->
+    <main>
+        <div class="contents">
             <article class="post">
-                <div class="description-wrap">
-                    <p class="title">제목 1</p>
+                <div class="post-header">
+                    <p class="post-title">제목 1</p>
                     <div class="writer-area">
                         <div class="writer-wrap">
                             <!-- 작성자 -->
                             <div class="profile">
-                                <img id="profile-img" src="./profile.png" alt="프로필 가기" style="border-radius: 20px;">
+                                <img id="profile-img" src="../assets/img/profile.png" alt="프로필 가기" style="border-radius: 20px;">
                             </div>
                             <div class="writer">
                                 더미 작성자 1
                             </div>
                             <!-- 작성 시간 -->
-                            <p class="time">2021-01-01 00:00:00</p>
+                            <p class="post-time">2021-01-01 00:00:00</p>
                         </div>
                         <!-- 편집 버튼 -->
                         <div class="edit-btns">
@@ -52,10 +37,8 @@
                 </div>
             
                 <div class="post-content">
-                    <div class="img-wrap">
-                        <img src='./profile_placeholder.png' alt="첨부된 사진">
-                    </div>
-                    <div class="text">
+                    <div class="img-wrap"></div>
+                    <div class="post-text">
                         <p>무엇을 얘기할까요? 아무말이라면, 삶은 항상 놀라운 모험이라고 생각합니다. 우리는 매일 새로운 경험을 하고 배우며 성장합니다. 때로는 어려움과 도전이 있지만, 그것들이 우리를 더 강하고 지혜롭게 만듭니다. 또한 우리는 주변의 사람들과 연결되며 사랑과 지지를 받습니다. 그래서 우리의 삶은 소중하고 의미가 있습니다.</p>
                         <p>자연도 아름다운 이야기입니다. 우리 주변의 자연은 끝없는 아름다움과 신비로움을 담고 있습니다. 산, 바다, 숲, 하늘 등 모든 것이 우리를 놀라게 만들고 감동시킵니다. 자연은 우리의 생명과 안정을 지키며 우리에게 힘을 주는 곳입니다.</p>
                         <p>마지막으로, 지식을 향한 탐구는 항상 흥미로운 여정입니다. 우리는 끝없는 지식의 바다에서 배우고 발견할 수 있으며, 이것이 우리를 더 깊이 이해하고 세상을 더 넓게 보게 해줍니다.</p>
@@ -80,23 +63,23 @@
                 </div>    
                 <div class="comment-wrap">
                     <div class="comment-box">
-                        <textarea placeholder="댓글을 남겨주세요!"></textarea>
+                        <textarea id="comment-textbox" placeholder="댓글을 남겨주세요!"></textarea>
                         <div class="comment-btn-wrap">
-                            <button class="post-btn">댓글 등록</button>
+                            <button class="main-btn">댓글 등록</button>
                         </div>
                     </div>
-                    <div class="comment">
-                        <div class="comment-area">
+                    <div class="comments">
+                        <!-- <div class="writer-area" style="flex"> -->
                             <div class="writer-wrap">
                                 <!-- 작성자 -->
                                 <div class="profile">
-                                    <img id="profile-img" src="./profile.png" alt="프로필 가기" style="border-radius: 20px;">
+                                    <img id="profile-img" src="../assets/img/profile.png" alt="프로필 가기" style="border-radius: 20px;">
                                 </div>
                                 <div class="writer">
                                     더미 작성자 1
                                 </div>
                                 <!-- 작성 시간 -->
-                                <p class="time">2021-01-01 00:00:00</p>
+                                <p class="post-time">2021-01-01 00:00:00</p>
                             </div>
                             <p class="comment-text">댓글 내용</p>
                         </div>
@@ -108,9 +91,10 @@
                     </div>
                 </div>
             </article>
-        <!-- </div> -->
-    </div>
+        </div>
+    </main>
     
-    <script src = "Posts.js"></script>
+    <script src="../components/header.js"></script>
+    <script src = "posts.js"></script>
 </body>
 </html>
