@@ -10,7 +10,7 @@ template.innerHTML = `
         </div>
         <div class="project-name">아무 말 대잔치</div>
         <div class="nav-btn right">
-            <a href="./posts.html">
+            <a href="./edit-profile.html">
                 <img id="profile-img" src="../assets/img/profile.png" alt="프로필 가기" style="border-radius: 20px;">
             </a>
         </div>

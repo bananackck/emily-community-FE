@@ -16,6 +16,10 @@
     --point-font: 'Cafe24SsurroundAir';
 }
 
+:root{
+    --post-width: 60vw;
+}
+
 /* 컬러 팔레트 */
 :root{
     --background-color: #F4F5F7;

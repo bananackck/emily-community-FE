@@ -19,7 +19,21 @@ main{
 }
 
 
-
+/* 보라색 버튼 */
+.btn-wrap{
+    font-family: 'Pretendard-Regular';
+    
+    display: flex;
+    width: var(--post-width);
+    /* align-items: center; */
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+.main-btn{
+    width: 138px;
+    height: 39px;
+    border-radius: 16px;
+}
 /* 게시글 목록 */
 .posts{
     display: flex;
@@ -31,8 +45,8 @@ main{
     display: flex;
     flex-direction: column;
 
-    width: 53vw;
-    height: 21vh;
+    width: var(--post-width);
+    /* height: 21vh; */
     border-radius: 16px;
 
     background-color: #FFFFFF;
@@ -81,7 +95,7 @@ main{
 
     display: flex;
 
-    padding: 24px;
+    padding: 16px 24px;
 
     border-top: 1px solid #00000029;
 }

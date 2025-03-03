@@ -17,6 +17,14 @@ input::placeholder {
     color: #000000;
 }
 
+textarea{
+    font-family: var(--main-font);
+    
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    resize: none;
+}
 
 /* 메인 */
 main{
