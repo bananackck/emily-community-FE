@@ -4,28 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="Make_post.css">
+    <link rel="stylesheet" type="text/css" href="../assets/style/make-post.css">
     <title>Community clone-emily</title>
 </head>
 <body>
-    <header>
-        <div class="header-contents">    
-            <div class="nav-btn left">
-                <a href="./Log_in.html">
-                    <img id="nav-back-img" src="./navigate_back.png" alt="뒤로가기">
-                </a>
-            </div>
-            <div class="project-name">아무 말 대잔치</div>
-            <div class="nav-btn right">
-                <a href="./Posts.html">
-                    <img id="profile-img" src="./profile.png" alt="프로필 가기" style="border-radius: 20px;">
-                </a>
-            </div>
-        </div>
-    </header>
+    <my-header></my-header>
+
     
     
-    <div class="main">
+    <main>
         <div class="contents">
             <div class="title">게시글 작성</div>
             
@@ -53,8 +40,8 @@
             </article>
             <button class="main-btn" id="complete-btn">완료</button>
         </div>
-    </div>
-    
-    <script src = "Make_post.js"></script>
+    </main>
+    <script src="../components/header.js"></script>
+    <script src = "make-post.js"></script>
 </body>
 </html>

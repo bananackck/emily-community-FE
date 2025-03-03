@@ -30,7 +30,7 @@ elInputText.onkeyup=function(){
     console.log(elTextHelper)
     btnActivate()
 }
-elFile.on
+
 elFile.onchange=function(){
     const selected=this.files[0];
 
@@ -44,12 +44,12 @@ elFile.onchange=function(){
 }
 function btnActivate(){
     if(titlePass && textPass){
-        elCompleteBtn.style.backgroundColor="#7F6AEE"
+        elCompleteBtn.style.backgroundColor="var(--activate-color)"
         elCompleteBtn.onclick=function(){
-            window.location.href="./Posts.html"
+            window.location.href="./posts.html"
         }
     }
     else{
-        elCompleteBtn.style.backgroundColor="#ACA0EB"
+        elCompleteBtn.style.backgroundColor="var(--point-color)"
     }
 }
