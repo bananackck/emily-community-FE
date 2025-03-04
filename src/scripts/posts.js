@@ -2,11 +2,11 @@
 async function getPosts() {
   try {
     // 게시글 헤더
-    const response1 = await fetch("../post-data.json");
+    const response1 = await fetch("../data/post-data.json");
     const posts = await response1.json();
 
     // 게시글 저자
-    const response2 = await fetch("../data.json");
+    const response2 = await fetch("../data/user-data.json");
     const users = await response2.json();
 
     // 모든 게시물 정보 가져오기
