@@ -23,7 +23,7 @@ const elHelperText = document.getElementById('helper-text');
 
 
 elInputProfile.onchange = function() {
-  profilePass = !!elInputProfile.files[0];
+  profilePass = validator.uploadProfile(this);
 };
 
 elInputEmail.onkeyup = function() {
@@ -60,19 +60,6 @@ function btnActivate() {
 async function signupUser() {
   const email    = elInputEmail.value;
   const nickname = elInputNickname.value;
-  const profileFile = elInputProfile.files[0];
-
-  // 프로필 사진 업로드
-  let profileImagePath = null;
-  if (profileFile) {
-    const uploadResult = await validator.uploadProfileImage(profileFile, nickname);
-    if (uploadResult && uploadResult.success) {
-      profileImagePath = uploadResult.filePath;
-    } else {
-      elProfileHelper.innerHTML = '*프로필 사진 업로드에 실패했습니다.';
-      return;
-    }
-  }
 
   // 기존 회원과 중복 여부 체크
   try {
