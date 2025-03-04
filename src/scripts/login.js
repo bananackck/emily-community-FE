@@ -39,7 +39,6 @@ function btnActivate(){
 }
 
 //--------------------------------------------
-
 // 입력한 email과 password가 일치하는 사용자 찾기
 async function findUser(email, password) {
     try {

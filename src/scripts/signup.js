@@ -49,13 +49,23 @@ elInputNickname.onkeyup = function() {
 function btnActivate() {
   if (emailPass && pwPass && pw2Pass && nicknamePass) {
     elSigninBtn.style.backgroundColor = "var(--activate-color)";
-    elSigninBtn.onclick = signupUser;
+    elSigninBtn.onclick = async function(){
+      const response = await signupUser();
+      if(response.ok){
+        window.location.href = "./posts.html";
+      }
+      else{
+        console.error("회원가입 실패", response.message);
+      }
+    }
   } else {
     elSigninBtn.style.backgroundColor = "var(--point-color)";
     elSigninBtn.onclick = null;
   }
 }
 
+
+//--------------------------------------------
 // 회원가입 처리 함수
 async function signupUser() {
   const email    = elInputEmail.value;
@@ -63,25 +73,51 @@ async function signupUser() {
 
   // 기존 회원과 중복 여부 체크
   try {
-    const response = await fetch('../data/user-data.json');
-    const users = await response.json();
+    const response1 = await fetch('../data/user-data.json');
+    const users = await response1.json();
 
     const duplicateEmail = users.some(user => user.email === email);
     const duplicateNickname = users.some(user => user.nickname === nickname);
 
     if (duplicateEmail) {
       elEmailHelper.innerHTML = '*이미 사용 중인 이메일입니다.';
-      return;
+      return {
+        ok:false,
+        status: 400,
+        message: "invalid request",
+        data:null
+      }
     }
     if (duplicateNickname) {
       elNicknameHelper.innerHTML = '*이미 사용 중인 닉네임입니다.';
-      return;
+      return {
+        ok:false,
+        status: 400,
+        message: "invalid request",
+        data:null
+      }
     }
-
-    // 성공
-    window.location.href = "../pages/posts.html";
+    //POST 
+    return {
+      ok:true,
+      status: 201,
+      message: "signup success",
+      data:{
+          "id": users.length+1,
+          "email": email,
+          "password":elInputPw.value,
+          "nickname": nickname,
+          "profilePicture": elInputProfile.src
+      }
+   }
   } catch (error) {
     console.error("회원가입 처리 중 오류:", error);
     elHelperText.innerHTML = '*회원가입 중 오류가 발생했습니다.';
+    return {
+      ok:false,
+      status: 500,
+      message: "unexpected server error",
+      data:null
+    }
   }
 }
