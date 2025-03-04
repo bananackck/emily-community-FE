@@ -63,7 +63,7 @@ async function signupUser() {
 
   // 기존 회원과 중복 여부 체크
   try {
-    const response = await fetch('../data.json');
+    const response = await fetch('../data/user-data.json');
     const users = await response.json();
 
     const duplicateEmail = users.some(user => user.email === email);
@@ -79,7 +79,7 @@ async function signupUser() {
     }
 
     // 성공
-    window.location.href = "./posts.html";
+    window.location.href = "../pages/posts.html";
   } catch (error) {
     console.error("회원가입 처리 중 오류:", error);
     elHelperText.innerHTML = '*회원가입 중 오류가 발생했습니다.';
