@@ -52,13 +52,14 @@ main{
     background-color: #FFFFFF;
 
     margin-top: 12px;
+    cursor: pointer;
 }
 
 /* 게시글 헤더(정보 부분) */
 .post-header{
     flex: 2;
     display: flex;
-    margin: 24px;
+    margin: 1.5rem;
 }
 .post-info{
     flex:2;
@@ -67,7 +68,7 @@ main{
     font-weight: 700;
     font-size: 1.5rem;
 
-    margin-bottom: 12px;
+    margin-bottom: .75rem;
 }
 .post-info-wrap{
     display: flex;
@@ -75,9 +76,15 @@ main{
     font-size: 0.8rem;
 }
 .info{
-    margin-right: 8px;
+    display: flex;
+    margin-right: 0.5rem;
 }
-.post-time{
+#likeCount,
+#commentCount,
+#viewCount{
+    margin-left: 0.25rem;
+}
+#post-time{
     flex:1;
     margin-top: auto;
     margin-left: auto;
@@ -95,7 +102,7 @@ main{
 
     display: flex;
 
-    padding: 16px 24px;
+    padding: 1rem 1.5rem;
 
     border-top: 1px solid #00000029;
 }
@@ -103,9 +110,14 @@ main{
     flex: 1;
     justify-content: center;
     align-items: center;
-    width: 40px;
+    width:2.5rem;
 }
-.writer{
+#profile-img{
+    width:2.5rem;
+    height:2.5rem;
+    object-fit: contain;
+}
+#writer{
     flex: 12;
 
     display: flex;

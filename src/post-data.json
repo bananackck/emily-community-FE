@@ -1,0 +1,95 @@
+[
+    {
+      "title": "힙한 인생 살기",
+      "likeCount": 999,
+      "commentCount": 2,
+      "viewCount": 9999,
+      "author": 1,
+      "createdAt": "2025-03-04 00:00:00",
+      "content":[
+        {
+          "text": "Who's the clan with the master plan YG babe YG babe🤘",
+          "img": "assets/img/hellokitty.jpg"
+        }
+      ],
+      "comment":[
+        {
+          "author": 2,
+          "createdAt":"2025-03-04 17:34:34",
+          "text": "hello kitty!"
+        },
+        {
+          "author": 1,
+          "createdAt":"2025-03-04 17:34:59",
+          "text": "아! 집에 가고 싶다!"
+        }
+      ]
+    },
+    {
+      "title": "맛있는 생크림 만들기",
+      "likeCount": 56,
+      "commentCount": 0,
+      "viewCount": 1325,
+      "author": 0,
+      "createdAt": "2025-03-05 00:00:00",
+      "content":[
+        {
+          "text": "동물성 생크림과 설탕을 10:1 비율로 넣고, 레몬즙을 3방울 정도 넣고 휘핑한다.",
+          "img": "assets/img/hellokitty.jpg"
+        }
+      ],
+      "comment":null
+    },    
+    {
+      "title": "힙한 인생 살기",
+      "likeCount": 999,
+      "commentCount": 2,
+      "viewCount": 9999,
+      "author": 1,
+      "createdAt": "2025-03-04 00:00:00",
+      "content":[
+        {
+          "text": "Who's the clan with the master plan YG babe YG babe🤘",
+          "img": "assets/img/hellokitty.jpg"
+        }
+      ],
+      "comment":[
+        {
+          "author": 2,
+          "createdAt":"2025-03-04 17:34:34",
+          "text": "hello kitty!"
+        },
+        {
+          "author": 1,
+          "createdAt":"2025-03-04 17:34:59",
+          "text": "아! 집에 가고 싶다!"
+        }
+      ]
+    },    
+    {
+      "title": "힙한 인생 살기",
+      "likeCount": 999,
+      "commentCount": 2,
+      "viewCount": 9999,
+      "author": 1,
+      "createdAt": "2025-03-04 00:00:00",
+      "content":[
+        {
+          "text": "Who's the clan with the master plan YG babe YG babe🤘",
+          "img": "assets/img/hellokitty.jpg"
+        }
+      ],
+      "comment":[
+        {
+          "author": 2,
+          "createdAt":"2025-03-04 17:34:34",
+          "text": "hello kitty!"
+        },
+        {
+          "author": 1,
+          "createdAt":"2025-03-04 17:34:59",
+          "text": "아! 집에 가고 싶다!"
+        }
+      ]
+    }
+]
