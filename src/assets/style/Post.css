@@ -37,32 +37,37 @@ main{
 
     padding-top: 16px;
 }
+
 .profile{
     flex:1;
     justify-content: center;
     align-items: center;
 }
-
-.writer{
-    flex:2;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    font-weight: 700;
-    font-size: 0.8rem;
+#profile-img{
+    width:2.5rem;
+    height:2.5rem;
+    object-fit: contain;
 }
-.post-time{
-    flex:8;
+#writer{
+    flex: 12;
 
     display: flex;
     align-items: center;
 
-    font-size: 0.8rem;
+    font-weight: 700;
+    margin-left: 8px;
+}
 
-    margin-left: 12px;
-    /* border:2px solid rebeccapurple; */
+#post-time{
+    flex:1;
+    margin-top: auto;
+    margin-left: auto;
+
+    display: flex;
+    justify-content: flex-end; 
+    align-items: flex-end;
+
+    font-size: 0.8rem;
 }
 
 /* 수정 버튼 */
@@ -77,13 +82,20 @@ main{
 }
 
 /* 사진과 글 영역 */
-.img-wrap{
+/* .post-img-wrap{
+    height: 306px;
+    
+    text-align: center;
+
+} */
+#post-img{
     height: 306px;
 
-    margin: 12px 24px 12px 24px;
-
-    background-image: url(../img/profile.png);
-    background-size: contain;
+    /* margin: 12px 24px 12px 24px; */
+    display: block;
+    margin:auto;
+    padding-top: 12px;
+    object-fit: contain;
 }
 .post-text{
     font-size: 0.9rem;
@@ -123,17 +135,17 @@ main{
     margin: 0px 8px 0px 8px;
 
     font-weight: 700;
+    font-size: 1rem;
     text-align: center;
-}
-.count{
-    font-size: 20px;
-    line-height: 26px;
     letter-spacing: 0%;
+}
+#likeCount,
+#commentCount,
+#viewCount{
+    line-height: 26px;
 }
 .box-title{
-    font-size: 16px;
     line-height: 25.04px;
-    letter-spacing: 0%;
 }
 
 

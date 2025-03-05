@@ -1,31 +1,46 @@
-<!DOCTYPE html>
-<html lang="kr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+import {updateDom} from '../components/postsView.js'
 
-    <link rel="stylesheet" type="text/css" href="../assets/style/post.css">
-    <title>Community clone-emily</title>
-</head>
-<body>
-    <my-header></my-header>
-    
-    <main>
-        <div class="contents">
-            <article class="post">
-                <div class="post-header">
+// 게시글 불러오기
+async function getPost() {
+  try {
+    // 게시글 헤더
+    const response1 = await fetch("../data/post-data.json");
+    const posts = await response1.json();
+
+    // 게시글 저자
+    const response2 = await fetch("../data/user-data.json");
+    const users = await response2.json();
+
+    const post=posts[0];
+    // 게시물 정보 가져오기
+    console.log(post);
+
+    // DOM 업데이트
+    // updateDom(postList);
+// DOM 업데이트
+    const updateDom = ()=>{
+     console.log(post);
+
+    const container = document.querySelector(".post");
+    container.innerHTML = "";
+
+      const postElement = document.createElement("article");
+
+      // 게시물 그리기
+      console.log(post);
+      postElement.classList.add("post");
+      postElement.innerHTML = `
+        <div class="post-header">
                     <p class="post-title">제목 1</p>
                     <div class="writer-area">
                         <div class="writer-wrap">
                             <!-- 작성자 -->
                             <div class="profile">
-                                <img id="profile-img" src="../assets/img/profile.png" alt="프로필 가기" style="border-radius: 20px;">
+                                <img id="profile-img" src=${"../"+users[post.author].profilePicture} alt="프로필 가기" style="border-radius: 20px;">
                             </div>
-                            <div class="writer">
-                                더미 작성자 1
-                            </div>
+                            <div id="writer">${users[post.author].nickname}</div>
                             <!-- 작성 시간 -->
-                            <p class="post-time">2021-01-01 00:00:00</p>
+                            <p id="post-time">${post.createdAt}</p>
                         </div>
                         <!-- 편집 버튼 -->
                         <div class="edit-btns">
@@ -36,25 +51,24 @@
                 </div>
             
                 <div class="post-content">
-                    <div class="img-wrap"></div>
+                    <!-- <div class="post-img-wrap> -->
+                        <img id="post-img" src=${"../"+post.content[0].img} />
+                    <!-- </div> -->
                     <div class="post-text">
-                        <p>무엇을 얘기할까요? 아무말이라면, 삶은 항상 놀라운 모험이라고 생각합니다. 우리는 매일 새로운 경험을 하고 배우며 성장합니다. 때로는 어려움과 도전이 있지만, 그것들이 우리를 더 강하고 지혜롭게 만듭니다. 또한 우리는 주변의 사람들과 연결되며 사랑과 지지를 받습니다. 그래서 우리의 삶은 소중하고 의미가 있습니다.</p>
-                        <p>자연도 아름다운 이야기입니다. 우리 주변의 자연은 끝없는 아름다움과 신비로움을 담고 있습니다. 산, 바다, 숲, 하늘 등 모든 것이 우리를 놀라게 만들고 감동시킵니다. 자연은 우리의 생명과 안정을 지키며 우리에게 힘을 주는 곳입니다.</p>
-                        <p>마지막으로, 지식을 향한 탐구는 항상 흥미로운 여정입니다. 우리는 끝없는 지식의 바다에서 배우고 발견할 수 있으며, 이것이 우리를 더 깊이 이해하고 세상을 더 넓게 보게 해줍니다.</p>
-                        <p>그런 의미에서, 삶은 놀라움과 경이로움으로 가득 차 있습니다. 새로운 경험을 즐기고 항상 앞으로 나아가는 것이 중요하다고 생각합니다.</p>
+                        <p>${post.content[0].text}</p>
                     </div>    
                     <div class="info-wrap">
                         <div class="box-wrap">
                             <div class="box">
-                                <p class="count">123</p>
+                                <p id="likeCount">${post.likeCount}</p>
                                 <p class="box-title">좋아요수</p>
                             </div>
                             <div class="box">
-                                <p class="count">123</p>
+                                <p id="viewCount">${post.viewCount}</p>
                                 <p class="box-title">조회수</p>
                             </div>
                             <div class="box">
-                                <p class="count">123</p>
+                                <p id="commentCount">${post.commentCount}</p>
                                 <p class="box-title">댓글</p>
                             </div>
                         </div>
@@ -89,11 +103,51 @@
                         </div>
                     </div>
                 </div>
-            </article>
-        </div>
-    </main>
-    
-    <script src="../components/header.js"></script>
-    <script type="module" src = "../scripts/post.js"></script>
-</body>
-</html>
+      `;
+      container.appendChild(postElement);
+
+}
+
+updateDom();
+
+
+
+
+
+
+    // 응답 생성
+    const response = {
+      ok: true,
+      status: 200,
+      json: async () => ({
+        message: "get_posts",
+        data: postList,
+      }),
+    };
+    return response;
+  } catch (error) {
+    console.error("게시물 로드 오류:", error);
+    const response = {
+      ok: false,
+      status: 404,
+      json: async () => ({
+        message: "not_found",
+        data: null,
+      }),
+    };
+    return response;
+  }
+}
+
+
+// 이벤트 핸들러
+document.addEventListener('DOMContentLoaded', async (e) => {
+    e.preventDefault();
+    const response = await getPost();
+    // if (response.ok) {
+    //   const result = await response.json();
+    //   console.log("게시물 조회 성공", result);
+    // } else {
+    //   console.error("게시물 조회 실패");
+    // }
+});
