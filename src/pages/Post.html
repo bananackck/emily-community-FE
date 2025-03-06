@@ -11,7 +11,83 @@
     <my-header></my-header>
     
     <main>
-        <div class="contents"></div>
+        <div class="contents">
+            <article class="post">
+                <div class="post-header">
+                    <p class="post-title">${post.title}</p>
+                    <div class="writer-area">
+                        <div class="writer-wrap">
+                            <!-- 작성자 -->
+                            <div class="profile-img-wrap">
+                                <img class="profile-img" id="writer-profile">
+                            </div>
+                            <div class="writer" id="writer"></div>
+                            <!-- 작성 시간 -->
+                            <p class="post-time" id="post-time"></p>
+                        </div>
+                        <!-- 편집 버튼 -->
+                        <div class="edit-btns">
+                            <button class="small-btn" id="post-edit-btn">수정</button>
+                            <button class="small-btn" id="post-delete-btn">삭제</button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="post-content">
+                    <!-- <div class="post-img-wrap> -->
+                        <img id="post-img" />
+                    <!-- </div> -->
+                    <div class="post-text">
+                        <p></p>
+                    </div>    
+                    <div class="info-wrap">
+                        <div class="box-wrap">
+                            <div class="box">
+                                <p id="like-count"></p>
+                                <p class="box-title">좋아요수</p>
+                            </div>
+                            <div class="box">
+                                <p id="view-count"></p>
+                                <p class="box-title">조회수</p>
+                            </div>
+                            <div class="box">
+                                <p id="comment-count"></p>
+                                <p class="box-title">댓글</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+                <div class="comment-wrap">
+                    <div class="comment-box">
+                        <textarea id="comment-inputbox" placeholder="댓글을 남겨주세요!"></textarea>
+                        <div class="comment-btn-wrap">
+                            <button class="main-btn">댓글 등록</button>
+                        </div>
+                    </div>
+                    <div class="comments">
+                        <div class="writer-area">
+                            <div class="comment">
+                                <div class="writer-wrap">
+                                    <!-- 작성자 -->
+                                    <div class="profile-img-wrap">
+                                        <img class="profile-img" id="comment-profile">
+                                    </div>
+                                    <div class="writer" id="comment-writer"></div>
+                                    <!-- 작성 시간 -->
+                                    <p class="post-time comment-setting" id="comment-post-time"></p>
+                                </div>
+                                <p class="comment-text"></p>
+                            </div>
+                            <!-- 편집 버튼 -->
+                            <div class="edit-btns">
+                                <button class="small-btn" id="comment-edit-btn">수정</button>
+                                <button class="small-btn" id="comment-delete-btn">삭제</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
     </main>
     
     <script src="../components/header.js"></script>

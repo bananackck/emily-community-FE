@@ -1,5 +1,3 @@
-import {updateDom} from '../components/postView.js'
-
 // 게시글 불러오기
 async function getPost() {
   try {
@@ -13,7 +11,40 @@ async function getPost() {
     const users = await response2.json();
 
     // DOM 업데이트
-    updateDom(post, users);
+    // 저자
+    const postTitle= document.querySelector(".post-title");
+    postTitle.innerHTML=post.title;
+    const writerProfile =document.querySelector("#writer-profile");
+    writerProfile.src="../"+users[post.author].profilePicture;
+    const writer = document.querySelector('#writer');
+    writer.innerHTML=users[post.author].nickname;
+    const postTime=document.querySelector('#post-time');
+    postTime.innerHTML=post.createdAt;
+
+    //내용
+    const postImg=document.querySelector('#post-img');
+    postImg.src="../"+post.content[0].img;
+    const postText=document.querySelector('.post-text');
+    const pTag = document.createElement("p");
+    pTag.innerHTML=post.content[0].text;
+    postText.appendChild(pTag);
+    const likeCount=document.querySelector('#like-count');
+    likeCount.innerHTML=post.likeCount;
+    const viewCount=document.querySelector('#view-count');
+    viewCount.innerHTML=post.viewCount;
+    const commentCount=document.querySelector('#comment-count');
+    commentCount.innerHTML=post.commentCount;
+
+    //댓글
+    const commentProfile=document.querySelector('#comment-profile');
+    commentProfile.src="../"+users[post.comment[0].author].profilePicture;
+    const commentWriter=document.querySelector('#comment-writer');
+    commentWriter.innerHTML=users[post.comment[0].author].nickname;
+    const commentPostTime=document.querySelector('#comment-post-time');
+    commentPostTime.innerHTML=post.comment[0].createdAt; 
+    const commentText=document.querySelector('.comment-text');
+    commentText.innerHTML=post.comment[0].text;
+
 
     // 응답 생성
     const response = {

@@ -131,9 +131,9 @@ main{
     text-align: center;
     letter-spacing: 0%;
 }
-#likeCount,
-#commentCount,
-#viewCount{
+#like-count,
+#comment-count,
+#view-count{
     line-height: 26px;
 }
 .box-title{
