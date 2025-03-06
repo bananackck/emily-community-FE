@@ -13,34 +13,33 @@ async function getPost() {
 
     const post=posts[0];
     // 게시물 정보 가져오기
-    console.log(post);
 
     // DOM 업데이트
     // updateDom(postList);
 // DOM 업데이트
-    const updateDom = ()=>{
-     console.log(post);
 
-    const container = document.querySelector(".post");
+
+    const updateDom = ()=>{
+
+    const container = document.querySelector(".contents");
     container.innerHTML = "";
 
       const postElement = document.createElement("article");
 
       // 게시물 그리기
-      console.log(post);
       postElement.classList.add("post");
       postElement.innerHTML = `
         <div class="post-header">
-                    <p class="post-title">제목 1</p>
+                    <p class="post-title">${post.title}</p>
                     <div class="writer-area">
                         <div class="writer-wrap">
                             <!-- 작성자 -->
-                            <div class="profile">
-                                <img id="profile-img" src=${"../"+users[post.author].profilePicture} alt="프로필 가기" style="border-radius: 20px;">
+                            <div class="profile-img-wrap">
+                                <img class="profile-img" src=${"../"+users[post.author].profilePicture} alt="프로필 가기">
                             </div>
-                            <div id="writer">${users[post.author].nickname}</div>
+                            <div class="writer">${users[post.author].nickname}</div>
                             <!-- 작성 시간 -->
-                            <p id="post-time">${post.createdAt}</p>
+                            <p class="post-time">${post.createdAt}</p>
                         </div>
                         <!-- 편집 버튼 -->
                         <div class="edit-btns">
@@ -76,30 +75,32 @@ async function getPost() {
                 </div>    
                 <div class="comment-wrap">
                     <div class="comment-box">
-                        <textarea id="comment-textbox" placeholder="댓글을 남겨주세요!"></textarea>
+                        <textarea id="comment-inputbox" placeholder="댓글을 남겨주세요!"></textarea>
                         <div class="comment-btn-wrap">
                             <button class="main-btn">댓글 등록</button>
                         </div>
                     </div>
                     <div class="comments">
                         <div class="writer-area">
-                            <div class="writer-wrap">
-                                <!-- 작성자 -->
-                                <div class="profile">
-                                    <img id="profile-img" src="../assets/img/profile.png" alt="프로필 가기" style="border-radius: 20px;">
+                            <div class="comment">
+                                <div class="writer-wrap">
+                                    <!-- 작성자 -->
+                                    <div class="profile-img-wrap">
+                                        <img class="profile-img" src=${"../"+users[post.comment[0].author].profilePicture} alt="프로필 가기">
+                                    </div>
+                                    <div class="comment-writer">
+                                        ${users[post.comment[0].author].nickname}
+                                    </div>
+                                    <!-- 작성 시간 -->
+                                    <p class="comment-post-time">${post.comment[0].createdAt}</p>
                                 </div>
-                                <div class="writer">
-                                    더미 작성자 1
-                                </div>
-                                <!-- 작성 시간 -->
-                                <p class="post-time">2021-01-01 00:00:00</p>
+                                <p class="comment-text">${post.comment[0].text}</p>
                             </div>
-                            <p class="comment-text">댓글 내용</p>
-                        </div>
-                        <!-- 편집 버튼 -->
-                        <div class="edit-btns">
-                            <button class="small-btn">수정</button>
-                            <button class="small-btn">삭제</button>
+                            <!-- 편집 버튼 -->
+                            <div class="edit-btns">
+                                <button class="small-btn">수정</button>
+                                <button class="small-btn">삭제</button>
+                            </div>
                         </div>
                     </div>
                 </div>
