@@ -25,7 +25,11 @@ async function getPosts() {
       };
     });
     // DOM 업데이트
-    updateDom(postList);
+    const container = document.querySelector(".posts");
+    container.innerHTML = "";
+    postList.forEach((post)=>{
+      updateDom(container, post);
+    });
 
     // 응답 생성
     const response = {
