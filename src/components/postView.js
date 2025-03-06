@@ -66,11 +66,11 @@ export const updateDom = (post, users)=>{
                                     <div class="profile-img-wrap">
                                         <img class="profile-img" src=${"../"+users[post.comment[0].author].profilePicture} alt="프로필 가기">
                                     </div>
-                                    <div class="comment-writer">
+                                    <div class="writer">
                                         ${users[post.comment[0].author].nickname}
                                     </div>
                                     <!-- 작성 시간 -->
-                                    <p class="comment-post-time">${post.comment[0].createdAt}</p>
+                                    <p class="post-time comment-setting">${post.comment[0].createdAt}</p>
                                 </div>
                                 <p class="comment-text">${post.comment[0].text}</p>
                             </div>
