@@ -2,6 +2,7 @@
 @import url("button.css");
 
 input {
+    font-family: var(--main-font);
     width: 355px;
     height: 33px;
     border: 0;
@@ -10,8 +11,6 @@ input {
     background-color: transparent;
 }
 input::placeholder {
-    font-family: var(--main-font);
-
     font-weight: 400;
     font-size: 0.9rem;
     color: #000000;
@@ -28,6 +27,20 @@ textarea{
 
 button{
     cursor: pointer;
+}
+
+/* 보여주기 */
+.visible{
+    visibility: visible;
+}
+.hidden{
+    visibility: hidden;
+}
+.none{
+    display: none;
+}
+.block{
+    display: block;
 }
 
 /* 메인 */
