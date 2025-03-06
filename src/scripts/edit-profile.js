@@ -1,6 +1,5 @@
 import * as validator from "../components/validator.js" 
 var elInputProfile = document.getElementById('profile-image')
-// var elHover = document.getElementsByClassName('profile-hover')[0]
 var elInputNickname = document.getElementById('nickname')
 var elNicknameHelper = document.getElementById('nickname-helper')
 var elEditBtn = document.getElementById('edit-btn')
@@ -48,17 +47,9 @@ elEditBtn.addEventListener('click',function(){
 
 // 회원 탈퇴 모달
 var elDeleteBtn = document.getElementById('delete-btn')
-const modal = document.querySelector('.modal')
-elDeleteBtn.onclick=function(){
-    // console.log("회원탈퇴")
-    modal.classList.add('on')
-}
-const popupNo = document.querySelector('.modal-btn.no')
-const popupYes = document.querySelector('.modal-btn.yes')
+const modal = document.querySelector("my-modal")
 
-popupNo.onclick=function(){
-    modal.classList.remove('on')
-}
-popupYes.onclick=function(){
-    window.location.href='./login.html'
+elDeleteBtn.onclick=function(){
+    console.log("회원탈퇴")
+    modal.classList.add('on')
 }

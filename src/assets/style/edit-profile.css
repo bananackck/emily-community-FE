@@ -51,75 +51,9 @@ main{
 
 
 /*모달 팝업 영역 스타일링*/
-.modal {
-    /*팝업 배경*/
-    display: none; /*평소에는 보이지 않도록*/
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background: rgba(0,0,0,0.5);
-    z-index: 20;
+my-modal{
+    display: none;
 }
-.modal .modal-popup {
-    width: 320px;
-    height: 184px;
-    border-radius: 12px;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    font-family: var(--main-font);
-    text-align: center;
-    background: #ffffff;
-}
-
-.popup-title{
-    font-weight: 700;
-    font-size: 1.1rem;
-}
-.popup-msg{
-    font-weight: 400;
-    font-size: 1rem;
-    padding: 16px 0 16px 0;
-}
-.modal .modal-popup .btn-wrap{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-}
-.modal .modal-popup .btn-wrap .modal-btn {
-    width: 96px;
-    height: 36px;
-    display: block;
-
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-
-    font-family: 'Pretendard-Regular';
-    font-weight: 100;
-    font-size: 1rem;
-}
-.no{
-    background-color: #242424;
-    color: #ffffff;
-    margin-right: 4px;
-}
-.yes{
-    background-color: #C4A5FA;
-    color: #000000;
-    margin-left: 4px;
-}
-
-.modal.on {
+.on {
     display: block;
 }
