@@ -21,8 +21,8 @@ export const updateDom = (post, users)=>{
                         </div>
                         <!-- 편집 버튼 -->
                         <div class="edit-btns">
-                            <button class="small-btn">수정</button>
-                            <button class="small-btn">삭제</button>
+                            <button class="small-btn" id="post-edit-btn">수정</button>
+                            <button class="small-btn" id="post-delete-btn">삭제</button>
                         </div>
                     </div>
                 </div>
@@ -76,8 +76,8 @@ export const updateDom = (post, users)=>{
                             </div>
                             <!-- 편집 버튼 -->
                             <div class="edit-btns">
-                                <button class="small-btn">수정</button>
-                                <button class="small-btn">삭제</button>
+                                <button class="small-btn" id="comment-edit-btn">수정</button>
+                                <button class="small-btn" id="comment-delete-btn">삭제</button>
                             </div>
                         </div>
                     </div>

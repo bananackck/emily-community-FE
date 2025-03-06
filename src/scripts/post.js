@@ -50,3 +50,31 @@ document.addEventListener('DOMContentLoaded', async (e) => {
       console.error("게시물 조회 실패");
     }
 });
+
+
+// 이벤트 위임 방식으로 처리
+const postsContainer = document.querySelector(".contents");
+postsContainer.addEventListener("click", (e) => {
+  // 수정 버튼 클릭
+  if (e.target.closest("#post-edit-btn")) {
+    e.preventDefault();
+    window.location.href = "../pages/post-edit.html";
+  }
+  // 삭제 버튼 클릭
+  if (e.target.closest("#post-delete-btn")) {
+    e.preventDefault();
+    window.location.href = "../pages/posts.html";
+  }
+
+  // 댓글
+    // 수정 버튼 클릭
+   if (e.target.closest("#comment-edit-btn")) {
+    e.preventDefault();
+    // window.location.href = "../pages/post-edit.html";
+  }
+  // 삭제 버튼 클릭
+  if (e.target.closest("#comment-delete-btn")) {
+    e.preventDefault();
+    // window.location.href = "../pages/posts.html";
+  }
+});
