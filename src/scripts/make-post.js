@@ -46,7 +46,7 @@ function btnActivate(){
     if(titlePass && textPass){
         elCompleteBtn.style.backgroundColor="var(--activate-color)"
         elCompleteBtn.onclick=function(){
-            window.location.href="./posts.html"
+            window.location.href="../pages/post.html"
         }
     }
     else{

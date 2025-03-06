@@ -1,3 +1,4 @@
+@import url("common.css");
 /* 헤더 */
 header{
     width: 100%;
@@ -39,12 +40,6 @@ header{
 }
 .right{
     margin-left: auto;
-}
-.hidden{
-    visibility: hidden;
-}
-.none{
-    display: none;
 }
 
 

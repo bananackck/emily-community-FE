@@ -8,18 +8,18 @@
       "createdAt": "2025-03-04 00:00:00",
       "content":[
         {
-          "text": "Who's the clan with the master plan YG babe YG babe🤘",
+          "text": "세상힙한 헬로키티...",
           "img": "assets/img/data/postPicture/hellokitty.jpg"
         }
       ],
       "comment":[
         {
-          "author": 2,
+          "author": 1,
           "createdAt":"2025-03-04 17:34:34",
           "text": "hello kitty!"
         },
         {
-          "author": 1,
+          "author": 0,
           "createdAt":"2025-03-04 17:34:59",
           "text": "아! 집에 가고 싶다!"
         }
@@ -39,57 +39,5 @@
         }
       ],
       "comment":null
-    },    
-    {
-      "title": "힙한 인생 살기",
-      "likeCount": 999,
-      "commentCount": 2,
-      "viewCount": 9999,
-      "author": 1,
-      "createdAt": "2025-03-04 00:00:00",
-      "content":[
-        {
-          "text": "Who's the clan with the master plan YG babe YG babe🤘",
-          "img": "assets/img/data/postPicture/hellokitty.jpg"
-        }
-      ],
-      "comment":[
-        {
-          "author": 2,
-          "createdAt":"2025-03-04 17:34:34",
-          "text": "hello kitty!"
-        },
-        {
-          "author": 1,
-          "createdAt":"2025-03-04 17:34:59",
-          "text": "아! 집에 가고 싶다!"
-        }
-      ]
-    },    
-    {
-      "title": "힙한 인생 살기",
-      "likeCount": 999,
-      "commentCount": 2,
-      "viewCount": 9999,
-      "author": 1,
-      "createdAt": "2025-03-04 00:00:00",
-      "content":[
-        {
-          "text": "Who's the clan with the master plan YG babe YG babe🤘",
-          "img": "assets/img/data/postPicture/hellokitty.jpg"
-        }
-      ],
-      "comment":[
-        {
-          "author": 2,
-          "createdAt":"2025-03-04 17:34:34",
-          "text": "hello kitty!"
-        },
-        {
-          "author": 1,
-          "createdAt":"2025-03-04 17:34:59",
-          "text": "아! 집에 가고 싶다!"
-        }
-      ]
     }
 ]

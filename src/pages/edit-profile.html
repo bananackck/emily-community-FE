@@ -10,17 +10,7 @@
 <body>
     <my-header dropdown></my-header>
 
-    <div class="modal">
-        <div class="modal-popup">
-            <h3 class="popup-title">회원탈퇴 하시겠습니까?</h3>
-            <p class="popup-msg">작성된 게시글과 댓글은 삭제됩니다.</p>
-            <div class="btn-wrap">
-                <button type="button" class="modal-btn no">취소</button>
-                <button type="button" class="modal-btn yes">확인</button>
-            </div>
-        </div>
-    </div>
-    
+    <my-modal title="회원탈퇴 하시겠습니까?" message="작성된 게시글과 댓글은 삭제됩니다."></my-modal>
     
     <main>
         <div class="contents">
@@ -32,7 +22,6 @@
                 <div class="profile-upload">
                     <label for="profile-image">
                         <img id="img" src="../assets/img/profile-placeholder.png" alt="프로필 사진 미리보기">
-                        <!-- <div class="profile-hover"></div> -->
                     </label>
                     <input type="file" id="profile-image" accept="image/*">
                 </div>
@@ -56,6 +45,7 @@
     </main>
     
     <script src="../components/header.js"></script>
+    <script src="../components/modal.js"></script>
     <script type="module" src = "../scripts/edit-profile.js"></script>
 </body>
 </html>
