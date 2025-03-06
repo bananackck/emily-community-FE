@@ -48,12 +48,3 @@ main{
 .active{
     opacity: 100%;
 }
-
-
-/*모달 팝업 영역 스타일링*/
-my-modal{
-    display: none;
-}
-.on {
-    display: block;
-}

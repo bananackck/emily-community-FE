@@ -97,15 +97,6 @@ class MyModal extends HTMLElement {
     const message = this.getAttribute("message") || "기본 메시지";
     this.shadowRoot.querySelector(".popup-title").textContent = title;
     this.shadowRoot.querySelector(".popup-msg").textContent = message;
-
-    // 취소 버튼 클릭 시 모달 숨기기
-    this.shadowRoot.querySelector(".modal-btn.no").addEventListener("click", () => {
-      this.style.display = "none";
-    });
-    // 확인 버튼 클릭 시 로그인 페이지 이동
-    this.shadowRoot.querySelector(".modal-btn.yes").addEventListener("click", () => {
-        window.location.href='../pages/login.html'
-    });
   }
 }
 

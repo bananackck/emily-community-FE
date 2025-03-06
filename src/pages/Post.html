@@ -9,12 +9,15 @@
 </head>
 <body>
     <my-header></my-header>
+    <my-modal id="post-modal" title="게시글을 삭제하시겠습니까?" message="삭제한 내용은 복구할 수 없습니다."></my-modal>
+    <my-modal id="comment-modal" title="댓글을 삭제하시겠습니까?" message="삭제한 내용은 복구할 수 없습니다."></my-modal>
+
     
     <main>
         <div class="contents">
             <article class="post">
-                <div class="post-header">
-                    <p class="post-title">${post.title}</p>
+                <div class="post-header"> 
+                    <p class="post-title"></p>
                     <div class="writer-area">
                         <div class="writer-wrap">
                             <!-- 작성자 -->
@@ -91,6 +94,7 @@
     </main>
     
     <script src="../components/header.js"></script>
+    <script src="../components/modal.js"></script>
     <script type="module" src = "../scripts/post.js"></script>
 </body>
 </html>

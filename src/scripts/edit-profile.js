@@ -51,5 +51,5 @@ const modal = document.querySelector("my-modal")
 
 elDeleteBtn.onclick=function(){
     console.log("회원탈퇴")
-    modal.classList.add('on')
+    modal.classList.add('block')
 }

@@ -29,6 +29,11 @@ button{
     cursor: pointer;
 }
 
+/*모달 팝업 영역 스타일링*/
+my-modal{
+    display: none;
+}
+
 /* 보여주기 */
 .visible{
     visibility: visible;
