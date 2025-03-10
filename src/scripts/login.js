@@ -1,14 +1,14 @@
 import * as validator from "../components/validator.js";
 
-var elInputEmail = document.getElementById('email');
-var elInputPw = document.getElementById('pw');
+const elInputEmail = document.getElementById('email');
+const elInputPw = document.getElementById('pw');
 
-var emailPass = false;
-var pwPass = false;
+let emailPass = false;
+let pwPass = false;
 
-var elHelperText = document.getElementById('helper-text');
+const elHelperText = document.getElementById('helper-text');
 
-var elLoginBtn = document.getElementById('login-btn');
+const elLoginBtn = document.getElementById('login-btn');
 
 elInputEmail.onkeyup = function() {
     emailPass = validator.handleEmailInput(elInputEmail.value, elHelperText);

@@ -1,10 +1,10 @@
 import * as validator from "../components/validator.js" 
-var elInputProfile = document.getElementById('profile-image')
-var elInputNickname = document.getElementById('nickname')
-var elNicknameHelper = document.getElementById('nickname-helper')
-var elEditBtn = document.getElementById('edit-btn')
+const elInputProfile = document.getElementById('profile-image')
+const elInputNickname = document.getElementById('nickname')
+const elNicknameHelper = document.getElementById('nickname-helper')
+const elEditBtn = document.getElementById('edit-btn')
 
-var nicknamePass = false
+let nicknamePass = false
 
 elInputProfile.onchange = function(){
     profilePass=validator.uploadProfile(elInputProfile);
@@ -46,7 +46,7 @@ elEditBtn.addEventListener('click',function(){
 
 
 // 회원 탈퇴 모달
-var elDeleteBtn = document.getElementById('delete-btn')
+const elDeleteBtn = document.getElementById('delete-btn')
 const modal = document.querySelector("my-modal")
 
 elDeleteBtn.onclick=function(){
