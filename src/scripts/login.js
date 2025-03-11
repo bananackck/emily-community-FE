@@ -29,6 +29,9 @@ function btnActivate(){
             if(response.ok){
                 window.location.href = "./posts.html";
             }else{
+                if(response.status === 404){
+                    elHelperText.innerHTML = "아이디 또는 비밀번호가 일치하지 않습니다.";
+                }
                 console.error("로그인 실패", response.message);
             }
         };
@@ -56,8 +59,20 @@ async function findUser(email, password) {
                     "id": matchedUser.id
                 }
             }
-        } else {
-            elHelperText.innerHTML = "아이디 또는 비밀번호가 일치하지 않습니다.";
+        } 
+        // POST
+        // fetch url 바꾸기
+        // const signupResponse = await fetch('http://localhost:3000/src/pages/signup', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({
+        //     email: email,
+        //     password: password,
+        //   })
+        // });
+
+
+        else {
             return {
                 ok:false,
                 status: 404,
