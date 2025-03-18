@@ -1,11 +1,11 @@
-var elInputTitle = document.getElementById('title')
-var elInputText = document.getElementById('text')
-var elCompleteBtn = document.getElementById('complete-btn')
-var elTextHelper = document.getElementById('text-helper')
-var elFile = document.getElementById('file')
+const elInputTitle = document.getElementById('title')
+const elInputText = document.getElementById('text')
+const elCompleteBtn = document.getElementById('complete-btn')
+const elTextHelper = document.getElementById('text-helper')
+const elFile = document.getElementById('file')
 
-var titlePass = false
-var textPass = false
+let titlePass = false
+let textPass = false
 
 const info=document.getElementById('info-wrap')
 
@@ -37,7 +37,7 @@ elFile.onchange=function(){
     const reader = new FileReader();
     
     reader.onload=function(){
-        var msg=document.getElementById('filename')
+        const msg=document.getElementById('filename')
         msg.innerHTML=selected.name
     }
     reader.readAsDataURL(selected)

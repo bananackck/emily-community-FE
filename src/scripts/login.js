@@ -1,14 +1,14 @@
 import * as validator from "../components/validator.js";
 
-var elInputEmail = document.getElementById('email');
-var elInputPw = document.getElementById('pw');
+const elInputEmail = document.getElementById('email');
+const elInputPw = document.getElementById('pw');
 
-var emailPass = false;
-var pwPass = false;
+let emailPass = false;
+let pwPass = false;
 
-var elHelperText = document.getElementById('helper-text');
+const elHelperText = document.getElementById('helper-text');
 
-var elLoginBtn = document.getElementById('login-btn');
+const elLoginBtn = document.getElementById('login-btn');
 
 elInputEmail.onkeyup = function() {
     emailPass = validator.handleEmailInput(elInputEmail.value, elHelperText);
@@ -29,6 +29,9 @@ function btnActivate(){
             if(response.ok){
                 window.location.href = "./posts.html";
             }else{
+                if(response.status === 404){
+                    elHelperText.innerHTML = "아이디 또는 비밀번호가 일치하지 않습니다.";
+                }
                 console.error("로그인 실패", response.message);
             }
         };
@@ -56,8 +59,20 @@ async function findUser(email, password) {
                     "id": matchedUser.id
                 }
             }
-        } else {
-            elHelperText.innerHTML = "아이디 또는 비밀번호가 일치하지 않습니다.";
+        } 
+        // POST
+        // fetch url 바꾸기
+        // const signupResponse = await fetch('http://localhost:3000/src/pages/signup', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({
+        //     email: email,
+        //     password: password,
+        //   })
+        // });
+
+
+        else {
             return {
                 ok:false,
                 status: 404,

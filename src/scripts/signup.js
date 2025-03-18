@@ -19,9 +19,8 @@ const elPw2Helper      = document.getElementById('pw2-helper');
 const elNicknameHelper = document.getElementById('nickname-helper');
 
 const elSigninBtn = document.getElementById('signin-btn');
-const elHelperText = document.getElementById('helper-text');
 
-
+// 1. 유효성 검사
 elInputProfile.onchange = function() {
   profilePass = validator.uploadProfile(this);
 };
@@ -46,15 +45,25 @@ elInputNickname.onkeyup = function() {
   btnActivate();
 };
 
+// 2. 버튼 활성화 & 클릭 시 회원가입 함수 호출
 function btnActivate() {
   if (emailPass && pwPass && pw2Pass && nicknamePass) {
     elSigninBtn.style.backgroundColor = "var(--activate-color)";
-    elSigninBtn.onclick = async function(){
+    elSigninBtn.onclick = async function() {
       const response = await signupUser();
-      if(response.ok){
+      console.log(response);
+      if (response.ok) {
+        console.log(response);
+
         window.location.href = "./posts.html";
-      }
-      else{
+      } else {
+        // 여기서 409 에러 등 처리 가능
+        if (response.status === 409) {
+          if(response.message==="duplicate email")
+            elEmailHelper.innerHTML = "*이미 사용 중인 이메일입니다.";
+          else
+            elNicknameHelper.innerHTML = "*이미 사용 중인 이메일 또는 닉네임입니다.";
+        }
         console.error("회원가입 실패", response.message);
       }
     }
@@ -64,14 +73,14 @@ function btnActivate() {
   }
 }
 
-
 //--------------------------------------------
-// 회원가입 처리 함수
+// 3. 회원가입 처리 함수 (중복 확인 → 실제 API 호출)
 async function signupUser() {
   const email    = elInputEmail.value;
   const nickname = elInputNickname.value;
+  const password = elInputPw.value;
 
-  // 기존 회원과 중복 여부 체크
+  // 3-1. 기존 회원 중복 여부 체크
   try {
     const response1 = await fetch('../data/user-data.json');
     const users = await response1.json();
@@ -80,44 +89,61 @@ async function signupUser() {
     const duplicateNickname = users.some(user => user.nickname === nickname);
 
     if (duplicateEmail) {
-      elEmailHelper.innerHTML = '*이미 사용 중인 이메일입니다.';
       return {
-        ok:false,
-        status: 400,
-        message: "invalid request",
-        data:null
+        ok: false,
+        status: 409,
+        message: "duplicate email",
+        data: null
       }
     }
     if (duplicateNickname) {
-      elNicknameHelper.innerHTML = '*이미 사용 중인 닉네임입니다.';
       return {
-        ok:false,
-        status: 400,
-        message: "invalid request",
-        data:null
+        ok: false,
+        status: 409,
+        message: "duplicate nickname",
+        data: null
       }
     }
-    //POST 
-    return {
-      ok:true,
-      status: 201,
-      message: "signup success",
-      data:{
-          "id": users.length+1,
-          "email": email,
-          "password":elInputPw.value,
-          "nickname": nickname,
-          "profilePicture": elInputProfile.src
+
+    // POST
+    // fetch url 바꾸기
+    // const signupResponse = await fetch('http://localhost:3000/src/pages/signup', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     email: email,
+    //     password: password,
+    //     nickname: nickname,
+    //     profilePicture: elInputProfile.src
+    //   })
+    // });
+
+    // 3-3. 서버에서 주는 응답 처리
+    // 백엔드 붙이고 이거로 바꾸기
+    // if (signupResponse.ok) {
+    else{
+      // 201 Created라면
+      // 백엔드 붙이고 주석 해제제
+      // const result = await signupResponse.json();
+      return {
+        ok: true,
+        status: 201,
+        message: "signup success",
+        // 백엔드 붙이고 대체체
+        // data: result
+        data: {
+              id: users.length + 1,
+            }
       }
-   }
+    }
   } catch (error) {
     console.error("회원가입 처리 중 오류:", error);
     elHelperText.innerHTML = '*회원가입 중 오류가 발생했습니다.';
     return {
-      ok:false,
+      ok: false,
       status: 500,
       message: "unexpected server error",
-      data:null
+      data: null
     }
   }
 }

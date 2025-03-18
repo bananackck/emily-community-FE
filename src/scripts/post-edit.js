@@ -15,7 +15,7 @@ async function getPostContent() {
         const text = document.querySelector("#text");
         text.value=`${post.content[0].text}`;
 
-        var msg=document.getElementById('filename');
+        let msg=document.getElementById('filename');
         msg.innerHTML=`${post.content[0].img}`;
 
     }
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 });
 
 // 파일 핸들러
-var elFile = document.getElementById('file')
+let elFile = document.getElementById('file')
 
 elFile.onchange=function(){
     const selected=this.files[0];
@@ -73,20 +73,20 @@ elFile.onchange=function(){
     const reader = new FileReader();
     
     reader.onload=function(){
-        var msg=document.getElementById('filename')
+        let msg=document.getElementById('filename')
         msg.innerHTML=selected.name
     }
     reader.readAsDataURL(selected)
 }
 
 // 헬퍼텍스트
-var elInputTitle = document.getElementById('title')
-var elInputText = document.getElementById('text')
-var elCompleteBtn = document.getElementById('complete-btn')
-var elTextHelper = document.getElementById('text-helper')
+const elInputTitle = document.getElementById('title')
+const elInputText = document.getElementById('text')
+const elCompleteBtn = document.getElementById('complete-btn')
+const elTextHelper = document.getElementById('text-helper')
 
-var titlePass = true
-var textPass = true
+let titlePass = true
+let textPass = true
 
 
 elInputTitle.onkeyup=function(){
