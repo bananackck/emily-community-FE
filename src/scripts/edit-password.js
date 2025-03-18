@@ -26,7 +26,7 @@ function btnActivate(){
     if(pwPass && pw2Pass){
         elEditBtn.style.backgroundColor="var(--activate-color)";
         elEditBtn.onclick=function(){
-            toastOn()
+            toastOn();
         }
     }
     else{
