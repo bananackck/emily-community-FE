@@ -4,7 +4,7 @@ const elCompleteBtn = document.getElementById('complete-btn')
 const elTextHelper = document.getElementById('text-helper')
 const elFile = document.getElementById('file')
 
-let img = "assets/img/data/postPicture/"
+let img = "../assets/img/data/postPicture/"
 
 let titlePass = false
 let textPass = false
@@ -60,7 +60,7 @@ function btnActivate(){
                     img
                 );
                 console.log(response);
-                window.location.href = `../pages/post.html/${response.data.id}`;
+                window.location.href = `../pages/post.html?id=${response.data.id}`;
             }
             catch{
                 console.error("게시물 생성 실패", response.message);

@@ -2,6 +2,7 @@ import {updateDom} from '../components/postsView.js'
 
 // 게시글 불러오기
 async function getPosts() {
+  //jwt토큰
   const token = localStorage.getItem('jwtToken');
   try {
     // 게시글 헤더
@@ -15,16 +16,10 @@ async function getPosts() {
       credentials: 'include'   // allowCredentials=true일 때만 사용
     });
 
-    // const response1 = await fetch("../data/post-data.json");
     const posts = await response1.json();
-
-    // 게시글 저자
-    // const response2 = await fetch("../data/user-data.json");
-    // const users = await response2.json();
 
     // 모든 게시물 정보 가져오기
     const postList = posts.map((post) => {
-      // const user = users[post.author];
       return {
         title: post.title,
         likeCount: post.likeCount,
@@ -34,7 +29,7 @@ async function getPosts() {
 
         //게시글 작성자
         author: post.userNickname,
-        profile: "../" + post.userProfileImg
+        profile: post.userProfileImg
       };
     });
     // DOM 업데이트
