@@ -61,10 +61,10 @@ function btnActivate() {
       } else {
         // 여기서 409 에러 등 처리 가능
         if (response.status === 409) {
-          if(response.message==="duplicate email")
+          if(response.message==="EMAIL_CONFLICT")
             elEmailHelper.innerHTML = "*이미 사용 중인 이메일입니다.";
           else
-            elNicknameHelper.innerHTML = "*이미 사용 중인 이메일 또는 닉네임입니다.";
+            elNicknameHelper.innerHTML = "*이미 사용 중인 닉네임입니다.";
         }
         console.error("회원가입 실패", response.message);
       }
@@ -82,7 +82,6 @@ async function signupUser() {
   const nickname = elInputNickname.value;
   const password = elInputPw.value;
   let img = "assets/img/data/profilePicture/";
-  console.log(profileImgName);
 
   if(profileImgName != "")
     img += profileImgName;
@@ -106,14 +105,24 @@ async function signupUser() {
     // const users = await response.json();
 
     if(!response.ok){
-      if(response.conflict){
-        return {
-          ok: false,
-          status: 409,
-          message: "duplicate email"
+      const error = await response.json();
+      if(response.status === 409){
+        if(error.details==="EMAIL_CONFLICT"){
+          return {
+            ok: false,
+            status: 409,
+            message: "EMAIL_CONFLICT"
+          }
+        }
+        else{
+          return {
+            ok:false,
+            status: 409,
+            message: "NICKNAME_CONFLICT"
+          }
         }
       }
-      else{
+      else if(response.status === 401){
         return {
           ok: false,
           status: 401,
