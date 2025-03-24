@@ -1,37 +1,80 @@
+import {updateDom} from '../components/commentsView.js'
+
 // 게시글 불러오기
 async function getPost() {
+  const token = localStorage.getItem('jwtToken');
+
   try {
     // 게시글 헤더
-    const response1 = await fetch("../data/post-data.json");
-    const posts = await response1.json();
-    const post=posts[0];
-
-    // 게시글 저자
-    const response2 = await fetch("../data/user-data.json");
-    const users = await response2.json();
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get('id');
+    console.log(postId);
+    const response1 = await fetch(`http://localhost:8080/api/posts/${postId}`,{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      mode: 'cors',            // 기본값이지만 명시 권장
+      credentials: 'include'   // allowCredentials=true일 때만 사용
+    });
+    const post = await response1.json();
 
     // DOM 업데이트
     // 저자
+    console.log(post)
     document.querySelector(".post-title").innerHTML=post.title;
-    document.querySelector("#writer-profile").src="../"+users[post.author].profilePicture;
-    document.querySelector('#writer').innerHTML=users[post.author].nickname;
+    document.querySelector("#writer-profile").src=post.userProfileImg;
+    document.querySelector('#writer').innerHTML=post.userNickname;
     document.querySelector('#post-time').innerHTML=post.createdAt;
 
     //내용
-    document.querySelector('#post-img').src="../"+post.content[0].img;
+    //TODO: 이미지 null 처리 (null이면 div hidden 처리)
+    document.querySelector('#post-img').src="../"+post.img;
+
     const postText=document.querySelector('.post-text');
     const pTag = document.createElement("p");
-    pTag.innerHTML=post.content[0].text;
+    pTag.innerHTML=post.text;
     postText.appendChild(pTag);
+
     document.querySelector('#like-count').innerHTML=post.likeCount;
     document.querySelector('#view-count').innerHTML=post.viewCount;
     document.querySelector('#comment-count').innerHTML=post.commentCount;
 
     //댓글
-    document.querySelector('#comment-profile').src="../"+users[post.comment[0].author].profilePicture;
-    document.querySelector('#comment-writer').innerHTML=users[post.comment[0].author].nickname;
-    document.querySelector('#comment-post-time').innerHTML=post.comment[0].createdAt; 
-    document.querySelector('.comment-text').innerHTML=post.comment[0].text;
+    const response2 = await fetch("http://localhost:8080/api/posts/5/comments",{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      mode: 'cors',            // 기본값이지만 명시 권장
+      credentials: 'include'   // allowCredentials=true일 때만 사용
+    });
+    const comments = await response2.json();
+
+    //모든 댓글 정보 가져오기
+    const commentList = comments.map((comment)=>{
+      return{
+        text: comment.text,
+        createdAt: comment.createdAt,
+        userNickname: comment.userNickname,
+        userProfileImg: comment.userProfileImg
+      };
+    });
+    console.log(commentList)
+    // DOM 업데이트
+        const container = document.querySelector(".comments");
+        container.innerHTML = "";
+        commentList.forEach((comment)=>{
+          updateDom(container, comment);
+        });
+
+
+    // document.querySelector('#comment-profile').src="../"+users[post.comment[0].author].profilePicture;
+    // document.querySelector('#comment-writer').innerHTML=users[post.comment[0].author].nickname;
+    // document.querySelector('#comment-post-time').innerHTML=post.comment[0].createdAt; 
+    // document.querySelector('.comment-text').innerHTML=post.comment[0].text;
 
 
     // 응답 생성
@@ -45,7 +88,7 @@ async function getPost() {
     };
     return response;
     } catch (error) {
-        console.error("게시물 로드 오류:", error);
+        console.error("게시물 상세 로드 오류:", error);
         const response = {
         ok: false,
         status: 404,
@@ -58,6 +101,7 @@ async function getPost() {
     }
 }
 
+//--------------------
 // 이벤트 핸들러
 document.addEventListener('DOMContentLoaded', async (e) => {
     e.preventDefault();
@@ -70,6 +114,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     }
 });
 
+//---------------------
 // 포스트 편집 모달
 const postModal = document.querySelector("#post-modal");
 // 포스트 수정 버튼 클릭
@@ -84,6 +129,8 @@ document.querySelector("#post-delete-btn").addEventListener("click", () => {
     });
     postModal.shadowRoot.querySelector(".modal-btn.yes").addEventListener("click", () => {
       postModal.classList.remove('block');
+
+      //TODO: 게시글 삭제 DELETE api 추가
       window.location.href = "../pages/posts.html";
     });
 });
