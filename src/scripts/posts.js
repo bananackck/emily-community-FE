@@ -25,7 +25,7 @@ async function getPosts() {
         likeCount: post.likeCount,
         commentCount: post.commentCount,
         viewCount: post.viewCount,
-        createdAt: post.createdAt,
+        createdAt: post.createdAt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
 
         //게시글 작성자
         author: post.userNickname,
