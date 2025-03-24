@@ -44,42 +44,40 @@ function btnActivate(){
 //--------------------------------------------
 // 입력한 email과 password가 일치하는 사용자 찾기
 async function findUser(email, password) {
+
     try {
-        const response1 = await fetch("../data/user-data.json");
-        const users = await response1.json();
+        const response = await fetch('http://localhost:8080/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            mode: 'cors',            // 기본값이지만 명시 권장
+            credentials: 'include',   // allowCredentials=true일 때만 사용
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            })
+        });
         
-        const matchedUser = users.find(user => user.email === email && user.password === password);
-        
-        if(matchedUser) {
-            return {
-                ok:true,
-                status: 200,
-                message: "login success",
-                data:{
-                    "id": matchedUser.id
-                }
-            }
-        } 
-        // POST
-        // fetch url 바꾸기
-        // const signupResponse = await fetch('http://localhost:3000/src/pages/signup', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify({
-        //     email: email,
-        //     password: password,
-        //   })
-        // });
-
-
-        else {
+        if(!response.ok) {
             return {
                 ok:false,
                 status: 404,
                 message: "match not found",
                 data:null
             }
+
+        } 
+        
+        const data = await response.json();
+        // 로그인 성공 시 받은 JWT 토큰을 localStorage에 저장
+        localStorage.setItem('jwtToken', data.token);
+        console.log('로그인 성공, 토큰 저장:', data.token);
+
+        return {
+            ok:true,
+            status: 200,
+            message: "login success"
         }
+
     } catch (error) {
         console.error("로그인 처리 중 오류:", error);
         elHelperText.innerHTML = "로그인 중 오류가 발생했습니다.";
