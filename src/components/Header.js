@@ -81,6 +81,10 @@ class MyHeader extends HTMLElement {
     elHeaderLogo.addEventListener('click', () => {
       window.location.href = '../pages/posts.html';
     });
+
+    //프로필 사진 설정
+    const elProfileImg = this.shadowRoot.querySelector('#profile-img');
+    elProfileImg.src = localStorage.getItem('profileImg');
   }
 }
 
