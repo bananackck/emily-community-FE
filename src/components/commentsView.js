@@ -48,7 +48,7 @@ export async function getComments() {
 }
 
 // 댓글 삭제
-async function deleteComment(commentId) {
+export async function deleteComment(commentId) {
   try {
     const res = await fetch(`http://localhost:8080/api/posts/${postId}/comments/${commentId}`, {
       method: 'DELETE',

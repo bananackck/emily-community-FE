@@ -2,11 +2,18 @@ const params = new URLSearchParams(window.location.search);
 const postId = params.get('id');
 const token = localStorage.getItem('jwtToken');
 
+// 헬퍼텍스트
+const elInputTitle = document.getElementById('title')
+const elInputText = document.getElementById('text')
+const elCompleteBtn = document.getElementById('complete-btn')
+const elTextHelper = document.getElementById('text-helper')
+
 let elTitle = document.querySelector("#title");
 let elText = document.querySelector("#text");
 let elImgName = document.getElementById('filename');
 
 let imgFileName;
+let img;
 // 게시글 불러오기
 async function getPostContent() {
   try {
@@ -28,9 +35,11 @@ async function getPostContent() {
         elTitle.value=`${post.title}`;
         elText.value=`${post.text}`;
 
-        imgFileName=post.img.split('_').pop();
-        elImgName.innerHTML=""
-        elImgName.innerHTML=`${imgFileName}`;
+        if(post.img!= null){
+            imgFileName=post.img.split('_').pop();
+            elImgName.innerHTML=""
+            elImgName.innerHTML=`${imgFileName}`;   
+        }
     }
     updateDom();
 
@@ -66,14 +75,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         // 헬퍼 텍스트와 버튼 활성화
         elTextHelper.innerHTML='';
         elCompleteBtn.style.backgroundColor="var(--activate-color)";
-        elCompleteBtn.onclick=function(){
-            patchPost(
-                elTitle.value,
-                elText.value,
-                imgFileName
-            );
-            // window.location.href=`../pages/post.html?id=${postId}`
-        }
+        
 
         console.log("게시물 조회 성공", result);
     } else {
@@ -83,6 +85,8 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
 async function patchPost(title, text, img){
     //전달 데이터
+    console.log("------------  PATCH ------------")
+    console.log(img)
     const formData = new FormData();
     formData.append('data', new Blob([JSON.stringify({ title, text })], { type: 'application/json' }));
     if (img) formData.append('file', img);
@@ -91,7 +95,6 @@ async function patchPost(title, text, img){
         const response = await fetch(`http://localhost:8080/api/posts/${postId}`, {
             method: "PATCH",
             headers: {
-                // 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${token}`
             },
             mode: 'cors',            // 기본값이지만 명시 권장
@@ -120,6 +123,16 @@ async function patchPost(title, text, img){
     }
 }
 
+//수정 버튼 클릭
+elCompleteBtn.onclick=function(){
+    patchPost(
+        elTitle.value,
+        elText.value,
+        img
+    );
+    window.location.href=`../pages/post.html?id=${postId}`
+}
+
 // 파일 핸들러
 let elFile = document.getElementById('file')
 
@@ -133,14 +146,10 @@ elFile.onchange=function(){
         msg.innerHTML=selected.name
     }
     reader.readAsDataURL(selected)
+    img=selected
 }
 
 // 헬퍼텍스트
-const elInputTitle = document.getElementById('title')
-const elInputText = document.getElementById('text')
-const elCompleteBtn = document.getElementById('complete-btn')
-const elTextHelper = document.getElementById('text-helper')
-
 let titlePass = true
 let textPass = true
 
@@ -156,6 +165,7 @@ elInputTitle.onkeyup=function(){
     }
     btnActivate()
 } 
+
 elInputText.onkeyup=function(){
     const text=elInputText.value
     textpass=text && true;

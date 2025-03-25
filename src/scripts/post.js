@@ -1,4 +1,4 @@
-import {updateDom, getComments} from '../components/commentsView.js'
+import {updateDom, getComments, deleteComment} from '../components/commentsView.js'
 
 const params = new URLSearchParams(window.location.search);
 const postId = params.get('id');
@@ -9,7 +9,7 @@ async function getPost() {
   try {
     // 게시글 헤더
     console.log(postId);
-    const response1 = await fetch(`http://localhost:8080/api/posts/${postId}`,{
+    const response = await fetch(`http://localhost:8080/api/posts/${postId}`,{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -18,7 +18,10 @@ async function getPost() {
       mode: 'cors',            // 기본값이지만 명시 권장
       credentials: 'include'   // allowCredentials=true일 때만 사용
     });
-    const post = await response1.json();
+    if(!response.ok){
+      console.error("[FE]🚨 게시글 조회 오류")
+    }
+    const post = await response.json();
 
     // DOM 업데이트
     // 저자
@@ -45,26 +48,19 @@ async function getPost() {
     getComments();
 
     // 응답 생성
-    const response = {
+    return{
         ok: true,
         status: 200,
         json: async () => ({
-            message: "get_post",
-            data: post,
-        }),
+            message: "[FE]✅ 게시글 & 댓글 조회 성공",
+            data: post
+        })
     };
-    return response;
     } catch (error) {
-        console.error("게시물 상세 로드 오류:", error);
-        const response = {
-        ok: false,
-        status: 404,
-        json: async () => ({
-            message: "not_found",
-            data: null,
-        }),
+        return{
+        ok: false, status: null,
+        message: "[FE]🚨 게시글 조회 오류: "+ error
         };
-        return response;
     }
 }
 
@@ -72,13 +68,7 @@ async function getPost() {
 // 이벤트 핸들러
 document.addEventListener('DOMContentLoaded', async (e) => {
     e.preventDefault();
-    const response = await getPost();
-    if (response.ok) {
-      const result = await response.json();
-      console.log("게시물 조회 성공", result);
-    } else {
-      console.error("게시물 조회 실패");
-    }
+    await getPost();
 });
 
 //---------------------
@@ -98,11 +88,45 @@ document.querySelector("#post-delete-btn").addEventListener("click", () => {
     postModal.shadowRoot.querySelector(".modal-btn.yes").addEventListener("click", () => {
       postModal.classList.remove('block');
 
-      //TODO: 게시글 삭제 DELETE api 추가
+      deletePost(postId);
       window.location.href = "../pages/posts.html";
     });
 });
 
+//게시물 & 댓글 & 좋아요 삭제
+async function deletePost(postId) {
+  try {
+    const res = await fetch(`http://localhost:8080/api/posts/${postId}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (res.ok){
+      return{message: "[FE]✅ 삭제 성공"}
+    }
+  } catch (err) {
+    return{
+      ok: false, status: null,
+      message: "[FE]🚨 게시글 삭제 오류"
+    }
+  }
+
+  try {
+      const res = await fetch(`http://localhost:8080/api/posts/${postId}/comments`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (res.ok){
+        return{message: "[FE]✅ 댓글 조회 성공"}
+      }
+      const comments = await res.json();
+      comments.forEach(comment => deleteComment(comment.id));
+    } catch (err) {
+      return{
+        ok: false, status: null,
+        message: "[FE]🚨 댓글 조회 오류"
+      }
+    }
+    //TODO: 좋아요 삭제
+}
 
 //---------------------------
 // 댓글 업로드
@@ -119,12 +143,10 @@ elCommentUploadBtn.addEventListener("click", async ()=>{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        mode: 'cors',            // 기본값이지만 명시 권장
-        credentials: 'include',   // allowCredentials=true일 때만 사용
         body: JSON.stringify({ text: elInputComment.value })
       })
-      if(!response.ok){
-        console.error("[FE] 🚨error", response.status);
+      if(response.ok){
+        return{message: "[FE]✅ 댓글 업로드 성공"}
       }
       const comments = await response.json();
       
@@ -135,17 +157,12 @@ elCommentUploadBtn.addEventListener("click", async ()=>{
         updateDom(container, comment);
       });
       
-      return{
-        ok: true,
-        status: response.status,
-        message: "✅success"
-      }
+      return{message: "[FE]✅ 댓글 그리기 성공"}
     }
     catch{
       return{
-        ok: false,
-        status: null,
-        message: "[FE] 🚨error"
+        ok: false, status: null,
+        message: "[FE] 🚨댓글 업로드 오류"
       }
     }
 });
