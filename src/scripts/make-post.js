@@ -4,7 +4,7 @@ const elCompleteBtn = document.getElementById('complete-btn')
 const elTextHelper = document.getElementById('text-helper')
 const elFile = document.getElementById('file')
 
-let img = "../assets/img/data/postPicture/"
+let img;
 
 let titlePass = false
 let textPass = false
@@ -45,7 +45,7 @@ elFile.onchange=function(){
     }
     reader.readAsDataURL(selected)
 
-    img += selected.name;
+    img = selected;
 }
 //버튼 활성화
 function btnActivate(){
@@ -61,6 +61,7 @@ function btnActivate(){
                 );
                 console.log(response);
                 window.location.href = `../pages/post.html?id=${response.data.id}`;
+                console.log("what?")
             }
             catch{
                 console.error("게시물 생성 실패", response.message);
@@ -77,23 +78,25 @@ function btnActivate(){
 async function postUpload(title, text, img) {
     //jwt토큰
     const token = localStorage.getItem('jwtToken');
+    //전달 데이터
+    const formData = new FormData();
+    formData.append('data', JSON.stringify({ title, text }));
+    if (img) formData.append('file', img);
+
     try{
         const response = await fetch("http://localhost:8080/api/posts", {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                // 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${token}`
             },
             mode: 'cors',            // 기본값이지만 명시 권장
             credentials: 'include',   // allowCredentials=true일 때만 사용
-            body: JSON.stringify({
-                title: title,
-                text: text,
-                img: img
-            })
+            body: formData
         });
         
         if(!response.ok){
+            if(response.status===404)
             return{
                 ok:false,
                 status: 404,

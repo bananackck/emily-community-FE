@@ -5,8 +5,6 @@ export const updateDom = (container, post)=>{
     postElement.onclick = async () => {
         console.log(post)
         try{
-            // const response = await postView(post.id);
-            // console.log(response);
             window.location.href = `../pages/post.html?id=${post.id}`;
         }
         catch{
@@ -36,47 +34,3 @@ export const updateDom = (container, post)=>{
     `;
     container.appendChild(postElement);
 }
-
-//---------------------
-//게시물 상세 조회 
-// async function postView(postId) {
-//     //jwt토큰
-//     const token = localStorage.getItem('jwtToken');
-//     try{
-//         const response = await fetch(`http://localhost:8080/api/posts/${postId}`, {
-//             method: "GET",
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': `Bearer ${token}`
-//             },
-//             mode: 'cors',            // 기본값이지만 명시 권장
-//             credentials: 'include',   // allowCredentials=true일 때만 사용
-//             body: JSON.stringify({
-//                 title: title,
-//                 text: text,
-//                 img: img
-//             })
-//         });
-        
-//         if(!response.ok){
-//             return{
-//                 ok:false,
-//                 status: 404,
-//                 message: "🚨 404 NOT FOUND"
-//             }
-//         }
-//         return{
-//             ok: true,
-//             status: 201,
-//             message: "✅ 201 post upload success.",
-//             data: await response.json()
-//         }
-//     }
-//     catch{
-//         return {
-//             ok:false,
-//             status: 500,
-//             message: "🚨 500 unexpected server error"
-//         }
-//     }
-// }

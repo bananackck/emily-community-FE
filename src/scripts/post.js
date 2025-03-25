@@ -30,7 +30,9 @@ async function getPost() {
 
     //내용
     //TODO: 이미지 null 처리 (null이면 div hidden 처리)
-    document.querySelector('#post-img').src=post.img;
+    document.querySelector('#post-img').src="http://localhost:8080"+post.img;
+    console.log(post.img)
+    console.log()
 
     const postText=document.querySelector('.post-text');
     const pTag = document.createElement("p");
@@ -53,7 +55,6 @@ async function getPost() {
     });
     const comments = await response2.json();
 
-    console.log(comments)
     //모든 댓글 정보 가져오기
     const commentList = comments.map((comment)=>{
       return{
@@ -69,13 +70,6 @@ async function getPost() {
         commentList.forEach((comment)=>{
           updateDom(container, comment);
         });
-
-
-    // document.querySelector('#comment-profile').src="../"+users[post.comment[0].author].profilePicture;
-    // document.querySelector('#comment-writer').innerHTML=users[post.comment[0].author].nickname;
-    // document.querySelector('#comment-post-time').innerHTML=post.comment[0].createdAt; 
-    // document.querySelector('.comment-text').innerHTML=post.comment[0].text;
-
 
     // 응답 생성
     const response = {
