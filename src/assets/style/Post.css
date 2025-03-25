@@ -84,7 +84,6 @@ main{
 #post-img{
     height: 306px;
 
-    display: block;
     margin:auto;
     padding-top: 12px;
     object-fit: contain;

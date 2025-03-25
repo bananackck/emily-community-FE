@@ -29,12 +29,18 @@ async function getPost() {
     document.querySelector(".post-title").innerHTML=post.title;
     document.querySelector("#writer-profile").src="http://localhost:8080"+post.userProfileImg;
     document.querySelector('#writer').innerHTML=post.userNickname;
-    document.querySelector('#post-time').innerHTML=post.createdAt.replace('T',' '),
+    document.querySelector('#post-time').innerHTML=post.createdAt.replace('T',' ');
 
     //내용
     //TODO: 이미지 null 처리 (null이면 div hidden 처리)
-    document.querySelector('#post-img').src="http://localhost:8080"+post.img;
+    if(post.img==null){
+      document.querySelector('#post-img').classList.add('none');
+    }
+    else{
+      document.querySelector('#post-img').src="http://localhost:8080"+post.img;
+    }
 
+    //TODO: 글 여러 줄?
     const postText=document.querySelector('.post-text');
     const pTag = document.createElement("p");
     pTag.innerHTML=post.text;
