@@ -1,3 +1,5 @@
+
+
 const template = document.createElement('template');
 template.innerHTML = `
   <link rel="stylesheet" type="text/css" href="../assets/style/header.css">
@@ -73,6 +75,12 @@ class MyHeader extends HTMLElement {
         }
         isShown=isShown ^ true
     }
+
+    //아무 말 대잔치 누를 시 게시판 목록으로
+    const elHeaderLogo = this.shadowRoot.querySelector('.project-name');
+    elHeaderLogo.addEventListener('click', () => {
+      window.location.href = '../pages/posts.html';
+    });
   }
 }
 
