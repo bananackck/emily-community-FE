@@ -18,8 +18,8 @@ template.innerHTML = `
                 </label>
                 <button class="dropbtn" id="dropbtn"></button>
                 <div class="dropdown-content" id="content">
-                    <a href="./edit_profile.html">회원정보수정</a>
-                    <a href="./edit_password.html">비밀번호수정</a>
+                    <a href="./edit-profile.html">회원정보수정</a>
+                    <a href="./edit-password.html">비밀번호수정</a>
                     <a href="./login.html">로그아웃</a> 
                 </div>
             </div>
