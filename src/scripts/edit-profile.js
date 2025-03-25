@@ -1,10 +1,25 @@
 import * as validator from "../components/validator.js" 
-const elInputProfile = document.getElementById('profile-image')
-const elInputNickname = document.getElementById('nickname')
-const elNicknameHelper = document.getElementById('nickname-helper')
-const elEditBtn = document.getElementById('edit-btn')
+const elInputProfile = document.querySelector('#profile-image-input')
+const elProfileImg = document.querySelector('#profile-image')
+const elEmail = document.querySelector('.text')
+const elInputNickname = document.querySelector('#nickname')
+const elNicknameHelper = document.querySelector('#ickname-helper')
+const elEditBtn = document.querySelector('#edit-btn')
 
 let nicknamePass = false
+
+// 이벤트 핸들러
+document.addEventListener('DOMContentLoaded', async (e) => {
+    e.preventDefault();
+    console.log(localStorage.getItem('profileImg'))
+    console.log(localStorage.getItem('email'))      
+    //기본 세팅하기
+    elProfileImg.src=localStorage.getItem('profileImg');
+    elEmail.innerHTML=localStorage.getItem('email');
+    elInputNickname.placeholder=localStorage.getItem('nickname');
+});
+
+
 
 elInputProfile.onchange = function(){
     profilePass=validator.uploadProfile(elInputProfile);
