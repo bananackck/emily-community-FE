@@ -99,5 +99,5 @@ export const uploadProfile = (profile) =>{
       return selected.name;
   }
   reader.readAsDataURL(selected);
-  return selected.name;;
+  return selected;
 }

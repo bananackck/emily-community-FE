@@ -6,7 +6,7 @@ const elInputPw       = document.getElementById('pw');
 const elInputPw2      = document.getElementById('pw2');
 const elInputNickname = document.getElementById('nickname');
 
-let profileImgName="";
+let img;
 
 let emailPass    = false;
 let pwPass       = false;
@@ -23,7 +23,7 @@ const elSigninBtn = document.getElementById('signin-btn');
 
 // 1. 유효성 검사
 elInputProfile.onchange = function() {
-  profileImgName += validator.uploadProfile(this);
+  img = validator.uploadProfile(this);
   // console.log("profileImgName: "+profileImgName);
 };
 
@@ -81,26 +81,19 @@ async function signupUser() {
   const email    = elInputEmail.value;
   const nickname = elInputNickname.value;
   const password = elInputPw.value;
-  let img = "assets/img/data/profilePicture/";
 
-  if(profileImgName != "")
-    img += profileImgName;
-  else
-    img += "profile.png";
+  //전달 데이터
+  const formData = new FormData();
+  formData.append('data', JSON.stringify({ email, password, nickname }));
+  if (img) formData.append('file', img);
 
-  // 3-1. 기존 회원 중복 여부 체크
   try {
     const response = await fetch('http://localhost:8080/api/auth/signup', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { },
       mode: 'cors',            // 기본값이지만 명시 권장
       credentials: 'include',   // allowCredentials=true일 때만 사용
-      body: JSON.stringify({
-          email: email,
-          password: password,
-          nickname: nickname,
-          img: img
-      })
+      body: formData
     });
     // const users = await response.json();
 

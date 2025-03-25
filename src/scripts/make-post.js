@@ -61,7 +61,7 @@ function btnActivate(){
                 );
                 console.log(response);
                 window.location.href = `../pages/post.html?id=${response.data.id}`;
-                console.log("what?")
+                // console.log("what?")
             }
             catch{
                 console.error("게시물 생성 실패", response.message);
@@ -80,7 +80,7 @@ async function postUpload(title, text, img) {
     const token = localStorage.getItem('jwtToken');
     //전달 데이터
     const formData = new FormData();
-    formData.append('data', JSON.stringify({ title, text }));
+    formData.append('data', new Blob([JSON.stringify({ title, text })], { type: 'application/json' }));
     if (img) formData.append('file', img);
 
     try{
@@ -96,11 +96,15 @@ async function postUpload(title, text, img) {
         });
         
         if(!response.ok){
-            if(response.status===404)
-            return{
-                ok:false,
-                status: 404,
-                message: "🚨 404 NOT FOUND"
+            if(response.status===404){
+                return{
+                    ok:false,
+                    status: 404,
+                    message: "🚨 404 NOT FOUND"
+                }
+            }
+            else if(response.status===401){
+                return {message: "🚨 401 UNAUTHORIZED"}
             }
         }
         return{

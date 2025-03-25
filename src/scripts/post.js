@@ -24,7 +24,7 @@ async function getPost() {
     // 저자
     console.log(post)
     document.querySelector(".post-title").innerHTML=post.title;
-    document.querySelector("#writer-profile").src=post.userProfileImg;
+    document.querySelector("#writer-profile").src="http://localhost:8080"+post.userProfileImg;
     document.querySelector('#writer').innerHTML=post.userNickname;
     document.querySelector('#post-time').innerHTML=post.createdAt.replace('T',' '),
 
@@ -54,9 +54,10 @@ async function getPost() {
       credentials: 'include'   // allowCredentials=true일 때만 사용
     });
     const comments = await response2.json();
-
+    
     //모든 댓글 정보 가져오기
     const commentList = comments.map((comment)=>{
+      console.log(comment);
       return{
         text: comment.text,
         createdAt: post.createdAt.replace('T',' '),
@@ -127,6 +128,16 @@ document.querySelector("#post-delete-btn").addEventListener("click", () => {
       //TODO: 게시글 삭제 DELETE api 추가
       window.location.href = "../pages/posts.html";
     });
+});
+
+
+//---------------------------
+// 댓글 업로드
+const elCommentBox = document.querySelector('#comment-upload-btn');
+elCommentBox.addEventListener("click", async ()=>{
+    const container = document.querySelector(".comments");
+    container.innerHTML = "";
+    updateDom(container, comment);
 });
 
 // 댓글 편집 모달
