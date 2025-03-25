@@ -2,7 +2,7 @@
 export const updateDom = (container, comment)=>{
     const commentElement = document.createElement("article");
     
-    // 게시물 하나씩 그리기
+    // 댓글 하나씩 그리기
     commentElement.classList.add("comment");
     commentElement.innerHTML = `
         <div class="comment-content">

@@ -26,11 +26,11 @@ async function getPost() {
     document.querySelector(".post-title").innerHTML=post.title;
     document.querySelector("#writer-profile").src=post.userProfileImg;
     document.querySelector('#writer').innerHTML=post.userNickname;
-    document.querySelector('#post-time').innerHTML=post.createdAt;
+    document.querySelector('#post-time').innerHTML=post.createdAt.replace('T',' '),
 
     //내용
     //TODO: 이미지 null 처리 (null이면 div hidden 처리)
-    document.querySelector('#post-img').src="../"+post.img;
+    document.querySelector('#post-img').src=post.img;
 
     const postText=document.querySelector('.post-text');
     const pTag = document.createElement("p");
@@ -42,7 +42,7 @@ async function getPost() {
     document.querySelector('#comment-count').innerHTML=post.commentCount;
 
     //댓글
-    const response2 = await fetch("http://localhost:8080/api/posts/5/comments",{
+    const response2 = await fetch(`http://localhost:8080/api/posts/${postId}/comments`,{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -53,16 +53,16 @@ async function getPost() {
     });
     const comments = await response2.json();
 
+    console.log(comments)
     //모든 댓글 정보 가져오기
     const commentList = comments.map((comment)=>{
       return{
         text: comment.text,
-        createdAt: comment.createdAt,
+        createdAt: post.createdAt.replace('T',' '),
         userNickname: comment.userNickname,
         userProfileImg: comment.userProfileImg
       };
     });
-    console.log(commentList)
     // DOM 업데이트
         const container = document.querySelector(".comments");
         container.innerHTML = "";
