@@ -31,13 +31,13 @@ async function getPosts() {
 
         //게시글 작성자
         author: post.userNickname,
-        profile: post.userProfileImg
+        profile: "http://localhost:8080"+post.userProfileImg
       };
     });
     // DOM 업데이트
     const container = document.querySelector(".posts");
     container.innerHTML = "";
-    postList.forEach((post)=>{
+    postList.reverse().forEach((post)=>{
       updateDom(container, post);
     });
 

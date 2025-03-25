@@ -1,13 +1,13 @@
 import {updateDom} from '../components/commentsView.js'
 
+const params = new URLSearchParams(window.location.search);
+const postId = params.get('id');
+const token = localStorage.getItem('jwtToken');
+
 // 게시글 불러오기
 async function getPost() {
-  const token = localStorage.getItem('jwtToken');
-
   try {
     // 게시글 헤더
-    const params = new URLSearchParams(window.location.search);
-    const postId = params.get('id');
     console.log(postId);
     const response1 = await fetch(`http://localhost:8080/api/posts/${postId}`,{
       method: 'GET',
@@ -55,22 +55,12 @@ async function getPost() {
     });
     const comments = await response2.json();
     
-    //모든 댓글 정보 가져오기
-    const commentList = comments.map((comment)=>{
-      console.log(comment);
-      return{
-        text: comment.text,
-        createdAt: post.createdAt.replace('T',' '),
-        userNickname: comment.userNickname,
-        userProfileImg: comment.userProfileImg
-      };
-    });
     // DOM 업데이트
-        const container = document.querySelector(".comments");
-        container.innerHTML = "";
-        commentList.forEach((comment)=>{
-          updateDom(container, comment);
-        });
+    const container = document.querySelector(".comments");
+    container.innerHTML = "";
+    comments.reverse().forEach((comment)=>{
+      updateDom(container, comment);
+    });
 
     // 응답 생성
     const response = {
@@ -110,12 +100,13 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 });
 
 //---------------------
-// 포스트 편집 모달
-const postModal = document.querySelector("#post-modal");
 // 포스트 수정 버튼 클릭
 document.querySelector("#post-edit-btn").addEventListener("click", () => {
-    window.location.href = "../pages/post-edit.html";
+    window.location.href = `../pages/post-edit.html?id=${postId}`;
 });
+
+// 포스트 삭제 모달
+const postModal = document.querySelector("#post-modal");
 // 포스트 삭제 버튼 클릭
 document.querySelector("#post-delete-btn").addEventListener("click", () => {
     postModal.classList.add('block');
@@ -134,15 +125,51 @@ document.querySelector("#post-delete-btn").addEventListener("click", () => {
 //---------------------------
 // 댓글 업로드
 const elCommentBox = document.querySelector('#comment-upload-btn');
+const elInputComment = document.querySelector('#comment-inputbox');
 elCommentBox.addEventListener("click", async ()=>{
+    const token = localStorage.getItem('jwtToken');
+
     const container = document.querySelector(".comments");
     container.innerHTML = "";
-    updateDom(container, comment);
+
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get('id');
+    try{
+      const response = await fetch(`http://localhost:8080/api/posts/${postId}/comments`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        mode: 'cors',            // 기본값이지만 명시 권장
+        credentials: 'include',   // allowCredentials=true일 때만 사용
+        body: JSON.stringify({ text: elInputComment.value })
+      })
+      if(!response.ok){
+        console.error("errer", response.status);
+      }
+
+      // DOM 업데이트
+      getPost();
+      
+      return{
+        ok: true,
+        status: response.status,
+        message: "✅success"
+      }
+    }
+    catch{
+      return{
+        ok: false,
+        status: null,
+        message: "🚨error"
+      }
+    }
 });
 
 // 댓글 편집 모달
 const commentModal = document.querySelector("#comment-modal");
-// 댓글 수정 버튼 클릭
+// 댓글 수정 버튼 클릭ㄱㄷ
 document.querySelector("#comment-edit-btn").addEventListener("click", async () => {
 
     try {

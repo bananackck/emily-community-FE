@@ -1,28 +1,41 @@
+const params = new URLSearchParams(window.location.search);
+const postId = params.get('id');
+const token = localStorage.getItem('jwtToken');
+
+let elTitle = document.querySelector("#title");
+let elText = document.querySelector("#text");
+let elImgName = document.getElementById('filename');
+
+let imgFileName;
 // 게시글 불러오기
 async function getPostContent() {
   try {
     // 게시글 헤더
-    const response1 = await fetch("../data/post-data.json");
-    const posts = await response1.json();
-    const post=posts[0];
+    const response = await fetch(`http://localhost:8080/api/posts/${postId}`,{
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        mode: 'cors',            // 기본값이지만 명시 권장
+        credentials: 'include'   // allowCredentials=true일 때만 사용
+    });
+    const post = await response.json();
 
+    console.log(post)
     // DOM 업데이트
-    
     const updateDom = ()=>{
-        const title = document.querySelector("#title");
-        title.value=`${post.title}`;
-        
-        const text = document.querySelector("#text");
-        text.value=`${post.content[0].text}`;
+        elTitle.value=`${post.title}`;
+        elText.value=`${post.text}`;
 
-        let msg=document.getElementById('filename');
-        msg.innerHTML=`${post.content[0].img}`;
-
+        imgFileName=post.img.split('_').pop();
+        elImgName.innerHTML=""
+        elImgName.innerHTML=`${imgFileName}`;
     }
     updateDom();
 
     // 응답 생성
-    const response = {
+    return {
         ok: true,
         status: 200,
         json: async () => ({
@@ -30,7 +43,6 @@ async function getPostContent() {
             data: post,
         }),
     };
-    return response;
   } catch (error) {
         console.error("게시물 내용 로드 오류:", error);
         const response = {
@@ -55,7 +67,12 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         elTextHelper.innerHTML='';
         elCompleteBtn.style.backgroundColor="var(--activate-color)";
         elCompleteBtn.onclick=function(){
-            window.location.href="../pages/post.html"
+            patchPost(
+                elTitle.value,
+                elText.value,
+                imgFileName
+            );
+            // window.location.href=`../pages/post.html?id=${postId}`
         }
 
         console.log("게시물 조회 성공", result);
@@ -63,6 +80,45 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         console.error("게시물 조회 실패");
     }
 });
+
+async function patchPost(title, text, img){
+    //전달 데이터
+    const formData = new FormData();
+    formData.append('data', new Blob([JSON.stringify({ title, text })], { type: 'application/json' }));
+    if (img) formData.append('file', img);
+
+    try{
+        const response = await fetch(`http://localhost:8080/api/posts/${postId}`, {
+            method: "PATCH",
+            headers: {
+                // 'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${token}`
+            },
+            mode: 'cors',            // 기본값이지만 명시 권장
+            credentials: 'include',   // allowCredentials=true일 때만 사용
+            body: formData
+        });
+        
+        if(!response.ok){
+            return{
+                ok:false,
+                status: response.status,
+                message: "🚨 오류 발생"
+            }
+        }
+        return{
+            ok: true,
+            status: 201,
+            message: "✅ 201 post upload success.",
+            data: response.json()
+        }
+    }
+    catch{
+        return{
+            message: "catch 에러 발생 "
+        };
+    }
+}
 
 // 파일 핸들러
 let elFile = document.getElementById('file')
@@ -115,9 +171,6 @@ elInputText.onkeyup=function(){
 function btnActivate(){
     if(titlePass && textPass){
         elCompleteBtn.style.backgroundColor="var(--activate-color)"
-        elCompleteBtn.onclick=function(){
-            window.location.href="../pages/post.html"
-        }
     }
     else{
         elCompleteBtn.style.backgroundColor="var(--point-color)"

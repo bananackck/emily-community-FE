@@ -9,11 +9,11 @@ export const updateDom = (container, comment)=>{
             <div class="writer-wrap">
                 <!-- 작성자 -->
                 <div class="profile-img-wrap">
-                     <img class="profile-img" id="comment-profile" src="${comment.userProfileImg}">
+                     <img class="profile-img" id="comment-profile" src="${"http://localhost:8080"+comment.userProfileImg}">
                 </div>
                 <div class="writer" id="comment-writer">${comment.userNickname}</div>
                     <!-- 작성 시간 -->
-                    <p class="post-time comment-setting" id="comment-post-time">${comment.createdAt}</p>
+                    <p class="post-time comment-setting" id="comment-post-time">${comment.createdAt.replace('T',' ')}</p>
                     </div>
                     <p class="comment-text">${comment.text}</p>
                 </div>
