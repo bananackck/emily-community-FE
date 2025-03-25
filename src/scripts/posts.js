@@ -20,12 +20,13 @@ async function getPosts() {
 
     // 모든 게시물 정보 가져오기
     const postList = posts.map((post) => {
+
       return {
         title: post.title,
         likeCount: post.likeCount,
         commentCount: post.commentCount,
         viewCount: post.viewCount,
-        createdAt: post.createdAt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
+        createdAt: post.createdAt.replace('T',' '),
 
         //게시글 작성자
         author: post.userNickname,
