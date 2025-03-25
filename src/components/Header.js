@@ -4,7 +4,7 @@ template.innerHTML = `
   <header>
     <div class="header-contents">    
         <div class="nav-btn left">
-            <a href="./login.html">
+            <a href="javascript:history.back()">
                 <img id="nav-back-img" src="../assets/img/navigate-back.png" alt="뒤로가기">
             </a>
         </div>
