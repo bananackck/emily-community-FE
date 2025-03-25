@@ -22,6 +22,7 @@ async function getPosts() {
     const postList = posts.map((post) => {
 
       return {
+        id: post.id,
         title: post.title,
         likeCount: post.likeCount,
         commentCount: post.commentCount,
