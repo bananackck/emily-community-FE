@@ -136,6 +136,7 @@ elCommentUploadBtn.addEventListener("click", async ()=>{
     const container = document.querySelector(".comments");
     container.innerHTML = "";
 
+    console.log("clicked"+ elInputComment.value)
     try{
       const response = await fetch(`http://localhost:8080/api/posts/${postId}/comments`,{
         method: 'POST',
@@ -146,16 +147,12 @@ elCommentUploadBtn.addEventListener("click", async ()=>{
         body: JSON.stringify({ text: elInputComment.value })
       })
       if(response.ok){
-        return{message: "[FE]✅ 댓글 업로드 성공"}
+        console.log("[FE]✅ 댓글 업로드 성공")
       }
       const comments = await response.json();
       
       // DOM 업데이트
-      const container = document.querySelector(".comments");
-      container.innerHTML = "";
-      comments.reverse().forEach((comment)=>{
-        updateDom(container, comment);
-      });
+      getComments();
       
       return{message: "[FE]✅ 댓글 그리기 성공"}
     }

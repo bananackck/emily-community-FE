@@ -10,11 +10,9 @@ document.addEventListener('DOMContentLoaded', () => getComments());
 // 댓글 컨테이너에 이벤트 위임 설정
 container.addEventListener('click', async (e) => {
   const commentEl = e.target.closest('.comment');
-  console.log(commentEl.dataset);
 
   if (!commentEl) return;
   const commentId = commentEl.dataset.id;
-  console.log(commentId);
 
   // 삭제
   if (e.target.matches('.comment-delete-btn')) {
@@ -80,7 +78,6 @@ async function patchComment(commentId, text) {
 //----------------------------------------------------------
 // DOM 업데이트
 export const updateDom = (container, comment)=>{
-    console.log("밑에 내려옴")
     const commentElement = document.createElement("article");
     
     // 댓글 하나씩 그리기
