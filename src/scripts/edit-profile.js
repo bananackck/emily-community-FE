@@ -109,4 +109,39 @@ const modal = document.querySelector("my-modal")
 elDeleteBtn.onclick=function(){
     console.log("회원탈퇴")
     modal.classList.add('block')
+    modal.shadowRoot.querySelector(".modal-btn.no").addEventListener("click", () => {
+        modal.classList.remove('block');
+    });
+    modal.shadowRoot.querySelector(".modal-btn.yes").addEventListener("click", () => {
+        modal.classList.remove('block');
+        deleteUser();
+    });
+}
+
+const deleteUser=async()=>{
+    try{
+        const response = await fetch("http://localhost:8080/api/users/me", {
+            method: "DELETE",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            mode: 'cors',            // 기본값이지만 명시 권장
+            credentials: 'include',   // allowCredentials=true일 때만 사용
+        });
+        if(!response.ok){
+            console.error("🚨 "+ response.status)
+        }
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem('email');
+        localStorage.removeItem('profileImg');
+        localStorage.removeItem('userId');
+
+        console.log("✅ 200 delete success.");
+        setTimeout(()=>{
+            // window.location.href = "../pages/login.html";
+        },1000);
+    }
+    catch{
+        console.error("🚨 catch 에러 발생 ")
+    }
 }
