@@ -69,6 +69,9 @@ async function getPosts() {
 // 이벤트 핸들러
 document.addEventListener('DOMContentLoaded', async (e) => {
     e.preventDefault();
+    if(localStorage.getItem('jwtToken')===null){
+      window.location.href = "../pages/login.html";
+    }
     const response = await getPosts();
     if (response.ok) {
       const result = await response.json();

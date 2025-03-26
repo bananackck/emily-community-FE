@@ -71,7 +71,6 @@ async function findUser(email, password) {
         // 로그인 성공 시 받은 JWT 토큰을 localStorage에 저장
         localStorage.setItem('jwtToken', data.token);
         localStorage.setItem('userId', data.userId);
-        localStorage.setItem('nickname', data.nickname);
         localStorage.setItem('profileImg', "http://localhost:8080"+data.profileImg);
         localStorage.setItem('email', data.email);
 

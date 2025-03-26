@@ -156,7 +156,7 @@ let textPass = true
 
 elInputTitle.onkeyup=function(){
     const title=elInputTitle.value
-    titlepass=title && true;
+    titlePass=title && true;
     if(title){
         elTextHelper.innerHTML=''
     }
@@ -168,7 +168,7 @@ elInputTitle.onkeyup=function(){
 
 elInputText.onkeyup=function(){
     const text=elInputText.value
-    textpass=text && true;
+    textPass=text && true;
     if(text){
         elTextHelper.innerHTML=''
     }

@@ -122,3 +122,7 @@ async function postUpload(title, text, img) {
         }
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log(localStorage.getItem('userId'))
+});

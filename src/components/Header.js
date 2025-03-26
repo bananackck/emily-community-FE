@@ -83,8 +83,10 @@ class MyHeader extends HTMLElement {
     });
 
     //프로필 사진 설정
-    const elProfileImg = this.shadowRoot.querySelector('#profile-img');
-    elProfileImg.src = localStorage.getItem('profileImg');
+    const elProfileImg = this.shadowRoot.querySelectorAll('#profile-img');
+    elProfileImg.forEach((img) => {
+      img.src = localStorage.getItem('profileImg');
+    });
   }
 }
 

@@ -1,62 +1,101 @@
 import * as validator from "../components/validator.js" 
 const elInputProfile = document.querySelector('#profile-image-input')
-const elProfileImg = document.querySelector('#profile-image')
+const elProfileImg = document.querySelector('#img')
 const elEmail = document.querySelector('.text')
 const elInputNickname = document.querySelector('#nickname')
-const elNicknameHelper = document.querySelector('#ickname-helper')
+const elNicknameHelper = document.querySelector('#nickname-helper')
 const elEditBtn = document.querySelector('#edit-btn')
 
-let nicknamePass = false
+const token = localStorage.getItem('jwtToken');
 
+let nicknamePass = true
+
+let img;
 // 이벤트 핸들러
 document.addEventListener('DOMContentLoaded', async (e) => {
-    e.preventDefault();
     console.log(localStorage.getItem('profileImg'))
-    console.log(localStorage.getItem('email'))      
+    e.preventDefault();
+
     //기본 세팅하기
     elProfileImg.src=localStorage.getItem('profileImg');
     elEmail.innerHTML=localStorage.getItem('email');
     elInputNickname.placeholder=localStorage.getItem('nickname');
+    elInputNickname.onblur = function () {
+        this.placeholder = localStorage.getItem('nickname');
+    };
+
+    btnActivate();
 });
 
 
 
 elInputProfile.onchange = function(){
-    profilePass=validator.uploadProfile(elInputProfile);
+    elProfileImg.src="";
+    img=validator.uploadProfile(this);
+    // console.log(URL.createObjectURL(img).replace("blob:",""))
+    // localStorage.setItem('profileImg', URL.createObjectURL(img).replace("blob:",""));
 }
 
 elInputNickname.onkeyup=function(){
     nicknamePass=validator.handleNicknameInput(elInputNickname.value, elNicknameHelper);
-    btnActivate()
+    localStorage.setItem('nickname', elInputNickname.value);
+    btnActivate();
 }
+
 
 function btnActivate(){ 
     if(nicknamePass){
         elEditBtn.style.backgroundColor="var(--activate-color)"
-        elEditBtn.onclick=function(){
-            // window.location.href="./Posts.html"
-            // 작성 좀 해라...
-        }
     } 
     else{
         elEditBtn.style.backgroundColor="var(--point-color)"
     }
 }
 
+
 // 수정완료 토스트 메세지
 let elToastMsg = document.getElementsByClassName('toast-msg')[0]
 
 function toastOn(){
     elToastMsg.classList.add('active');
-    console.log('클래스 연결 됨?');
     setTimeout(function(){
         elToastMsg.classList.remove('active');
     },1500);
 }
 
-elEditBtn.addEventListener('click',function(){
-    console.log('이벤트가 잘 연결 됐는지 확인');
-    toastOn()
+elEditBtn.addEventListener('click',async() => {
+    toastOn();
+
+    const formData = new FormData();
+    const nickname=localStorage.getItem('nickname');
+    formData.append('data', new Blob([JSON.stringify({ nickname })], { type: 'application/json' }));
+    if (img) formData.append('file', img);
+
+    try{
+        const response = await fetch("http://localhost:8080/api/users/me", {
+            method: "PATCH",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            mode: 'cors',            // 기본값이지만 명시 권장
+            credentials: 'include',   // allowCredentials=true일 때만 사용
+            body: formData
+        });
+
+        const user=await response.json();
+        console.log(user)
+        
+        if(!response.ok){
+            console.error("🚨 "+ response.status)
+        }
+
+        localStorage.setItem('nickname', user.nickname);
+        localStorage.setItem('profileImg', "http://localhost:8080"+user.img);
+        console.log("✅ 201 post upload success.");
+    }
+    catch{
+        console.error("🚨 catch 에러 발생 ")
+    }
 });
 
 
