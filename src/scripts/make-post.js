@@ -51,25 +51,26 @@ elFile.onchange=function(){
 function btnActivate(){
     if(titlePass && textPass){
         elCompleteBtn.style.backgroundColor="var(--activate-color)"
-        //완료 버튼 클릭
-        elCompleteBtn.onclick = async () =>{
-            try{
-                const response = await postUpload(
-                    elInputTitle.value,
-                    elInputText.value,
-                    img
-                );
-                console.log(response);
-                window.location.href = `../pages/post.html?id=${response.data.id}`;
-                // console.log("what?")
-            }
-            catch{
-                console.error("게시물 생성 실패", response.message);
-            }
-        }
     }
     else{
         elCompleteBtn.style.backgroundColor="var(--point-color)"
+    }
+}
+//수정 완료 클릭 버튼 이벤트
+elCompleteBtn.onclick = async () =>{
+    try{
+        const response = await postUpload(
+            elInputTitle.value,
+            elInputText.value,
+            img
+        );
+        console.log(response);
+        setTimeout(()=>{
+            window.location.href = `../pages/post.html?id=${response.data.id}`;
+        },500);
+    }
+    catch{
+        console.error("게시물 생성 실패", response.message);
     }
 }
 

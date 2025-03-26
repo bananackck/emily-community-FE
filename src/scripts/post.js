@@ -8,7 +8,6 @@ const token = localStorage.getItem('jwtToken');
 async function getPost() {
   try {
     // 게시글 헤더
-    console.log(postId);
     const response = await fetch(`http://localhost:8080/api/posts/${postId}`,{
       method: 'GET',
       headers: {
@@ -23,7 +22,14 @@ async function getPost() {
     }
     const post = await response.json();
 
+    console.log(post.userId)
+    console.log(localStorage.getItem('userId'))
     // DOM 업데이트
+    if(post.userId != localStorage.getItem('userId')){
+      const elEditBtn = document.querySelector('.edit-btns');
+      elEditBtn.classList.add('none');
+      console.log("hidden")
+    }
     // 저자
     console.log(post)
     document.querySelector(".post-title").innerHTML=post.title;
@@ -31,8 +37,6 @@ async function getPost() {
     document.querySelector('#writer').innerHTML=post.userNickname;
     document.querySelector('#post-time').innerHTML=post.createdAt.replace('T',' ');
 
-    //내용
-    //TODO: 이미지 null 처리 (null이면 div hidden 처리)
     if(post.img==null){
       document.querySelector('#post-img').classList.add('none');
     }
@@ -95,7 +99,9 @@ document.querySelector("#post-delete-btn").addEventListener("click", () => {
       postModal.classList.remove('block');
 
       deletePost(postId);
-      window.location.href = "../pages/posts.html";
+      setTimeout(()=>{
+        window.location.href = "../pages/posts.html";
+      },500);
     });
 });
 

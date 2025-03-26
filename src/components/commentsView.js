@@ -16,8 +16,22 @@ container.addEventListener('click', async (e) => {
 
   // 삭제
   if (e.target.matches('.comment-delete-btn')) {
-    await deleteComment(commentId);
-    return getComments();
+    const commentModal = document.querySelector("#comment-modal");
+    commentModal.classList.add('block');
+
+    const yesBtn = commentModal.shadowRoot.querySelector(".modal-btn.yes");
+    const noBtn = commentModal.shadowRoot.querySelector(".modal-btn.no");
+
+    noBtn.addEventListener("click", () => {
+      commentModal.classList.remove('block');
+    });
+    yesBtn.addEventListener("click", () => {
+      commentModal.classList.remove('block');
+      deleteComment(commentId);
+      setTimeout(()=>{
+        getComments();
+      },300);
+    });
   }
 
   // 수정
@@ -95,11 +109,13 @@ export const updateDom = (container, comment)=>{
                 <p class="post-time comment-setting" id="comment-post-time">${comment.createdAt.replace('T',' ')}</p>
             </div>
             <p class="comment-text">${comment.text}</p>
-        </div>
-        <!-- 편집 버튼 -->
+        </div>`;
+    if(comment.userId == localStorage.getItem('userId')){
+        commentElement.innerHTML += `
         <div class="edit-btns">
-            <button class="small-btn" id="comment-edit-btn">수정</button>
+            <button class="small-btn comment-edit-btn">수정</button>
             <button class="small-btn comment-delete-btn">삭제</button>
         </div>`;
+    }
     container.appendChild(commentElement);
 }

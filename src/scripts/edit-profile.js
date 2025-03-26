@@ -91,7 +91,10 @@ elEditBtn.addEventListener('click',async() => {
 
         localStorage.setItem('nickname', user.nickname);
         localStorage.setItem('profileImg', "http://localhost:8080"+user.img);
-        console.log("✅ 201 post upload success.");
+        console.log("✅ 201 update success.");
+        setTimeout(()=>{
+            window.location.href = "../pages/Posts.html";
+        },1000);
     }
     catch{
         console.error("🚨 catch 에러 발생 ")

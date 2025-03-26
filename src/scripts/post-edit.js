@@ -130,7 +130,9 @@ elCompleteBtn.onclick=function(){
         elText.value,
         img
     );
-    window.location.href=`../pages/post.html?id=${postId}`
+    setTimeout(()=>{
+        window.location.href=`../pages/post.html?id=${postId}`
+    },1000);
 }
 
 // 파일 핸들러

@@ -36,16 +36,16 @@ my-modal{
 
 /* 보여주기 */
 .visible{
-    visibility: visible;
+    visibility: visible !important;;
 }
 .hidden{
-    visibility: hidden;
+    visibility: hidden !important;;
 }
 .none{
-    display: none;
+    display: none !important;
 }
 .block{
-    display: block;
+    display: block !important;;
 }
 
 /* 메인 */
