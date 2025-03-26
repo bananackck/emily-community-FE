@@ -130,7 +130,13 @@ main{
     text-align: center;
     letter-spacing: 0%;
 }
-#like-count,
+.like-box:hover{
+    cursor: pointer;
+    background-color: var(--point-color);
+}
+#like-count{
+    line-height: 26px;
+}
 #comment-count,
 #view-count{
     line-height: 26px;
@@ -174,14 +180,6 @@ textarea::placeholder{
     flex-direction: column;
 
 }
-/* .comment-area{
-    display: flex;
-    flex-direction: column;
-    margin-right:auto;
-    
-    border: 2px solid saddlebrown;
-
-} */
 .comment{
     flex:2;
 

@@ -140,6 +140,39 @@ async function deletePost(postId) {
     //TODO: 좋아요 삭제
 }
 
+//------------------------
+// 좋아요
+const elLikeBtn = document.querySelector('.like-box');
+elLikeBtn.addEventListener("click", async ()=>{
+    const container = document.querySelector("#like-count");
+
+    try{
+      const response = await fetch(`http://localhost:8080/api/posts/${postId}/like`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      if(response.ok){
+        console.log("[FE]✅ 좋아요 성공")
+      }
+      const like = await response.json();
+
+      // DOM 업데이트
+      container.innerHTML = "";
+      container.innerHTML=like.likeCount;
+
+      return{message: "[FE]✅ 좋아요 성공"}
+    }
+    catch{
+      return{
+        ok: false, status: null,
+        message: "[FE]🚨 좋아요 오류"
+      }
+    }
+});
+
 //---------------------------
 // 댓글 업로드
 const elCommentUploadBtn = document.querySelector('#comment-upload-btn');
