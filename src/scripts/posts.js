@@ -4,6 +4,7 @@ import {updateDom} from '../components/postsView.js'
 async function getPosts() {
   //jwt토큰
   const token = localStorage.getItem('jwtToken');
+  console.log(token);
   try {
     // 게시글 헤더
     const response1 = await fetch('http://localhost:8080/api/posts', {
