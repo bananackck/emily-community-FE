@@ -11,7 +11,7 @@ template.innerHTML = `
             </a>
         </div>
         <div class="project-name">아무 말 대잔치</div>
-        <div class="nav-btn right none" id="dropdown">
+        <div class="nav-btn right" id="dropdown">
             <div class="dropdown">
                 <label for="dropbtn">
                     <img id="profile-img" src="../assets/img/profile.png" alt="프로필 가기" style="border-radius: 20px;">
@@ -24,11 +24,7 @@ template.innerHTML = `
                 </div>
             </div>
         </div>
-        <div class="nav-btn right" id="nonDropdown">
-            <a href="./edit-profile.html">
-                <img id="profile-img" src="../assets/img/profile.png" alt="프로필 가기" style="border-radius: 20px;">
-            </a>
-        </div>
+
     </div>
   </header>
 `;
@@ -49,16 +45,22 @@ class MyHeader extends HTMLElement {
     }
     // "right-hidden" 속성이 있으면 네비 버튼에서 hidden 클래스를 추가
     if (this.hasAttribute('right-hidden')) {
-      const navBtns = this.shadowRoot.querySelectorAll('#nonDropdown');
+      const navBtns = this.shadowRoot.querySelectorAll('.nav-btn.right');
       navBtns.forEach(btn => btn.classList.add('hidden'));
+      // const navBtns = this.shadowRoot.querySelectorAll('#nonDropdown');
+      // navBtns.forEach(btn => btn.classList.add('hidden'));
+      // const showDropdown = this.shadowRoot.querySelectorAll('#dropdown');
+      // showDropdown.forEach(btn => btn.classList.remove('none'));
+      // const hideDropdown = this.shadowRoot.querySelectorAll('#nonDropdown');
+      // hideDropdown.forEach(btn => btn.classList.add('none'));
     }
     // "dropdown" 속성이 있으면 dropdown 보이기
-    if (this.hasAttribute('dropdown')) {
-      const showDropdown = this.shadowRoot.querySelectorAll('#dropdown');
-      showDropdown.forEach(btn => btn.classList.remove('none'));
-      const hideDropdown = this.shadowRoot.querySelectorAll('#nonDropdown');
-      hideDropdown.forEach(btn => btn.classList.add('none'));
-    }
+    // if (this.hasAttribute('dropdown')) {
+    //   const showDropdown = this.shadowRoot.querySelectorAll('#dropdown');
+    //   showDropdown.forEach(btn => btn.classList.remove('none'));
+    //   const hideDropdown = this.shadowRoot.querySelectorAll('#nonDropdown');
+    //   hideDropdown.forEach(btn => btn.classList.add('none'));
+    // }
 
     // 드롭다운 처리
     var elDropBtn = this.shadowRoot.querySelector('#dropbtn');
