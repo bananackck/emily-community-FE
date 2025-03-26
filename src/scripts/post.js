@@ -28,7 +28,6 @@ async function getPost() {
     if(post.userId != localStorage.getItem('userId')){
       const elEditBtn = document.querySelector('.edit-btns');
       elEditBtn.classList.add('none');
-      console.log("hidden")
     }
     // 저자
     console.log(post)
