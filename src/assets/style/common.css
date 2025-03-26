@@ -24,7 +24,9 @@ textarea{
     background-color: transparent;
     resize: none;
 }
-
+textarea::placeholder{
+    color: #7A7B7B;
+}
 button{
     cursor: pointer;
 }

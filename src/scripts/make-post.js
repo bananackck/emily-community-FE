@@ -58,6 +58,7 @@ function btnActivate(){
 }
 //수정 완료 클릭 버튼 이벤트
 elCompleteBtn.onclick = async () =>{
+    console.log(img)
     try{
         const response = await postUpload(
             elInputTitle.value,
@@ -84,6 +85,7 @@ async function postUpload(title, text, img) {
     formData.append('data', new Blob([JSON.stringify({ title, text })], { type: 'application/json' }));
     if (img) formData.append('file', img);
 
+    console.log([...formData.keys()]);
     try{
         const response = await fetch("http://localhost:8080/api/posts", {
             method: "POST",

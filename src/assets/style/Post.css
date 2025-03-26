@@ -167,11 +167,6 @@ main{
     padding: 24px 0px 24px 24px;
     border-bottom: 1px solid #00000029;
 }
-textarea::placeholder{
-    font-size: 0.9rem;
-    color: #000000;
-}
-
 
 
 /* 댓글 */

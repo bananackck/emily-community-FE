@@ -193,11 +193,11 @@ elCommentUploadBtn.addEventListener("click", async ()=>{
       })
       if(response.ok){
         console.log("[FE]✅ 댓글 업로드 성공")
+        // DOM 업데이트
+        elInputComment.value = "";
+        elInputComment.placeholder="댓글을 남겨주세요!"
+        getComments();
       }
-      const comments = await response.json();
-      
-      // DOM 업데이트
-      getComments();
       
       return{message: "[FE]✅ 댓글 그리기 성공"}
     }
