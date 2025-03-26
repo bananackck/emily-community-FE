@@ -85,16 +85,23 @@ elEditBtn.addEventListener('click',async() => {
         const user=await response.json();
         console.log(user)
         
-        if(!response.ok){
+        if(response.status===409){
+            elNicknameHelper.innerHTML="이미 사용중인 닉네임입니다."
+            // elNicknameHelper.style.color="var(--)"
+            nicknamePass=false
+            btnActivate()
+        }
+        else if(!response.ok){
             console.error("🚨 "+ response.status)
         }
-
-        localStorage.setItem('nickname', user.nickname);
-        localStorage.setItem('profileImg', "http://localhost:8080"+user.img);
-        console.log("✅ 201 update success.");
-        setTimeout(()=>{
-            window.location.href = "../pages/Posts.html";
-        },1000);
+        else{
+            localStorage.setItem('nickname', user.nickname);
+            localStorage.setItem('profileImg', "http://localhost:8080"+user.img);
+            console.log("✅ 201 update success.");
+            setTimeout(()=>{
+                window.location.href = "../pages/Posts.html";
+            },500);
+        }
     }
     catch{
         console.error("🚨 catch 에러 발생 ")
@@ -138,6 +145,7 @@ const deleteUser=async()=>{
 
         console.log("✅ 200 delete success.");
         setTimeout(()=>{
+            //TODO
             // window.location.href = "../pages/login.html";
         },1000);
     }
