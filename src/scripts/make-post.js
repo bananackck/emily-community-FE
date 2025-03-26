@@ -67,7 +67,7 @@ elCompleteBtn.onclick = async () =>{
         );
         console.log(response);
         setTimeout(()=>{
-            window.location.href = `../pages/post.html?id=${response.data.id}`;
+            // window.location.href = `../pages/post.html?id=${response.data.id}`;
         },500);
     }
     catch{
@@ -125,7 +125,3 @@ async function postUpload(title, text, img) {
         }
     }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    console.log(localStorage.getItem('userId'))
-});

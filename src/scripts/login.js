@@ -73,6 +73,7 @@ async function findUser(email, password) {
         localStorage.setItem('userId', data.userId);
         localStorage.setItem('profileImg', "http://localhost:8080"+data.profileImg);
         localStorage.setItem('email', data.email);
+        localStorage.setItem('nickname', data.nickname);
 
         console.log("✅ 로그인 성공 " + data);
 

@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     //기본 세팅하기
     elProfileImg.src=localStorage.getItem('profileImg');
     elEmail.innerHTML=localStorage.getItem('email');
-    elInputNickname.placeholder=localStorage.getItem('nickname');
+    elInputNickname.value=localStorage.getItem('nickname');
     elInputNickname.onblur = function () {
-        this.placeholder = localStorage.getItem('nickname');
+        this.value = localStorage.getItem('nickname');
     };
 
     btnActivate();
@@ -32,8 +32,6 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 elInputProfile.onchange = function(){
     elProfileImg.src="";
     img=validator.uploadProfile(this);
-    // console.log(URL.createObjectURL(img).replace("blob:",""))
-    // localStorage.setItem('profileImg', URL.createObjectURL(img).replace("blob:",""));
 }
 
 elInputNickname.onkeyup=function(){
@@ -60,7 +58,7 @@ function toastOn(){
     elToastMsg.classList.add('active');
     setTimeout(function(){
         elToastMsg.classList.remove('active');
-    },1500);
+    },1200);
 }
 
 elEditBtn.addEventListener('click',async() => {
@@ -98,9 +96,9 @@ elEditBtn.addEventListener('click',async() => {
             localStorage.setItem('nickname', user.nickname);
             localStorage.setItem('profileImg', "http://localhost:8080"+user.img);
             console.log("✅ 201 update success.");
-            setTimeout(()=>{
-                window.location.href = "../pages/Posts.html";
-            },500);
+            // setTimeout(()=>{
+            //     window.location.href = "../pages/Posts.html";
+            // },700);
         }
     }
     catch{
@@ -145,7 +143,7 @@ const deleteUser=async()=>{
 
         console.log("✅ 200 delete success.");
         setTimeout(()=>{
-            //TODO
+            // TODO
             // window.location.href = "../pages/login.html";
         },1000);
     }
