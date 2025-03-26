@@ -20,7 +20,7 @@ template.innerHTML = `
                 <div class="dropdown-content" id="content">
                     <a href="./edit-profile.html">회원정보수정</a>
                     <a href="./edit-password.html">비밀번호수정</a>
-                    <a href="./login.html">로그아웃</a> 
+                    <a id="logoutBtn">로그아웃</a> 
                 </div>
             </div>
         </div>
@@ -40,43 +40,43 @@ class MyHeader extends HTMLElement {
   connectedCallback() {
     // "left-hidden" 속성이 있으면 네비 버튼에서 hidden 클래스를 추가
     if (this.hasAttribute('left-hidden')) {
-      const navBtns = this.shadowRoot.querySelectorAll('.nav-btn.left');
-      navBtns.forEach(btn => btn.classList.add('hidden'));
+      const navBtns = this.shadowRoot.querySelector('.nav-btn.left');
+      navBtns.classList.add('hidden');
     }
     // "right-hidden" 속성이 있으면 네비 버튼에서 hidden 클래스를 추가
     if (this.hasAttribute('right-hidden')) {
-      const navBtns = this.shadowRoot.querySelectorAll('.nav-btn.right');
-      navBtns.forEach(btn => btn.classList.add('hidden'));
-      // const navBtns = this.shadowRoot.querySelectorAll('#nonDropdown');
-      // navBtns.forEach(btn => btn.classList.add('hidden'));
-      // const showDropdown = this.shadowRoot.querySelectorAll('#dropdown');
-      // showDropdown.forEach(btn => btn.classList.remove('none'));
-      // const hideDropdown = this.shadowRoot.querySelectorAll('#nonDropdown');
-      // hideDropdown.forEach(btn => btn.classList.add('none'));
+      const navBtns = this.shadowRoot.querySelector('.nav-btn.right');
+      navBtns.classList.add('hidden');
     }
-    // "dropdown" 속성이 있으면 dropdown 보이기
-    // if (this.hasAttribute('dropdown')) {
-    //   const showDropdown = this.shadowRoot.querySelectorAll('#dropdown');
-    //   showDropdown.forEach(btn => btn.classList.remove('none'));
-    //   const hideDropdown = this.shadowRoot.querySelectorAll('#nonDropdown');
-    //   hideDropdown.forEach(btn => btn.classList.add('none'));
-    // }
 
     // 드롭다운 처리
     var elDropBtn = this.shadowRoot.querySelector('#dropbtn');
-    var elDropcontent = this.shadowRoot.querySelector('#content')
+    var elDropContent = this.shadowRoot.querySelector('#content')
 
     var isShown = false
 
     elDropBtn.onclick=function(){
         if(!isShown){
-            elDropcontent.style.display="block"
+            elDropContent.style.display="block"
         }
         else{
-            elDropcontent.style.display="none"
+            elDropContent.style.display="none"
         }
         isShown=isShown ^ true
     }
+
+    //로그아웃
+    const elLogoutBtn = this.shadowRoot.querySelector('#logoutBtn');
+    elLogoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('jwtToken');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('profileImg');
+      localStorage.removeItem('email');
+      localStorage.removeItem('nickname');
+      window.location.href = '../pages/login.html';
+
+    });
+
 
     //아무 말 대잔치 누를 시 게시판 목록으로
     const elHeaderLogo = this.shadowRoot.querySelector('.project-name');
