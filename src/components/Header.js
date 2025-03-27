@@ -14,7 +14,7 @@ template.innerHTML = `
         <div class="nav-btn right" id="dropdown">
             <div class="dropdown">
                 <label for="dropbtn">
-                    <img id="profile-img" src="../assets/img/profile.png" alt="프로필 가기" style="border-radius: 20px;">
+                    <img id="profile-img" src="../assets/img/profile-basic.png" alt="프로필 가기" style="border-radius: 20px;">
                 </label>
                 <button class="dropbtn" id="dropbtn"></button>
                 <div class="dropdown-content" id="content">
