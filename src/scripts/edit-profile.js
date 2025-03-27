@@ -143,8 +143,7 @@ const deleteUser=async()=>{
 
         console.log("✅ 200 delete success.");
         setTimeout(()=>{
-            // TODO
-            // window.location.href = "../pages/login.html";
+            window.location.href = "../pages/login.html";
         },1000);
     }
     catch{
