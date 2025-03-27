@@ -2,9 +2,15 @@
 export const updateDom = (container, post)=>{
     const postElement = document.createElement("article");
     // 클릭 시 이동
-    postElement.addEventListener("click", () => {
-      location.href = "./post.html";
-    });
+    postElement.onclick = async () => {
+        console.log(post)
+        try{
+            window.location.href = `../pages/post.html?id=${post.id}`;
+        }
+        catch{
+            console.error("게시물 조회 실패", response.message);
+        }
+    };
     // 게시물 하나씩 그리기
     postElement.classList.add("post");
     postElement.innerHTML = `

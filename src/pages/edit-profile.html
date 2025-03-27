@@ -8,7 +8,7 @@
     <title>Community clone-emily</title>
 </head>
 <body>
-    <my-header dropdown></my-header>
+    <my-header></my-header>
 
     <my-modal title="회원탈퇴 하시겠습니까?" message="작성된 게시글과 댓글은 삭제됩니다."></my-modal>
     
@@ -20,19 +20,19 @@
                 <!-- 프로필 사진 업로드 -->
                 <div class="info-title">프로필 사진*</div>
                 <div class="profile-upload">
-                    <label for="profile-image">
-                        <img id="img" src="../assets/img/profile-placeholder.png" alt="프로필 사진 미리보기">
+                    <label for="profile-image-input">
+                        <img id="img" alt="프로필 사진 미리보기">
                     </label>
-                    <input type="file" id="profile-image" accept="image/*">
+                    <input type="file" id="profile-image-input" accept="image/*">
                 </div>
                 <!-- 이메일 -->
                 <div class="info-title">이메일</div>
-                <p class="text">startupcode@gmail.com</p>
+                <p class="text"></p>
                 
                 <!-- 닉네임 변경 -->
                 <div class="info-title">닉네임</div>
                 <div class="info-box">
-                    <input id="nickname" placeholder="스타트업코드" onfocus="this.placeholder = ''" onblur="this.placeholder = '스타트업코드'"/>
+                    <input id="nickname" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''"/>
                 </div>
                 <div class="helper-text" id="nickname-helper"></div>
             </article>

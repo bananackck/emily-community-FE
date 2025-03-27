@@ -2,32 +2,42 @@ import {updateDom} from '../components/postsView.js'
 
 // 게시글 불러오기
 async function getPosts() {
+  //jwt토큰
+  const token = localStorage.getItem('jwtToken');
   try {
     // 게시글 헤더
-    const response1 = await fetch("../data/post-data.json");
-    const posts = await response1.json();
+    const response1 = await fetch('http://localhost:8080/api/posts', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      mode: 'cors',            // 기본값이지만 명시 권장
+      credentials: 'include'   // allowCredentials=true일 때만 사용
+    });
 
-    // 게시글 저자
-    const response2 = await fetch("../data/user-data.json");
-    const users = await response2.json();
+    const posts = await response1.json();
 
     // 모든 게시물 정보 가져오기
     const postList = posts.map((post) => {
-      const user = users[post.author];
+
       return {
+        id: post.id,
         title: post.title,
         likeCount: post.likeCount,
         commentCount: post.commentCount,
         viewCount: post.viewCount,
-        createdAt: post.createdAt,
-        author: user.nickname,
-        profile: "../" + user.profilePicture,
+        createdAt: post.createdAt.replace('T',' '),
+
+        //게시글 작성자
+        author: post.userNickname,
+        profile: "http://localhost:8080"+post.userProfileImg
       };
     });
     // DOM 업데이트
     const container = document.querySelector(".posts");
     container.innerHTML = "";
-    postList.forEach((post)=>{
+    postList.reverse().forEach((post)=>{
       updateDom(container, post);
     });
 
@@ -59,6 +69,9 @@ async function getPosts() {
 // 이벤트 핸들러
 document.addEventListener('DOMContentLoaded', async (e) => {
     e.preventDefault();
+    if(localStorage.getItem('jwtToken')===null){
+      window.location.href = "../pages/login.html";
+    }
     const response = await getPosts();
     if (response.ok) {
       const result = await response.json();

@@ -84,7 +84,6 @@ main{
 #post-img{
     height: 306px;
 
-    display: block;
     margin:auto;
     padding-top: 12px;
     object-fit: contain;
@@ -131,7 +130,13 @@ main{
     text-align: center;
     letter-spacing: 0%;
 }
-#like-count,
+.like-box:hover{
+    cursor: pointer;
+    background-color: var(--point-color);
+}
+#like-count{
+    line-height: 26px;
+}
 #comment-count,
 #view-count{
     line-height: 26px;
@@ -141,6 +146,7 @@ main{
 }
 
 
+/* ------------------------------- */
 /* 댓글 텍스트 작성 공간 */
 .comment-box{
     display: flex;
@@ -161,9 +167,33 @@ main{
     padding: 24px 0px 24px 24px;
     border-bottom: 1px solid #00000029;
 }
-textarea::placeholder{
-    font-size: 0.9rem;
-    color: #000000;
+
+
+/* 댓글 */
+.comments{
+    display: flex;
+    flex-direction: column;
+
+}
+.comment{
+    flex:2;
+
+    display: flex;
+    padding-top: 16px;
+}
+
+.comment-content{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+}
+.post-time.comment-setting{
+    justify-content: flex-start;
+}
+.comment-text{
+    flex:4;
+    padding: 0.8rem 0 0 3rem;
+    font-weight: 100;
 }
 
 /* 댓글 버튼 공간 */
@@ -187,32 +217,4 @@ textarea::placeholder{
 }
 .main-btn:hover{
     background-color: #7F6AEE;
-}
-
-/* 댓글 */
-.comments{
-    display: flex;
-
-}
-.comment-area{
-    display: flex;
-    flex-direction: column;
-    margin-right:auto;
-    
-    border: 2px solid saddlebrown;
-
-}
-
-.comment{
-    flex: 4;
-    display: flex;
-    flex-direction: column;
-}
-.post-time.comment-setting{
-    justify-content: flex-start;
-}
-.comment-text{
-    flex:4;
-    padding: 0.8rem 0 0 3rem;
-    font-weight: 100;
 }

@@ -92,14 +92,12 @@ export const uploadProfile = (profile) =>{
   const selected=profile.files[0];
 
   const reader = new FileReader();
-  
   reader.onload=function(){
       const img=document.getElementById('img')
       img.src=reader.result
-
       img.style.width='149px'
-      return true;
+      return selected.name;
   }
-  reader.readAsDataURL(selected)
-  return false;
+  reader.readAsDataURL(selected);
+  return selected;
 }

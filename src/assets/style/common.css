@@ -13,7 +13,7 @@ input {
 input::placeholder {
     font-weight: 400;
     font-size: 0.9rem;
-    color: #000000;
+    color: #7A7B7B;
 }
 
 textarea{
@@ -24,7 +24,9 @@ textarea{
     background-color: transparent;
     resize: none;
 }
-
+textarea::placeholder{
+    color: #7A7B7B;
+}
 button{
     cursor: pointer;
 }
@@ -36,16 +38,16 @@ my-modal{
 
 /* 보여주기 */
 .visible{
-    visibility: visible;
+    visibility: visible !important;;
 }
 .hidden{
-    visibility: hidden;
+    visibility: hidden !important;;
 }
 .none{
-    display: none;
+    display: none !important;
 }
 .block{
-    display: block;
+    display: block !important;;
 }
 
 /* 메인 */

@@ -11,6 +11,7 @@ const elPw2Helper = document.getElementById('pw2-helper')
 
 const elEditBtn = document.getElementById('edit-btn')
 
+const token = localStorage.getItem('jwtToken');
 
 elInputPw.onkeyup = function() {
   pwPass = validator.handlePwInput(elInputPw.value, elPwHelper);
@@ -25,15 +26,13 @@ elInputPw2.onkeyup = function() {
 function btnActivate(){
     if(pwPass && pw2Pass){
         elEditBtn.style.backgroundColor="var(--activate-color)";
-        elEditBtn.onclick=function(){
-            toastOn();
-        }
     }
     else{
         elEditBtn.style.backgroundColor="var(--point-color)";
     }
 }
 
+// 수정 완료 토스트 메세지
 let elToastMsg = document.getElementsByClassName('toast-msg')[0]
 
 function toastOn(){
@@ -41,6 +40,29 @@ function toastOn(){
     setTimeout(function(){
         elToastMsg.classList.remove('active');
     },1500);
+
 }
 
+elEditBtn.onclick = async function(){
+    toastOn();
 
+    const response = await fetch("http://localhost:8080/api/users/me/password", {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            newPassword: elInputPw.value
+        })
+    });
+
+    if(response.ok){
+        setTimeout(()=>{
+            window.location.href = "../pages/edit-profile.html";
+        },1000);
+    }
+    else{
+        console.error("비밀번호 변경 실패", response.message);
+    }
+}

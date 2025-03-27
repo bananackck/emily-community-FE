@@ -6,7 +6,8 @@ const elInputPw       = document.getElementById('pw');
 const elInputPw2      = document.getElementById('pw2');
 const elInputNickname = document.getElementById('nickname');
 
-let profilePass  = false;
+let img;
+
 let emailPass    = false;
 let pwPass       = false;
 let pw2Pass      = false;
@@ -22,7 +23,8 @@ const elSigninBtn = document.getElementById('signin-btn');
 
 // 1. 유효성 검사
 elInputProfile.onchange = function() {
-  profilePass = validator.uploadProfile(this);
+  img = validator.uploadProfile(this);
+  // console.log("profileImgName: "+profileImgName);
 };
 
 elInputEmail.onkeyup = function() {
@@ -55,14 +57,14 @@ function btnActivate() {
       if (response.ok) {
         console.log(response);
 
-        window.location.href = "./posts.html";
+        window.location.href = "./login.html";
       } else {
         // 여기서 409 에러 등 처리 가능
         if (response.status === 409) {
-          if(response.message==="duplicate email")
+          if(response.message==="EMAIL_CONFLICT")
             elEmailHelper.innerHTML = "*이미 사용 중인 이메일입니다.";
           else
-            elNicknameHelper.innerHTML = "*이미 사용 중인 이메일 또는 닉네임입니다.";
+            elNicknameHelper.innerHTML = "*이미 사용 중인 닉네임입니다.";
         }
         console.error("회원가입 실패", response.message);
       }
@@ -80,60 +82,54 @@ async function signupUser() {
   const nickname = elInputNickname.value;
   const password = elInputPw.value;
 
-  // 3-1. 기존 회원 중복 여부 체크
+  //전달 데이터
+  const formData = new FormData();
+  formData.append('data', JSON.stringify({ email, password, nickname }));
+  if (img) formData.append('file', img);
+
   try {
-    const response1 = await fetch('../data/user-data.json');
-    const users = await response1.json();
+    const response = await fetch('http://localhost:8080/api/auth/signup', {
+      method: 'POST',
+      headers: { },
+      mode: 'cors',            // 기본값이지만 명시 권장
+      credentials: 'include',   // allowCredentials=true일 때만 사용
+      body: formData
+    });
+    // const users = await response.json();
 
-    const duplicateEmail = users.some(user => user.email === email);
-    const duplicateNickname = users.some(user => user.nickname === nickname);
-
-    if (duplicateEmail) {
-      return {
-        ok: false,
-        status: 409,
-        message: "duplicate email",
-        data: null
+    if(!response.ok){
+      const error = await response.json();
+      if(response.status === 409){
+        if(error.details==="EMAIL_CONFLICT"){
+          return {
+            ok: false,
+            status: 409,
+            message: "EMAIL_CONFLICT"
+          }
+        }
+        else{
+          return {
+            ok:false,
+            status: 409,
+            message: "NICKNAME_CONFLICT"
+          }
+        }
+      }
+      else if(response.status === 401){
+        return {
+          ok: false,
+          status: 401,
+          message: "unauthorized user"
+        }
       }
     }
-    if (duplicateNickname) {
-      return {
-        ok: false,
-        status: 409,
-        message: "duplicate nickname",
-        data: null
-      }
-    }
-
-    // POST
-    // fetch url 바꾸기
-    // const signupResponse = await fetch('http://localhost:3000/src/pages/signup', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     email: email,
-    //     password: password,
-    //     nickname: nickname,
-    //     profilePicture: elInputProfile.src
-    //   })
-    // });
-
-    // 3-3. 서버에서 주는 응답 처리
-    // 백엔드 붙이고 이거로 바꾸기
-    // if (signupResponse.ok) {
     else{
-      // 201 Created라면
-      // 백엔드 붙이고 주석 해제제
-      // const result = await signupResponse.json();
+      const result = await response.json();
       return {
         ok: true,
         status: 201,
         message: "signup success",
-        // 백엔드 붙이고 대체체
-        // data: result
-        data: {
-              id: users.length + 1,
-            }
+        data: result
       }
     }
   } catch (error) {
