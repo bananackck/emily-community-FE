@@ -38,7 +38,6 @@ modalTemplate.innerHTML = `
     .popup-msg{
         font-weight: 400;
         font-size: 1rem;
-        // padding: 1rem 0;
     }
     .modal .modal-popup .btn-wrap{
         display: flex;
@@ -66,7 +65,7 @@ modalTemplate.innerHTML = `
         margin-right: 4px;
     }
     .yes{
-        background-color: #C4A5FA;
+        background-color: var(--point-color);
         color: #000000;
     }
     </style>
