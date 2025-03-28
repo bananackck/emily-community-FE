@@ -10,7 +10,7 @@ template.innerHTML = `
                 <img id="nav-back-img" src="../assets/img/navigate-back.png" alt="뒤로가기">
             </a>
         </div>
-        <div class="project-name">아무 말 대잔치</div>
+        <div class="project-name">내 새꾸 좀 봐봐요</div>
         <div class="nav-btn right" id="dropdown">
             <div class="dropdown">
                 <label for="dropbtn">

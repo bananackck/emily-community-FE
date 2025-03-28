@@ -1,6 +1,6 @@
 /* <button> */
 /* ------------------------ */
-/* 보라색 큰 버튼 */
+/*  큰 버튼 */
 .main-btn{
     display: flex;
     align-items: center;
@@ -10,12 +10,12 @@
     border-radius: 4px;
     background-color: var(--point-color);
     
-    font-family: 'Pretendard-Regular';
+    font-family: var(--main-font);
 
     font-weight: 600;
     font-size: 0.8rem;
     text-align: center;
-    color: var(--font-color-white);
+    color: var(--font-color-black);
     
     border: none;
     cursor: pointer;
@@ -31,16 +31,18 @@
     left: 1182px;
     border-radius: 8px;
 
-    font-family: 'Pretendard-Regular';
+    font-family: var(--main-font);
+
     font-size: 0.8rem;
-    border: 1px solid #ACA0EB;
+    border: 1px solid var(--activate-color);
+    background-color: var(--color-white);
 }
 
 /* <a> */
 /* ------------------------ */
 /* 기본 a링크 태그 */
 .basic-a-link{
-    font-family: 'Pretendard-Regular';
+    font-family: var(--main-font);
 
     font-weight: 400;
     font-size: 0.8rem;

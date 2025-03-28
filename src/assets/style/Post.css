@@ -121,7 +121,7 @@ main{
     flex-direction: column;
     justify-content: center; 
 
-    background-color: #D9D9D9;
+    background-color: var(--secondary-color);
 
     margin: 0px 8px 0px 8px;
 
@@ -216,5 +216,5 @@ main{
     letter-spacing: 0%;
 }
 .main-btn:hover{
-    background-color: #7F6AEE;
+    background-color: var(--activate-color);
 }

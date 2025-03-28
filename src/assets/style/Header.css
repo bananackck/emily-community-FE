@@ -51,7 +51,6 @@ header{
 
     width: 40px;
     height: 40px;
-    /* border: 2px solid red; */
 }
 
 .dropdown-content{
@@ -62,8 +61,6 @@ header{
     left: 60vw;
     /* padding-right:40px; */
     z-index : 1; 
-    /* border: 2px solid red; */
-
 }
   
 .dropdown-content a{
@@ -77,16 +74,15 @@ header{
     font-weight: 400;
     font-size: 0.8rem;
 
-    background-color: #D9D9D9;
+    background-color: var(--color-white);
     display : block;
-
+    border: solid 1px var(--point-color);
     color: #000000
 }
 .dropdown-content a:hover{
     background-color: #E9E9E9;
 }
 #nav-img:hover{
-    /* border: 2px solid saddlebrown; */
     cursor: pointer;
 }
 .dropbtn{
