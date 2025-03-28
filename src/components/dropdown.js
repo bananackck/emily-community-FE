@@ -10,11 +10,10 @@ dropdownTemplate.innerHTML = `
 
     .dropdown-content {
       display: none;
-      position: fixed;
-      float: right;
-      top: 72px;
-      left: 60vw;
-      z-index: 1;
+      position: absolute;
+              top: 110%; /* 버튼 아래 */
+        right: 0; /* 오른쪽 정렬 원할 경우 */
+        z-index: 1000; /* 다른 요소 위에 뜨게 */
     }
 
     .dropdown-content a {
@@ -30,6 +29,8 @@ dropdownTemplate.innerHTML = `
       display: block;
       border: solid 1px var(--point-color);
       color: #000000;
+      cursor: pointer;
+      text-decoration: none;
     }
 
     .dropdown-content a:hover {
