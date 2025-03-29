@@ -49,18 +49,3 @@
     box-sizing: border-box;   
 }
 
-/* 화면 채우기, 배경화면색 설정 */
-body{
-    width: 100%;
-    height: 100%;
-    background-color: var(--background-color);
-    
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-/* a태그 초기화 */
-a{
-    text-decoration: none;
-}

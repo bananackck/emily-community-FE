@@ -1,8 +1,8 @@
 import './dropdown.js';
 
+//HTML
 const template = document.createElement('template');
 template.innerHTML = `
-  <link rel="stylesheet" type="text/css" href="../assets/style/header.css">
   <header>
     <div class="header-contents">    
         <div class="nav-btn left">
@@ -14,12 +14,12 @@ template.innerHTML = `
         <div class="nav-btn right" id="dropdown">
             <my-dropdown></my-dropdown>
         </div>
-
     </div>
   </header>
 
 `;
 
+//JS
 class MyHeader extends HTMLElement {
   constructor() {
     super();
@@ -47,6 +47,59 @@ class MyHeader extends HTMLElement {
     });
   }
 }
+
+//CSS
+const link = document.createElement('link');
+link.setAttribute('rel', 'stylesheet');
+link.setAttribute('href', '../assets/style/common.css');
+template.content.appendChild(link);
+
+const style = document.createElement('style');
+style.textContent = `
+  header{
+      width: 100%;
+      height: 10vh;
+
+      top: 0;
+      position: sticky;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      font-family: var(--point-font);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 2;
+
+      border-bottom: 1px solid #000000;
+  }
+  .header-contents{
+      width: 570px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+  }
+  .project-name{
+      text-align: center;
+      cursor: pointer;
+  }
+  .nav-btn{
+      height: 40px;
+  }
+  .nav-btn img {
+      height: 40px; 
+      
+      cursor: pointer;
+  }
+  .left{
+      margin-right: auto;
+  }
+  .right{
+      margin-left: auto;
+  }
+
+`
+template.content.prepend(style);
 
 customElements.define('my-header', MyHeader);
 
