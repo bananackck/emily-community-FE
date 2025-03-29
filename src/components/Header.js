@@ -1,4 +1,4 @@
-import './dropdown.js'; // header.js의 맨 위에
+import './dropdown.js';
 
 const template = document.createElement('template');
 template.innerHTML = `
@@ -40,14 +40,11 @@ class MyHeader extends HTMLElement {
       navBtns.classList.add('hidden');
     }
 
-
     //아무 말 대잔치 누를 시 게시판 목록으로
     const elHeaderLogo = this.shadowRoot.querySelector('.project-name');
     elHeaderLogo.addEventListener('click', () => {
       window.location.href = '../pages/posts.html';
     });
-
-
   }
 }
 
