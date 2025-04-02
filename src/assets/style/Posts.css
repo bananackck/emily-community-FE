@@ -19,21 +19,23 @@ main{
 }
 
 
-/* 보라색 버튼 */
+/* 게시글 작성 버튼 */
 .btn-wrap{
-    font-family: 'Pretendard-Regular';
-    
     display: flex;
     width: var(--post-width);
-    /* align-items: center; */
     justify-content: flex-end;
     margin-top: 24px;
+}
+.btn-wrap :hover{
+    background-color: var(--activate-color);
 }
 .main-btn{
     width: 138px;
     height: 39px;
     border-radius: 16px;
 }
+
+
 /* 게시글 목록 */
 .posts{
     display: flex;
@@ -46,7 +48,6 @@ main{
     flex-direction: column;
 
     width: var(--post-width);
-    /* height: 21vh; */
     border-radius: 16px;
 
     background-color: #FFFFFF;

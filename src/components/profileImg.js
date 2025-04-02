@@ -15,12 +15,15 @@ class ProfileImg extends HTMLElement {
   }
 
   connectedCallback() {
-    //프로필 사진 설정
     const elProfileImg = this.shadowRoot.querySelector('.profile-img-container img');
-
-    elProfileImg.src = localStorage.getItem('profileImg');
-    
+  
+    const passedSrc = this.getAttribute('src');
+    const storedSrc = localStorage.getItem('profileImg');
+  
+    // 우선순위: 속성 → localStorage
+    elProfileImg.src = passedSrc || storedSrc;
   }
+                           
 }
 
 //CSS
