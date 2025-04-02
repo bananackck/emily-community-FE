@@ -54,8 +54,15 @@ async function getPost() {
     document.querySelector('#comment-count').innerHTML=post.commentCount;
 
     //댓글
-    getComments();
+    // getComments();
 
+    // DOM 업데이트
+        const container = document.querySelector(".comments");
+        container.innerHTML = "";
+        postList.reverse().forEach((post)=>{
+          updateDom(container, post);
+        });
+        
     // 응답 생성
     return{
         ok: true,
