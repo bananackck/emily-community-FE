@@ -1,4 +1,4 @@
-import * as validator from "../components/validator.js" 
+import * as validator from "../../components/validator.js" 
 const elInputProfile = document.querySelector('#profile-image-input')
 const elProfileImg = document.querySelector('#img')
 const elEmail = document.querySelector('.text')

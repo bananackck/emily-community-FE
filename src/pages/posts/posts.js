@@ -1,4 +1,4 @@
-import {updateDom} from '../components/postsView.js'
+import {updateDom} from './postsView.js'
 
 // 게시글 불러오기
 async function getPosts() {
@@ -12,7 +12,6 @@ async function getPosts() {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      mode: 'cors',            // 기본값이지만 명시 권장
       credentials: 'include'   // allowCredentials=true일 때만 사용
     });
 
@@ -42,26 +41,11 @@ async function getPosts() {
     });
 
     // 응답 생성
-    const response = {
-      ok: true,
-      status: 200,
-      json: async () => ({
-        message: "get_posts",
-        data: postList,
-      }),
-    };
-    return response;
+    return postList;
+
   } catch (error) {
-    console.error("게시물 로드 오류:", error);
-    const response = {
-      ok: false,
-      status: 404,
-      json: async () => ({
-        message: "not_found",
-        data: null,
-      }),
-    };
-    return response;
+    console.error("🚨게시물 로드 오류:", error);
+    return null;
   }
 }
 
@@ -72,11 +56,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     if(localStorage.getItem('jwtToken')===null){
       window.location.href = "../pages/login.html";
     }
-    const response = await getPosts();
-    if (response.ok) {
-      const result = await response.json();
-      console.log("게시물 조회 성공", result);
-    } else {
-      console.error("게시물 조회 실패");
-    }
+    
+    const postList = await getPosts();
+    console.log("게시물 조회 결과:", postList);
 });

@@ -1,4 +1,4 @@
-import * as validator from "../components/validator.js";
+import * as validator from "../../components/validator.js";
 
 const elInputProfile  = document.getElementById('profile-image');
 const elInputEmail    = document.getElementById('email');

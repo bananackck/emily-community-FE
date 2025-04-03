@@ -51,7 +51,7 @@ class MyHeader extends HTMLElement {
 //CSS
 const link = document.createElement('link');
 link.setAttribute('rel', 'stylesheet');
-link.setAttribute('href', '../assets/style/common.css');
+link.setAttribute('href', '../../assets/style/common.css');
 template.content.appendChild(link);
 
 const style = document.createElement('style');

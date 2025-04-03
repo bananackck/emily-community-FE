@@ -1,4 +1,4 @@
-import * as validator from "../components/validator.js";
+import * as validator from "../../components/validator.js";
 
 const elInputEmail = document.getElementById('email');
 const elInputPw = document.getElementById('pw');

@@ -1,4 +1,4 @@
-import {updateDom, getComments, deleteComment} from '../components/commentsView.js'
+import {getComments, deleteComment} from './comment.js'
 
 const params = new URLSearchParams(window.location.search);
 const postId = params.get('id');
@@ -14,7 +14,6 @@ async function getPost() {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      mode: 'cors',            // 기본값이지만 명시 권장
       credentials: 'include'   // allowCredentials=true일 때만 사용
     });
     if(!response.ok){
@@ -22,13 +21,12 @@ async function getPost() {
     }
     const post = await response.json();
 
-    console.log(post.userId)
-    console.log(localStorage.getItem('userId'))
     // DOM 업데이트
     if(post.userId != localStorage.getItem('userId')){
       const elEditBtn = document.querySelector('.edit-btns');
       elEditBtn.classList.add('none');
     }
+    
     // 저자
     console.log(post)
     document.querySelector(".post-title").innerHTML=post.title;
@@ -53,16 +51,6 @@ async function getPost() {
     document.querySelector('#view-count').innerHTML=post.viewCount;
     document.querySelector('#comment-count').innerHTML=post.commentCount;
 
-    //댓글
-    // getComments();
-
-    // DOM 업데이트
-        const container = document.querySelector(".comments");
-        container.innerHTML = "";
-        postList.reverse().forEach((post)=>{
-          updateDom(container, post);
-        });
-        
     // 응답 생성
     return{
         ok: true,
@@ -85,6 +73,7 @@ async function getPost() {
 document.addEventListener('DOMContentLoaded', async (e) => {
     e.preventDefault();
     await getPost();
+    await getComments();
 });
 
 //---------------------
@@ -129,21 +118,20 @@ async function deletePost(postId) {
   }
 
   try {
-      const res = await fetch(`http://localhost:8080/api/posts/${postId}/comments`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      if (res.ok){
-        return{message: "[FE]✅ 댓글 조회 성공"}
-      }
-      const comments = await res.json();
-      comments.forEach(comment => deleteComment(comment.id));
-    } catch (err) {
-      return{
-        ok: false, status: null,
-        message: "[FE]🚨 댓글 조회 오류"
-      }
+    const res = await fetch(`http://localhost:8080/api/posts/${postId}/comments`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (res.ok){
+      return{message: "[FE]✅ 댓글 조회 성공"}
     }
-    //TODO: 좋아요 삭제
+    const comments = await res.json();
+    comments.forEach(comment => deleteComment(comment.id));
+  } catch (err) {
+    return{
+      ok: false, status: null,
+      message: "[FE]🚨 댓글 조회 오류"
+    }
+  }
 }
 
 //------------------------

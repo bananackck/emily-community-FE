@@ -1,4 +1,4 @@
-import './profileImg.js';
+import '../../components/profileImg.js';
 class PostsView extends HTMLElement {
     constructor() {
       super();
