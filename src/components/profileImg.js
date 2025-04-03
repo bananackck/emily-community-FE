@@ -29,6 +29,9 @@ class ProfileImg extends HTMLElement {
 //CSS
 const style  = document.createElement('style');
 style.textContent = `
+  :host {
+    margin: auto 0;
+  }
   .profile-img-container {
     width: 40px;
     height: 40px;

@@ -7,7 +7,7 @@ template.innerHTML = `
     <div class="header-contents">    
         <div class="nav-btn left">
             <a href="javascript:history.back()">
-                <img id="nav-back-img" src="../assets/img/navigate-back.png" alt="뒤로가기">
+                <img id="nav-back-img" src="../../assets/img/navigate-back.png" alt="뒤로가기">
             </a>
         </div>
         <div class="project-name">내 새꾸 좀 봐봐요</div>
@@ -43,7 +43,7 @@ class MyHeader extends HTMLElement {
     //아무 말 대잔치 누를 시 게시판 목록으로
     const elHeaderLogo = this.shadowRoot.querySelector('.project-name');
     elHeaderLogo.addEventListener('click', () => {
-      window.location.href = '../pages/posts.html';
+      window.location.href = '../posts/posts.html';
     });
   }
 }

@@ -32,7 +32,7 @@ class PostsView extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     
         this.addEventListener('click', () => {
-            window.location.href = `../pages/post.html?id=${post.id}`;
+            window.location.href = `../post/post.html?id=${post.id}`;
         });
     }
 }
