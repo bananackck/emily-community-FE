@@ -9,16 +9,6 @@ main {
 }
 
 
-
-/* 수정 버튼 */
-.edit-btns {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
 /* 사진과 글 영역 */
 #post-img {
     height: 306px;

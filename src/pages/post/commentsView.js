@@ -42,17 +42,18 @@ class CommentsView extends HTMLElement{
         if (comment.userId != localStorage.getItem('userId') && editBtns) {
             editBtns.classList.add('hidden');
         }
-
-        editBtns.addEventListener('click', (e) => {
-            // 삭제
-            if (e.target.matches('.comment-delete-btn')) {
-                deleteBtnClicked(comment.id);
-            }
-            // 수정
-            if (e.target.matches('.comment-edit-btn')) {
-                editBtnClicked(comment.id);
-            }
-        });
+        else{
+            editBtns.addEventListener('click', (e) => {
+                // 삭제
+                if (e.target.matches('.comment-delete-btn')) {
+                    deleteBtnClicked(comment.id);
+                }
+                // 수정
+                if (e.target.matches('.comment-edit-btn')) {
+                    editBtnClicked(comment.id);
+                }
+            });
+        }
   }
 }
 

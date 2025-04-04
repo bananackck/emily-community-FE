@@ -19,7 +19,7 @@ const postModal = document.querySelector("#post-modal");
 
     deletePost(postId);
     setTimeout(()=>{
-        window.location.href = "../pages/posts.html";
+        window.location.href = "../posts/posts.html";
     },500);
     });
 }

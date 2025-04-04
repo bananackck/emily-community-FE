@@ -43,20 +43,22 @@ class MyHeader extends HTMLElement{
 
     addEvents(post){
         const elEditBtns = this.shadowRoot.querySelector('.edit-btns');
-        if(post.userId != localStorage.getItem('userId')){
-            elEditBtn.classList.add('none');
-        }
 
-        elEditBtns.addEventListener('click', (e) => {
-            // 삭제
-            if (e.target.matches('#post-delete-btn')) {
-                deleteBtnClicked(post.id);
-            }
-            // 수정
-            if (e.target.matches('#post-edit-btn')) {
-                editBtnClicked(post.id);
-            }
-        });
+        if(post.userId != localStorage.getItem('userId')){
+            elEditBtns.classList.add('none');
+        }
+        else{
+            elEditBtns.addEventListener('click', (e) => {
+                // 삭제
+                if (e.target.matches('#post-delete-btn')) {
+                    deleteBtnClicked(post.id);
+                }
+                // 수정
+                if (e.target.matches('#post-edit-btn')) {
+                    editBtnClicked(post.id);
+                }
+            });
+        }
     }
 }
 
@@ -119,6 +121,14 @@ style.textContent = `
     align-items: center;
     padding: 0 0.4rem;
     font-size: 0.8rem;
+}
+    /* 수정 버튼 */
+.edit-btns {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
     .none{
         display: none;
