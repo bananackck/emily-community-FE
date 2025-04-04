@@ -11,10 +11,10 @@ main {
 
 /* 사진과 글 영역 */
 #post-img {
-    height: 306px;
     margin: auto;
     padding-top: 12px;
     object-fit: contain;
+    display: flex;
 }
 
 .post-text {

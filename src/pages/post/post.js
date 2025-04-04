@@ -53,11 +53,22 @@ async function getPost() {
 
 
 
-    if(post.img==null){
-      document.querySelector('#post-img').classList.add('none');
-    }
-    else{
-      document.querySelector('#post-img').src="http://localhost:8080"+post.img;
+    const elImg = document.querySelector('#post-img');
+    if (post.img == null) {
+      elImg.classList.add('none');
+    } else {
+      const fullUrl = "http://localhost:8080" + post.img;
+
+      const tempImg = new Image();
+      tempImg.src = fullUrl;
+
+      tempImg.onload = () => {
+        const isWide = tempImg.width > tempImg.height;
+
+        elImg.src = fullUrl;
+        elImg.style.width = isWide ? '100%' : 'auto';
+        elImg.style.height = isWide ? 'auto' : '100%';
+      };
     }
 
     //TODO: 글 여러 줄?
