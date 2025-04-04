@@ -97,7 +97,7 @@ elEditBtn.addEventListener('click',async() => {
             localStorage.setItem('profileImg', "http://localhost:8080"+user.img);
             console.log("✅ 201 update success.");
             setTimeout(()=>{
-                window.location.href = "../pages/Posts.html";
+                window.location.href = "../post/Posts.html";
             },700);
         }
     }
@@ -143,7 +143,7 @@ const deleteUser=async()=>{
 
         console.log("✅ 200 delete success.");
         setTimeout(()=>{
-            window.location.href = "../pages/login.html";
+            window.location.href = "../login/login.html";
         },1000);
     }
     catch{

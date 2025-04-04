@@ -59,7 +59,7 @@ elEditBtn.onclick = async function(){
 
     if(response.ok){
         setTimeout(()=>{
-            window.location.href = "../pages/edit-profile.html";
+            window.location.href = "../profile-edit/edit-profile.html";
         },1000);
     }
     else{

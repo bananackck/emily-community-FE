@@ -57,7 +57,7 @@ function btnActivate() {
       if (response.ok) {
         console.log(response);
 
-        window.location.href = "./login.html";
+        window.location.href = "../login/login.html";
       } else {
         // 여기서 409 에러 등 처리 가능
         if (response.status === 409) {

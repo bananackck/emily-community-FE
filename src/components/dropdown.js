@@ -6,8 +6,8 @@ dropdownTemplate.innerHTML = `
   <div class="dropdown">
     <my-profileimg></my-profileimg>
     <div class="dropdown-content" id="content">
-      <a href="./edit-profile.html">회원정보수정</a>
-      <a href="./edit-password.html">비밀번호수정</a>
+      <a href="../profile-edit/edit-profile.html">회원정보수정</a>
+      <a href="../password-edit/edit-password.html">비밀번호수정</a>
       <a id="logoutBtn">로그아웃</a> 
     </div>
   </div>

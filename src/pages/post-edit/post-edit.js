@@ -131,7 +131,7 @@ elCompleteBtn.onclick=function(){
         img
     );
     setTimeout(()=>{
-        window.location.href=`../pages/post.html?id=${postId}`
+        window.location.href=`../post/post.html?id=${postId}`
     },1000);
 }
 
