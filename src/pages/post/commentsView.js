@@ -1,44 +1,58 @@
 import '../../components/profileImg.js';
+import {  editBtnClicked, deleteBtnClicked } from './comment.js';
 
 class CommentsView extends HTMLElement{
-  constructor(){
-    super();
-    this.attachShadow({mode: 'open'});
-  }
-  
-  set data(comment){
-    const template = document.createElement('template');
-    template.innerHTML = `
-        <div class="comment-content">
-            <div class="writer-wrap">
-                <!-- 작성자 -->
-                <my-profileimg id="profile-img" src="${"http://localhost:8080"+comment.userProfileImg}"></my-profileimg>
-                <div class="writer">${comment.userNickname}</div>
-                <!-- 작성 시간 -->
-                <p class="post-time comment-setting" id="comment-post-time">${comment.createdAt.replace('T',' ')}</p>
-            </div>
-            <p class="comment-text">${comment.text}</p>
-        </div>`;
-    
-    template.innerHTML += `
-    <div class="edit-btns">
-        <button class="small-btn comment-edit-btn">수정</button>
-        <button class="small-btn comment-delete-btn">삭제</button>
-    </div>`;
-    
-    const link = document.createElement('link');
-    link.setAttribute('rel', 'stylesheet');
-    link.setAttribute('href', '../../assets/style/button.css');
-    template.content.appendChild(link);
-    template.content.prepend(style);
-
-    this.shadowRoot.innerHTML = ""; // 초기화
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-
-    const editBtns = this.shadowRoot.querySelector('.edit-btns');
-    if (comment.userId != localStorage.getItem('userId') && editBtns) {
-      editBtns.classList.add('hidden');
+    constructor(){
+        super();
+        this.attachShadow({mode: 'open'});
     }
+    
+    set data(comment) {
+        this.render(comment);
+        this.addEvents(comment);
+    }
+
+    render(comment) {
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <div class="comment-content">
+                <div class="writer-wrap">
+                    <my-profileimg id="profile-img" src="${"http://localhost:8080"+comment.userProfileImg}"></my-profileimg>
+                    <div class="writer">${comment.userNickname}</div>
+                    <p class="post-time comment-setting" id="comment-post-time">${comment.createdAt.replace('T',' ')}</p>
+                </div>
+                <p class="comment-text">${comment.text}</p>
+            </div>
+            <div class="edit-btns">
+                <button class="small-btn comment-edit-btn">수정</button>
+                <button class="small-btn comment-delete-btn">삭제</button>
+            </div>`;
+        
+        const link = document.createElement('link');
+        link.setAttribute('rel', 'stylesheet');
+        link.setAttribute('href', '../../assets/style/button.css');
+        template.content.appendChild(link);
+        template.content.prepend(style);
+
+        this.shadowRoot.innerHTML = "";
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+    }
+    addEvents(comment) {
+        const editBtns = this.shadowRoot.querySelector('.edit-btns');
+        if (comment.userId != localStorage.getItem('userId') && editBtns) {
+            editBtns.classList.add('hidden');
+        }
+
+        editBtns.addEventListener('click', (e) => {
+            // 삭제
+            if (e.target.matches('.comment-delete-btn')) {
+                deleteBtnClicked(comment.id);
+            }
+            // 수정
+            if (e.target.matches('.comment-edit-btn')) {
+                editBtnClicked(comment.id);
+            }
+        });
   }
 }
 
@@ -95,6 +109,7 @@ style.textContent = `
 // DOM 업데이트
 export const updateDom = (container, comment)=>{
     const commentElement = document.createElement('my-commentsview');
+    commentElement.dataset.id = comment.id;
     commentElement.data = comment;
     container.appendChild(commentElement);
 };

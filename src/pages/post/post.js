@@ -1,8 +1,34 @@
 import {getComments, deleteComment} from './comment.js'
+import { updateDom } from './postHeader.js';
 
 const params = new URLSearchParams(window.location.search);
 const postId = params.get('id');
 const token = localStorage.getItem('jwtToken');
+
+// 게시글 삭제 버튼 클릭
+export const deleteBtnClicked = (postId)=>{
+// 포스트 삭제 모달
+const postModal = document.querySelector("#post-modal");
+// 포스트 삭제 버튼 클릭
+    postModal.classList.add('block');
+    postModal.shadowRoot.querySelector(".modal-btn.no").addEventListener("click", () => {
+    postModal.classList.remove('block');
+    });
+    postModal.shadowRoot.querySelector(".modal-btn.yes").addEventListener("click", () => {
+    postModal.classList.remove('block');
+
+    deletePost(postId);
+    setTimeout(()=>{
+        window.location.href = "../pages/posts.html";
+    },500);
+    });
+}
+
+// 게시글 수정 버튼 클릭
+export const editBtnClicked = async(postId) => {
+  window.location.href = `../post-edit/post-edit.html?id=${postId}`;
+
+};
 
 // 게시글 불러오기
 async function getPost() {
@@ -21,18 +47,11 @@ async function getPost() {
     }
     const post = await response.json();
 
-    // DOM 업데이트
-    if(post.userId != localStorage.getItem('userId')){
-      const elEditBtn = document.querySelector('.edit-btns');
-      elEditBtn.classList.add('none');
-    }
-    
-    // 저자
-    console.log(post)
-    document.querySelector(".post-title").innerHTML=post.title;
-    document.querySelector("#writer-profile").src="http://localhost:8080"+post.userProfileImg;
-    document.querySelector('#writer').innerHTML=post.userNickname;
-    document.querySelector('#post-time').innerHTML=post.createdAt.replace('T',' ');
+    // postHeader에 데이터 전달
+    const container = document.querySelector('.post'); // 또는 렌더링할 상위 엘리먼트
+    updateDom(container, post);
+
+
 
     if(post.img==null){
       document.querySelector('#post-img').classList.add('none');
@@ -77,28 +96,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 });
 
 //---------------------
-// 포스트 수정 버튼 클릭
-document.querySelector("#post-edit-btn").addEventListener("click", () => {
-    window.location.href = `../pages/post-edit.html?id=${postId}`;
-});
 
-// 포스트 삭제 모달
-const postModal = document.querySelector("#post-modal");
-// 포스트 삭제 버튼 클릭
-document.querySelector("#post-delete-btn").addEventListener("click", () => {
-    postModal.classList.add('block');
-    postModal.shadowRoot.querySelector(".modal-btn.no").addEventListener("click", () => {
-    postModal.classList.remove('block');
-    });
-    postModal.shadowRoot.querySelector(".modal-btn.yes").addEventListener("click", () => {
-      postModal.classList.remove('block');
-
-      deletePost(postId);
-      setTimeout(()=>{
-        window.location.href = "../pages/posts.html";
-      },500);
-    });
-});
 
 //게시물 & 댓글 & 좋아요 삭제
 async function deletePost(postId) {
@@ -175,7 +173,6 @@ elCommentUploadBtn.addEventListener("click", async ()=>{
     const container = document.querySelector(".comments");
     container.innerHTML = "";
 
-    console.log("clicked"+ elInputComment.value)
     try{
       const response = await fetch(`http://localhost:8080/api/posts/${postId}/comments`,{
         method: 'POST',

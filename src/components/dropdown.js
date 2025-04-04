@@ -41,7 +41,7 @@ class MyDropdown extends HTMLElement {
       localStorage.removeItem('profileImg');
       localStorage.removeItem('email');
       localStorage.removeItem('nickname');
-      window.location.href = '../pages/login.html';
+      window.location.href = '../login/login.html';
     }); 
   }
 }

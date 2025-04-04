@@ -36,6 +36,8 @@
     font-size: 0.8rem;
     border: 1px solid var(--activate-color);
     background-color: var(--color-white);
+
+    cursor: pointer;
 }
 
 /* <a> */

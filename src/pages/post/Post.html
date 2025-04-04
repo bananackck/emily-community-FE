@@ -16,25 +16,7 @@
     <main>
         <div class="contents">
             <article class="post">
-                <div class="post-header"> 
-                    <p class="post-title"></p>
-                    <div class="writer-area">
-                        <div class="writer-wrap">
-                            <!-- 작성자 -->
-                            <div class="profile-img-wrap">
-                                <img class="profile-img" id="writer-profile">
-                            </div>
-                            <div class="writer" id="writer"></div>
-                            <!-- 작성 시간 -->
-                            <p class="post-time" id="post-time"></p>
-                        </div>
-                        <!-- 편집 버튼 -->
-                        <div class="edit-btns">
-                            <button class="small-btn" id="post-edit-btn">수정</button>
-                            <button class="small-btn" id="post-delete-btn">삭제</button>
-                        </div>
-                    </div>
-                </div>
+                <my-postheader></my-postheader>
             
                 <div class="post-content">
                     <!-- <div class="post-img-wrap> -->
@@ -77,7 +59,9 @@
     
     <script type="module" src="../../components/header.js"></script>
     <script type="module" src="../../components/modal.js"></script>
-    <script type="module" src="./commentsView.js"></script>
+    <!-- <script type="module" src="./commentsView.js"></script> -->
+    <script type="module" src="./comment.js"></script>
+    <script type="module" src="./postHeader.js"></script>
     <script type="module" src = "./post.js"></script>
 </body>
 </html>
