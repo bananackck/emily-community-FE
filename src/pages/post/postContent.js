@@ -75,31 +75,7 @@ class MyContent extends HTMLElement{
             const container = this.shadowRoot.querySelector("#like-count");
 
             likeBtnClicked(container);
-            try{
-            const response = await fetch(`http://localhost:8080/api/posts/${postd}/like`,{
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-                }
-            })
-            if(response.ok){
-                console.log("[FE]✅ 좋아요 성공")
-            }
-            const like = await response.json();
-
-            // DOM 업데이트
-            container.innerHTML = "";
-            container.innerHTML=like.likeCount;
-
-            return{message: "[FE]✅ 좋아요 성공"}
-            }
-            catch{
-            return{
-                ok: false, status: null,
-                message: "[FE]🚨 좋아요 오류"
-            }
-            }
+            
         });
     
     }
