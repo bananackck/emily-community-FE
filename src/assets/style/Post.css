@@ -9,66 +9,6 @@ main {
 }
 
 
-/* 사진과 글 영역 */
-#post-img {
-    margin: auto;
-    padding-top: 12px;
-    object-fit: contain;
-    display: flex;
-}
-
-.post-text {
-    font-size: 0.9rem;
-    line-height: 21.15px;
-    letter-spacing: 0%;
-    margin: 12px 24px;
-}
-
-/* 좋아요수, 조회수, 댓글 */
-.info-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    padding-bottom: 32px; 
-    border-bottom: 1px solid #00000029;
-}
-
-.box-wrap {
-    width: calc(var(--post-width) * 0.6);
-    display: flex;
-    justify-content: center; 
-}
-
-.box {
-    flex: 1;
-    height: 77px;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    background-color: var(--secondary-color);
-    margin: 0 8px;
-    font-weight: 700;
-    font-size: 1rem;
-    text-align: center;
-}
-
-.like-box:hover {
-    cursor: pointer;
-    background-color: var(--point-color);
-}
-
-#like-count,
-#comment-count,
-#view-count {
-    line-height: 26px;
-    margin: auto;
-}
-
-.box-title {
-    line-height: 25.04px;
-    margin: auto;
-}
 
 /* ------------------------------- */
 /* 댓글 텍스트 작성 공간 */

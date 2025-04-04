@@ -17,31 +17,7 @@
         <div class="contents">
             <article class="post">
                 <my-postheader></my-postheader>
-            
-                <div class="post-content">
-                    <div class="post-img-wrap">
-                        <img id="post-img" title="이미지 입니다"/>
-                    </div>
-                    <div class="post-text">
-                        <p></p>
-                    </div>    
-                    <div class="info-wrap">
-                        <div class="box-wrap">
-                            <div class="box like-box">
-                                <p id="like-count"></p>
-                                <p class="box-title">좋아요수</p>
-                            </div>
-                            <div class="box">
-                                <p id="view-count"></p>
-                                <p class="box-title">조회수</p>
-                            </div>
-                            <div class="box">
-                                <p id="comment-count"></p>
-                                <p class="box-title">댓글</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>    
+                <my-postcontent></my-postcontent>
                 <div class="comment-wrap">
                     <div class="comment-box">
                         <textarea id="comment-inputbox" placeholder="댓글을 남겨주세요!" onfocus="this.placeholder = ''" onblur="this.placeholder = '댓글을 남겨주세요!'"></textarea>
@@ -61,6 +37,7 @@
     <script type="module" src="../../components/modal.js"></script>
     <script type="module" src="./comment.js"></script>
     <script type="module" src="./postHeader.js"></script>
+    <script type="module" src="./postContent.js"></script>
     <script type="module" src = "./post.js"></script>
 </body>
 </html>

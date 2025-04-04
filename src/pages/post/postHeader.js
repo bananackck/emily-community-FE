@@ -136,11 +136,5 @@ style.textContent = `
 
 export const updateDom = (container, post) => {
     const postHeader = container.querySelector('my-postheader');
-    if (postHeader) {
-        postHeader.data = post;
-    } else {
-        const newPostHeader = document.createElement('my-postheader');
-        newPostHeader.data = post;
-        container.appendChild(newPostHeader);
-    }
+    postHeader.data = post;
 }

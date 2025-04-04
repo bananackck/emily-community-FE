@@ -1,5 +1,6 @@
 import {getComments, deleteComment} from './comment.js'
-import { updateDom } from './postHeader.js';
+import { updateDom as updatePostHeader} from './postHeader.js';
+import { updateDom as updatePostContent} from './postContent.js';
 
 const params = new URLSearchParams(window.location.search);
 const postId = params.get('id');
@@ -49,37 +50,37 @@ async function getPost() {
 
     // postHeader에 데이터 전달
     const container = document.querySelector('.post'); // 또는 렌더링할 상위 엘리먼트
-    updateDom(container, post);
+    updatePostHeader(container, post);
+    updatePostContent(container, post);
 
 
+    // const elImg = document.querySelector('#post-img');
+    // if (post.img == null) {
+    //   elImg.classList.add('none');
+    // } else {
+    //   const fullUrl = "http://localhost:8080" + post.img;
 
-    const elImg = document.querySelector('#post-img');
-    if (post.img == null) {
-      elImg.classList.add('none');
-    } else {
-      const fullUrl = "http://localhost:8080" + post.img;
+    //   const tempImg = new Image();
+    //   tempImg.src = fullUrl;
 
-      const tempImg = new Image();
-      tempImg.src = fullUrl;
+    //   tempImg.onload = () => {
+    //     const isWide = tempImg.width > tempImg.height;
 
-      tempImg.onload = () => {
-        const isWide = tempImg.width > tempImg.height;
-
-        elImg.src = fullUrl;
-        elImg.style.width = isWide ? '100%' : 'auto';
-        elImg.style.height = isWide ? 'auto' : '100%';
-      };
-    }
+    //     elImg.src = fullUrl;
+    //     elImg.style.width = isWide ? '100%' : 'auto';
+    //     elImg.style.height = isWide ? 'auto' : '100%';
+    //   };
+    // }
 
     //TODO: 글 여러 줄?
-    const postText=document.querySelector('.post-text');
-    const pTag = document.createElement("p");
-    pTag.innerHTML=post.text;
-    postText.appendChild(pTag);
+    // const postText=document.querySelector('.post-text');
+    // const pTag = document.createElement("p");
+    // pTag.innerHTML=post.text;
+    // postText.appendChild(pTag);
 
-    document.querySelector('#like-count').innerHTML=post.likeCount;
-    document.querySelector('#view-count').innerHTML=post.viewCount;
-    document.querySelector('#comment-count').innerHTML=post.commentCount;
+    // document.querySelector('#like-count').innerHTML=post.likeCount;
+    // document.querySelector('#view-count').innerHTML=post.viewCount;
+    // document.querySelector('#comment-count').innerHTML=post.commentCount;
 
     // 응답 생성
     return{
@@ -145,36 +146,40 @@ async function deletePost(postId) {
 
 //------------------------
 // 좋아요
-const elLikeBtn = document.querySelector('.like-box');
-elLikeBtn.addEventListener("click", async ()=>{
-    const container = document.querySelector("#like-count");
-
-    try{
-      const response = await fetch(`http://localhost:8080/api/posts/${postId}/like`,{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
-      })
-      if(response.ok){
-        console.log("[FE]✅ 좋아요 성공")
+export const likeBtnClicked = async(likeCount) => {
+  try{
+    const response = await fetch(`http://localhost:8080/api/posts/${postId}/like`,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       }
-      const like = await response.json();
-
-      // DOM 업데이트
-      container.innerHTML = "";
-      container.innerHTML=like.likeCount;
-
-      return{message: "[FE]✅ 좋아요 성공"}
+    })
+    if(response.ok){
+      console.log("[FE]✅ 좋아요 성공")
     }
-    catch{
-      return{
-        ok: false, status: null,
-        message: "[FE]🚨 좋아요 오류"
-      }
+    const like = await response.json();
+    // DOM 업데이트
+    container.innerHTML = "";
+    container.innerHTML=like.likeCount;
+  }
+  catch{
+    return{
+      ok: false, status: null,
+      message: "[FE]🚨 좋아요 오류"
     }
-});
+  }
+
+}
+// const elLikeBtn = document.querySelector('.like-box');
+// elLikeBtn.addEventListener("click", async ()=>{
+//     const container = document.querySelector("#like-count");
+
+
+
+//       return{message: "[FE]✅ 좋아요 성공"}
+//     }
+// });
 
 //---------------------------
 // 댓글 업로드
