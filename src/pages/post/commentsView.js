@@ -1,5 +1,5 @@
 import '../../components/profileImg.js';
-import {  editBtnClicked, deleteBtnClicked } from './comment.js';
+import {  editBtnClicked, deleteBtnClicked } from './postComment.js';
 
 class CommentsView extends HTMLElement{
     constructor(){

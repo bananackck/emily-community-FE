@@ -1,4 +1,4 @@
-import {getComments, deleteComment} from './comment.js'
+import {getComments, deleteComment} from './postComment.js'
 import { updateDom as updatePostHeader} from './postHeader.js';
 import { updateDom as updatePostContent} from './postContent.js';
 

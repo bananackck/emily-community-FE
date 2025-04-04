@@ -75,7 +75,7 @@ class MyContent extends HTMLElement{
             const container = this.shadowRoot.querySelector("#like-count");
 
             likeBtnClicked(container);
-            
+            //TODO: 좋아요 리렌더링 안됨
         });
     
     }
