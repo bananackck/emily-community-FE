@@ -32,32 +32,20 @@
 
 /* 컬러 팔레트 */
 :root{
-    --background-color: #F4F5F7;
-    --point-color: #ACA0EB;
-    --activate-color: #7F6AEE;
+    --background-color: #fdf9ec;
+    --point-color: #F5DD90;
+    --activate-color: #EEC644;
+    --secondary-color: #F7E8B6;
+    --color-white: #FEFCF6;
 
-    --font-color-white: #ffffff;
+    --font-color-black: #140c0c;
+    --font-color-white: #fdf9ec;
 }
 
 /* css reset */
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;   
-}
+} */
 
-/* 화면 채우기, 배경화면색 설정 */
-body{
-    width: 100%;
-    height: 100%;
-    background-color: var(--background-color);
-    
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-/* a태그 초기화 */
-a{
-    text-decoration: none;
-}

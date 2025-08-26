@@ -67,7 +67,7 @@ elCompleteBtn.onclick = async () =>{
         );
         console.log(response);
         setTimeout(()=>{
-            window.location.href = `../pages/post.html?id=${response.data.id}`;
+            window.location.href = `../post/post.html?id=${response.data.id}`;
         },500);
     }
     catch{

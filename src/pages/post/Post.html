@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../../assets/style/post.css">
+    <title>Community clone-emily</title>
+</head>
+<body>
+    <my-header></my-header>
+    <my-modal id="post-modal" title="게시글을 삭제하시겠습니까?" message="삭제한 내용은 복구할 수 없습니다."></my-modal>
+    <my-modal id="comment-modal" title="댓글을 삭제하시겠습니까?" message="삭제한 내용은 복구할 수 없습니다."></my-modal>
+
+    
+    <main>
+        <div class="contents">
+            <article class="post">
+                <my-postheader></my-postheader>
+                <my-postcontent></my-postcontent>
+                <div class="comment-wrap">
+                    <div class="comment-box">
+                        <textarea id="comment-inputbox" placeholder="댓글을 남겨주세요!" onfocus="this.placeholder = ''" onblur="this.placeholder = '댓글을 남겨주세요!'"></textarea>
+                        <div class="comment-btn-wrap">
+                            <button class="main-btn" id="comment-upload-btn">댓글 등록</button>
+                        </div>
+                    </div>
+                    <div class="comments">
+                        <my-commentsview></my-commentsview>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+    
+    <script type="module" src="../../components/header.js"></script>
+    <script type="module" src="../../components/modal.js"></script>
+    <script type="module" src="./postComment.js"></script>
+    <script type="module" src="./postHeader.js"></script>
+    <script type="module" src="./postContent.js"></script>
+    <script type="module" src = "./post.js"></script>
+</body>
+</html>

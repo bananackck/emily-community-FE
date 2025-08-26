@@ -19,110 +19,25 @@ main{
 }
 
 
-/* 보라색 버튼 */
+/* 게시글 작성 버튼 */
 .btn-wrap{
-    font-family: 'Pretendard-Regular';
-    
     display: flex;
     width: var(--post-width);
-    /* align-items: center; */
     justify-content: flex-end;
     margin-top: 24px;
+}
+.btn-wrap :hover{
+    background-color: var(--activate-color);
 }
 .main-btn{
     width: 138px;
     height: 39px;
     border-radius: 16px;
 }
+
+
 /* 게시글 목록 */
 .posts{
     display: flex;
     flex-direction: column;
-}
-
-/* 게시글 */
-.post{
-    display: flex;
-    flex-direction: column;
-
-    width: var(--post-width);
-    /* height: 21vh; */
-    border-radius: 16px;
-
-    background-color: #FFFFFF;
-
-    margin-top: 12px;
-    cursor: pointer;
-}
-
-/* 게시글 헤더(정보 부분) */
-.post-header{
-    flex: 2;
-    display: flex;
-    margin: 1.5rem;
-}
-.post-info{
-    flex:2;
-}
-.post-title{
-    font-weight: 700;
-    font-size: 1.5rem;
-
-    margin-bottom: .75rem;
-}
-.post-info-wrap{
-    display: flex;
-    flex-direction: row;
-    font-size: 0.8rem;
-}
-.info{
-    display: flex;
-    margin-right: 0.5rem;
-}
-#likeCount,
-#commentCount,
-#viewCount{
-    margin-left: 0.25rem;
-}
-#post-time{
-    flex:1;
-    margin-top: auto;
-    margin-left: auto;
-
-    display: flex;
-    justify-content: flex-end; 
-    align-items: flex-end;
-
-    font-size: 0.8rem;
-}
-
-/* 작성자 */
-.writer-wrap{
-    flex: 1;
-
-    display: flex;
-
-    padding: 1rem 1.5rem;
-
-    border-top: 1px solid #00000029;
-}
-.profile{
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    width:2.5rem;
-}
-#profile-img{
-    width:2.5rem;
-    height:2.5rem;
-    object-fit: contain;
-}
-#writer{
-    flex: 12;
-
-    display: flex;
-    align-items: center;
-
-    font-weight: 700;
-    margin-left: 8px;
 }

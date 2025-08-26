@@ -1,4 +1,4 @@
-import * as validator from "../components/validator.js";
+import * as validator from "../../components/validator.js";
 
 const elInputPw = document.getElementById('pw')
 const elInputPw2 = document.getElementById('pw2')
@@ -59,7 +59,7 @@ elEditBtn.onclick = async function(){
 
     if(response.ok){
         setTimeout(()=>{
-            window.location.href = "../pages/edit-profile.html";
+            window.location.href = "../profile-edit/edit-profile.html";
         },1000);
     }
     else{
