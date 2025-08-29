@@ -20,14 +20,14 @@ const postModal = document.querySelector("#post-modal");
 
     deletePost(postId);
     setTimeout(()=>{
-        window.location.href = "../posts/posts.html";
+        window.location.href = "./posts.html";
     },500);
     });
 }
 
 // 게시글 수정 버튼 클릭
 export const editBtnClicked = async(postId) => {
-  window.location.href = `../post-edit/post-edit.html?id=${postId}`;
+  window.location.href = `./post-edit.html?id=${postId}`;
 
 };
 

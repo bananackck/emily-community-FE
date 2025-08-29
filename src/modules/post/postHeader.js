@@ -33,7 +33,7 @@ class MyHeader extends HTMLElement{
 
         const link = document.createElement('link');
         link.setAttribute('rel', 'stylesheet');
-        link.setAttribute('href', '../../assets/style/button.css');
+        link.setAttribute('href', '../assets/style/button.css');
         template.content.appendChild(link);
         template.content.prepend(style);
 

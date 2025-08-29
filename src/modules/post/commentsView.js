@@ -30,7 +30,7 @@ class CommentsView extends HTMLElement{
         
         const link = document.createElement('link');
         link.setAttribute('rel', 'stylesheet');
-        link.setAttribute('href', '../../assets/style/button.css');
+        // link.setAttribute('href', '../../assets/style/button.css');
         template.content.appendChild(link);
         template.content.prepend(style);
 
@@ -104,6 +104,21 @@ style.textContent = `
     }
         .hidden{
     visibility: hidden !important;;
+}
+    .small-btn{
+    width: 48px;
+    height: 24px;
+    top: 175px;
+    left: 1182px;
+    border-radius: 8px;
+
+    font-family: var(--main-font);
+
+    font-size: 0.8rem;
+    border: 1px solid var(--activate-color);
+    background-color: var(--color-white);
+
+    cursor: pointer;
 }
 `;
 

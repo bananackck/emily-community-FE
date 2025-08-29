@@ -97,7 +97,7 @@ elEditBtn.addEventListener('click',async() => {
             localStorage.setItem('profileImg', "http://localhost:8080"+user.img);
             console.log("✅ 201 update success.");
             setTimeout(()=>{
-                window.location.href = "../post/Posts.html";
+                window.location.href = "./Posts.html";
             },700);
         }
     }
