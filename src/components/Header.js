@@ -10,7 +10,7 @@ template.innerHTML = `
                 <img id="nav-back-img" src="../assets/img/navigate-back.png" alt="뒤로가기">
             </a>
         </div>
-        <div class="project-name">내 새꾸 좀 봐봐요</div>
+        <div class="project-name">도담도담</div>
         <div class="nav-btn right" id="dropdown">
             <my-dropdown></my-dropdown>
         </div>
@@ -40,7 +40,7 @@ class MyHeader extends HTMLElement {
       navBtns.classList.add('hidden');
     }
 
-    //아무 말 대잔치 누를 시 게시판 목록으로
+    //타이틀 누를 시 게시판 목록으로
     const elHeaderLogo = this.shadowRoot.querySelector('.project-name');
     elHeaderLogo.addEventListener('click', () => {
       window.location.href = '../pages/posts.html';
