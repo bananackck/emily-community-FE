@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="../../assets/style/make-post.css">
+    <link rel="stylesheet" type="text/css" href="../assets/style/make-post.css">
     <title>Community clone-emily</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
     
     <main>
         <div class="contents">
-            <div class="title">게시글 작성</div>
+            <div class="title">게시글 수정</div>
             
             <article class="info-wrap">
                 <!-- 제목 -->
@@ -33,13 +33,14 @@
                 <div class="filebox">
                     <label for="file">파일 선택</label> 
                     <div class="filebox-msg" id="filename">파일을 선택해주세요.</div>
-                    <input type="file" id="file" accept="image/*">
+                    <input type="file" id="file">
                 </div>
             </article>
-            <button class="main-btn" id="complete-btn">완료</button>
+            <button class="main-btn" id="complete-btn">수정하기</button>
         </div>
     </main>
-    <script type="module" src="../../components/header.js"></script>
-    <script src = "./make-post.js"></script>
+    <script type="module" src="../components/header.js"></script>
+    <script src = "../modules/post-edit/post-edit.js"></script>
+    <!-- <script src = "../scripts/make-post.js"></script> -->
 </body>
 </html>

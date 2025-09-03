@@ -6,8 +6,8 @@ dropdownTemplate.innerHTML = `
   <div class="dropdown">
     <my-profileimg></my-profileimg>
     <div class="dropdown-content" id="content">
-      <a href="../profile-edit/edit-profile.html">회원정보수정</a>
-      <a href="../password-edit/edit-password.html">비밀번호수정</a>
+      <a href="./edit-profile.html">회원정보수정</a>
+      <a href="./edit-password.html">비밀번호수정</a>
       <a id="logoutBtn">로그아웃</a> 
     </div>
   </div>
@@ -41,7 +41,7 @@ class MyDropdown extends HTMLElement {
       localStorage.removeItem('profileImg');
       localStorage.removeItem('email');
       localStorage.removeItem('nickname');
-      window.location.href = '../login/login.html';
+      window.location.href = './login.html';
     }); 
   }
 }

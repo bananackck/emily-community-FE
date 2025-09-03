@@ -27,7 +27,7 @@ function btnActivate(){
             // 로그인 처리 함수 호출
             const response = await findUser(elInputEmail.value, elInputPw.value);
             if(response.ok){
-                window.location.href = "../posts/posts.html";
+                window.location.href = "./posts.html";
             }else{
                 if(response.status === 404){
                     elHelperText.innerHTML = "아이디 또는 비밀번호가 일치하지 않습니다.";

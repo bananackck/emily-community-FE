@@ -2,7 +2,7 @@
 const profileImgTemplate = document.createElement('template');
 profileImgTemplate.innerHTML = `
     <div class="profile-img-container">
-        <img src="../assets/img/profile-basic.png" alt="프로필 가기" style="border-radius: 20px;">
+        <img src="../assets/img/profile-placeholder.png" alt="프로필 가기" style="border-radius: 20px;">
     </div>
 `;
 
