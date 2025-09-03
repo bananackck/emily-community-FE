@@ -1,7 +1,7 @@
 # Community FE
 
-Vanilla JavaScript + Spring Boot + MySQL 로 만든 **로컬 커뮤니티 게시판** 프로젝트입니다. 로그인, 회원가입, 게시글 CRUD, 댓글 작성, 프로필·비밀번호 수정, 회원 탈퇴 기능을 제공합니다.
-<br> 프론트엔드 파일입니다.
+Vanilla JavaScript + Spring Boot + MySQL 로 만든 로컬 커뮤니티 게시판 **도담도담**입니다. 로그인, 회원가입, 게시글 CRUD, 댓글 작성, 프로필·비밀번호 수정, 회원 탈퇴 기능을 제공합니다.
+<br> 프론트엔드 리포지토리입니다.
 
 ---
 
@@ -45,7 +45,7 @@ https://youtu.be/Toc_h0OYZ7E
 
 ## ⚙️ 실행 환경 요구사항
 
-- Java 17 이상
+- Java 21.0.6 이상
 - Gradle 7.0 이상
 - VSCode Live Server
 - MySQL Server 8 이상
@@ -101,44 +101,20 @@ VSCode → `src/pages` 폴더에서 **Live Server** 실행
 ```
 emily-community-FE/
 └── src
-    ├── assets
-    │   ├── img
-    │   │   ├── navigate-back.png
-    │   │   └── profile-basic.png
-    │   └── style
-    │       ├── Header.css
-    │       ├── Post.css
-    │       ├── Posts.css
-    │       ├── Style.css
-    │       ├── button.css
-    │       ├── common.css
-    │       ├── edit-profile.css
-    │       └── make-post.css
-    ├── components
-    │   ├── Header.js
-    │   ├── commentsView.js
-    │   ├── modal.js
-    │   ├── postsView.js
-    │   └── validator.js
-    ├── pages
-    │   ├── Post.html
-    │   ├── Posts.html
-    │   ├── edit-password.html
-    │   ├── edit-profile.html
-    │   ├── login.html
-    │   ├── make-post.html
-    │   ├── post-edit.html
-    │   └── signup.html
-    └── scripts
-        ├── edit-password.js
-        ├── edit-profile.js
-        ├── login.js
-        ├── make-post.js
-        ├── post-edit.js
-        ├── post.js
-        ├── posts.js
-        └── signup.js
-
+    ├───assets
+    │   ├───img
+    │   └───style
+    ├───components
+    ├───modules
+    │   ├───login
+    │   ├───password-edit
+    │   ├───post
+    │   ├───post-edit
+    │   ├───post-make
+    │   ├───posts
+    │   ├───profile-edit
+    │   └───signup
+    └───pages
 ```
 ---
 ## 📄 페이지 설명
